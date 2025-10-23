@@ -11,27 +11,24 @@ import solipsismal.olympiacosfcapp.repository.MatchRepository;
 import solipsismal.olympiacosfcapp.repository.PlayerMatchRepository;
 import solipsismal.olympiacosfcapp.repository.PlayerRepository;
 
-import java.util.Comparator;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/players")
 @RequiredArgsConstructor
-public class ApiController {
+public class PlayerController {
 
     private final PlayerRepository playerRepository;
-    private final MatchRepository matchRepository;
-    private final PlayerMatchRepository playerMatchRepository;
 
     @GetMapping("/squad")
-    public List<PlayerDTO> findAllByOrderByPositionAscByShirtNumberAsc() {
-        return playerRepository.findAllByOrderByPositionAscByShirtNumberAsc()
+    public List<PlayerDTO> getSquad() {
+        return playerRepository.findAllByOrderByPositionAscShirtNumberAsc()
                 .stream()
                 .map(PlayerDTO::new)
                 .toList();
     }
 
-    @GetMapping("/players/{id}")
+    @GetMapping("/{id}")
     public PlayerDTO getPlayer(@PathVariable String id) {
         Player player = playerRepository.findById(id).orElseThrow();
         return new PlayerDTO(player);
