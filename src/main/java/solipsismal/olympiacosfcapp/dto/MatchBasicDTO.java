@@ -13,6 +13,7 @@ public class MatchBasicDTO {
     private Integer olympiacosGoals;
     private Integer opponentGoals;
     private String date;
+    private String time;
     private String ground;
 
     public MatchBasicDTO(Match match) {
@@ -22,6 +23,7 @@ public class MatchBasicDTO {
         this.olympiacosGoals = match.getOlympiacosGoals();
         this.opponentGoals = match.getOpponentGoals();
         this.date = match.getDate();
+        this.time = match.getTime();
         this.ground = match.getGround().toString();
     }
 }

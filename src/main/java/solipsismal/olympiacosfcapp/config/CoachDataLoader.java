@@ -30,7 +30,7 @@ public class CoachDataLoader implements CommandLineRunner {
                 "Zaldibar", "", 1.72, "Sevilla", "José Luis Mendilibar is a Spanish football manager known for his pragmatic, demanding, and direct style of play, having coached over 400 matches in La Liga for multiple clubs including Eibar, Osasuna, and Real Valladolid. His career enjoyed a remarkable resurgence in 2023 when he took over Sevilla and promptly guided them to a historic UEFA Europa League title. Building on this success, he joined Greek club Olympiacos F.C. in 2024 and led them to win the UEFA Europa Conference League, securing the first-ever European trophy for a Greek club, cementing his reputation as a \"fixer\" who achieves rapid, historic success.");
         CoachStats mendilibarTotalStats = new CoachStats("CS34418052",
                 0, 0, 0, 0, 0, 0);
-        coachRepository.save(new Coach("MA34418052", "Mendilibar", "José Luis", 1961,
+        coachRepository.save(new Coach("MG34418052", "Mendilibar", "José Luis", 1961,
                 "Spain", mendilibarBio, mendilibarTotalStats, true));
 
         // Match 1 | OLYMPIACOS F.C. - Asteras 2:0 | 23/08/2025
@@ -66,8 +66,11 @@ public class CoachDataLoader implements CommandLineRunner {
         // Match 11 | FC Barcelona - OLYMPIACOS F.C. 6:1 | 21/10/2025
         updateCoachStats(6, 1, mendilibarTotalStats);
 
-        // Match 12 | OLYMPIACOS F.C. AEK FC 0:0 | 26/10/2025
-        updateCoachStats(0, 0, mendilibarTotalStats);
+        // Match 12 | OLYMPIACOS F.C. AEK FC 2:0 | 26/10/2025
+        updateCoachStats(2, 0, mendilibarTotalStats);
+
+        // Match 13 | OLYMPIACOS F.C. - NFC Volos 5:0 | 29/10/2025
+        updateCoachStats(5, 0, mendilibarTotalStats);
     }
 
     private void updateCoachStats(int goals, int goalsConceded, CoachStats mendilibarTotalStats) {

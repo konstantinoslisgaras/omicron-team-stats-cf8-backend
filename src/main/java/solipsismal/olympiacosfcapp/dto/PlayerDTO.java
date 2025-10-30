@@ -15,10 +15,10 @@ public class PlayerDTO {
     private Integer birthYear;
     private String nationality;
     private Integer shirtNumber;
-    private Position position;
-    private PreferredFoot preferredFoot;
+    private String position;
+    private String preferredFoot;
     private boolean isCaptain;
-    private DetailedBioDTO detailedBio;
+    private DetailedBioDTO detailedBioDTO;
 
     public PlayerDTO(Player player) {
         this.id = player.getId();
@@ -27,9 +27,9 @@ public class PlayerDTO {
         this.birthYear = player.getBirthYear();
         this.nationality = player.getNationality();
         this.shirtNumber = player.getShirtNumber();
-        this.position = player.getPosition();
-        this.preferredFoot = player.getPreferredFoot();
+        this.position = player.getPosition().getAbbreviation();
+        this.preferredFoot = player.getPreferredFoot().getAbbreviation();
         this.isCaptain = player.isCaptain();
-        this.detailedBio = new DetailedBioDTO(player.getDetailedBio());
+        this.detailedBioDTO = new DetailedBioDTO(player.getDetailedBio());
     }
 }

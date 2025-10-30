@@ -45,11 +45,22 @@ public class TeamStats {
     @Column(length = 4, nullable = false)
     private Integer losses = 0;
 
-    @Column(name = "matches_played", length = 4, nullable = false)
-    private Integer matchesPlayed = 0;
+    @Column(name = "total_matches", length = 4, nullable = false)
+    private Integer totalMatches = 0;
 
     public TeamStats(String id) {
         this.id = id;
+    }
+
+    public TeamStats(String id, Integer goals, Integer assists, Integer goalsConceded, Integer yellowCards, Integer redCards) {
+        this.id = id;
+        this.goals = goals;
+        this.assists = assists;
+        this.goalsConceded = goalsConceded;
+        this.yellowCards = yellowCards;
+        this.redCards = redCards;
+        addWinDrawLossStats(goals, goalsConceded);
+        ++this.totalMatches;
     }
 
     public void addStats(TeamStats match) {
@@ -61,6 +72,16 @@ public class TeamStats {
         this.wins += match.getWins();
         this.draws += match.getDraws();
         this.losses += match.getLosses();
-        this.matchesPlayed += match.getMatchesPlayed();
+        this.totalMatches += match.getTotalMatches();
+    }
+
+    public void addWinDrawLossStats(int goals, int goalsConceded) {
+        if (goals > goalsConceded) {
+            this.wins++;
+        } else if (goals == goalsConceded) {
+            this.draws++;
+        } else {
+            this.losses++;
+        }
     }
 }

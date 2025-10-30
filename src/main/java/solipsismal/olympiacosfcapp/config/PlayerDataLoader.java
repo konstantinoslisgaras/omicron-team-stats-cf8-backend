@@ -63,15 +63,20 @@ public class PlayerDataLoader implements CommandLineRunner {
         playerRepository.save(new Player("PL72029451", "Biancone", "Giulian", 2000,
                 "France", 4, CENTER_BACK, RIGHT, false, bianconeBio, true));
         // Kalogeropoulos
-        DetailedBio kalogeropoulosBio = new DetailedBio("DB38993201", "Alexios \"Alexis\" Kalogeropoulos", "26/07/2004",
+        DetailedBio kalogeropoulosBio = new DetailedBio("DB38993810", "Alexios \"Alexis\" Kalogeropoulos", "26/07/2004",
                 "Andravida", "", 1.87, "Asteras Tripolis", "Alexios \"Alexis\" Kalogeropoulos (born 26 July 2004) is a Greek centre-back for Olympiacos and a Greece U21 international. Having progressed through the Olympiacos system, he gained senior experience on loan at Volos between 2023 and 2025, where he was named the club’s Player of the Season. Returning to Olympiacos for the 2025–26 campaign, Kalogeropoulos is regarded as a promising defender with strong aerial ability and composure, and is being developed as part of the next generation of Greek footballers.");
-        playerRepository.save(new Player("PL38993201", "Kalogeropoulos", "Alexios", 2004,
+        playerRepository.save(new Player("PL38993810", "Kalogeropoulos", "Alexios", 2004,
                 "Greece", 6, CENTER_BACK, RIGHT, false, kalogeropoulosBio, true));
         // Pirola
         DetailedBio pirolaBio = new DetailedBio("DB89234201", "Lorenzo Pirola", "20/02/2002",
                 "Carate Brianza", "", 1.85, "Salernitana", "Lorenzo Pirola (born 20 February 2002) is an Italian centre-back for Olympiacos. A product of Inter Milan’s academy, he made his senior debut in 2020 before gaining experience with Monza and Salernitana, where he became a regular starter in Serie A. In July 2024 he transferred to Olympiacos, where he quickly earned a place in the starting lineup. An Italian youth international who has captained the U21 side, Pirola is noted for his tactical awareness, leadership and ball-playing ability from defense.");
         playerRepository.save(new Player("PL89234201", "Pirola", "Lorenzo", 2002,
                 "Italy", 5, CENTER_BACK, LEFT, false, pirolaBio, true));
+        // Vezo
+        DetailedBio vezoBio = new DetailedBio("DB80563144", "Rúben Miguel Nunes Vezo", "25/04/1994",
+                "Setúbal", "Cape Verde", 1.82, "Levante", "Rúben Miguel Nunes Vezo (born 25 April 1994) is a Portuguese centre-back for Olympiacos. He began his professional career at Vitória Setúbal before moving to Valencia CF in 2014, establishing himself in La Liga. After subsequent moves to Granada and Levante, he amassed extensive experience across the Spanish top flight. Transferring to Olympiacos, Vezo brings tactical stability and defensive reliability, known for his physicality and experience at the highest European level.");
+        playerRepository.save(new Player("PL80563144", "Vezo", "Ruben", 1994,
+                "Portugal", 21, CENTER_BACK, RIGHT, false, vezoBio, true));
         // Ortega
         DetailedBio ortegaBio = new DetailedBio("DB69802341", "Francisco Gabriel Ortega", "19/03/1999",
                 "Santa Fe", "", 1.77, "Vélez Sarsfield", "Francisco Gabriel Ortega (born 19 March 1999) is an Argentine professional footballer who plays as a left-back for Olympiacos. A graduate of Vélez Sarsfield, he debuted for their senior team in 2017 and quickly became a key player before transferring to Olympiacos in 2023. Known for his pace, overlapping runs and attacking contributions, Ortega has been a mainstay on Olympiacos’s left flank, including their victorious 2023–24 UEFA Europa Conference League campaign. He has also represented Argentina at youth levels, featuring in the FIFA U-20 World Cup and the 2020 Olympic Games.");

@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import solipsismal.olympiacosfcapp.core.exceptions.MatchNotFoundException;
-import solipsismal.olympiacosfcapp.dto.MatchFullDTO;
+import solipsismal.olympiacosfcapp.dto.MatchDetailedDTO;
 import solipsismal.olympiacosfcapp.dto.MatchBasicDTO;
 import solipsismal.olympiacosfcapp.model.Match;
 import solipsismal.olympiacosfcapp.repository.MatchRepository;
@@ -20,17 +20,25 @@ public class MatchController {
 
     private final MatchRepository matchRepository;
 
-    @GetMapping()
-    public List<MatchBasicDTO> getMatches() {
+    @GetMapping("/schedule")
+    public List<MatchBasicDTO> getMatchesBasic() {
         return matchRepository.findAllByOrderByMatchNumber()
                 .stream()
                 .map(MatchBasicDTO::new)
                 .toList();
     }
 
+    @GetMapping("/detailed")
+    public List<MatchDetailedDTO> getMatchesDetailed() {
+        return matchRepository.findAllByOrderByMatchNumber()
+                .stream()
+                .map(MatchDetailedDTO::new)
+                .toList();
+    }
+
     @GetMapping("/{id}")
-    public MatchFullDTO getMatchById(@PathVariable String id) throws MatchNotFoundException {
+    public MatchDetailedDTO getMatchById(@PathVariable String id) throws MatchNotFoundException {
         Match match = matchRepository.findById(id).orElseThrow(MatchNotFoundException::new);
-        return new MatchFullDTO(match);
+        return new MatchDetailedDTO(match);
     }
 }

@@ -16,7 +16,7 @@ public class TeamStatsDTO {
     private Integer wins;
     private Integer draws;
     private Integer losses;
-    private Integer matchesPlayed;
+    private Integer totalMatches;
 
     public TeamStatsDTO(TeamStats teamStatsDTO) {
         this.id = teamStatsDTO.getId();
@@ -28,7 +28,6 @@ public class TeamStatsDTO {
         this.wins = teamStatsDTO.getWins();
         this.draws = teamStatsDTO.getDraws();
         this.losses = teamStatsDTO.getLosses();
-        this.matchesPlayed = teamStatsDTO.getMatchesPlayed();
+        this.totalMatches = teamStatsDTO.getTotalMatches();
     }
-
 }

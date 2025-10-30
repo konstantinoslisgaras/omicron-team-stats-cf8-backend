@@ -28,17 +28,20 @@ public class Match {
     private Olympiacos olympiacos;
 
     @ManyToOne
-    @JoinColumn(name = "opponent_id", nullable = false)
+    @JoinColumn(name = "opponent_id")
     private Opponent opponent;
 
-    @Column(name = "olympiacos_goals", length = 2, nullable = false)
+    @Column(name = "olympiacos_goals", length = 2)
     private Integer olympiacosGoals;
 
-    @Column(name = "opponent_goals", length = 2, nullable = false)
+    @Column(name = "opponent_goals", length = 2)
     private Integer opponentGoals;
 
-    @Column(length = 10)
+    @Column(length = 10, nullable = false)
     private String date;
+
+    @Column(length = 5)
+    private String time;
 
     @Enumerated(EnumType.STRING)
     @Column(length = 10)
@@ -49,13 +52,13 @@ public class Match {
     private Competition competition;
 
     @Enumerated(EnumType.STRING)
-    @Column(length = 10, nullable = false)
+    @Column(length = 10)
     private Ground ground;
 
     @Column(name = "match_number", length = 2, nullable = false)
     private Integer matchNumber;
 
-    @Column(length = 100)
+    @Column(length = 100, nullable = false)
     private String description;
 
     @ManyToOne
@@ -74,7 +77,7 @@ public class Match {
     private Set<PlayerMatch> playersMatches = new HashSet<>();
 
     public Match(String id, Olympiacos olympiacos, Opponent opponent, Integer olympiacosGoals, Integer opponentGoals,
-                 String date, Day day, Competition competition, Ground ground, Integer matchNumber, String description,
+                 String date, String time, Day day, Competition competition, Ground ground, Integer matchNumber, String description,
                  Coach coach, Season season, TeamStats teamStats) {
         this.id = id;
         this.olympiacos = olympiacos;
@@ -82,6 +85,7 @@ public class Match {
         this.olympiacosGoals = olympiacosGoals;
         this.opponentGoals = opponentGoals;
         this.date = date;
+        this.time = time;
         this.day = day;
         this.competition = competition;
         this.ground = ground;
@@ -91,5 +95,34 @@ public class Match {
         this.season = season;
         this.teamStats = teamStats;
         this.playersMatches = new HashSet<>();
+    }
+
+    // Constructor for short-term matches.
+    public Match(String id, Olympiacos olympiacos, Opponent opponent, String date, String time, Day day, Competition competition,
+                 Ground ground, Integer matchNumber, String description, Coach coach, Season season, TeamStats teamStats) {
+        this.id = id;
+        this.olympiacos = olympiacos;
+        this.opponent = opponent;
+        this.date = date;
+        this.time = time;
+        this.day = day;
+        this.competition = competition;
+        this.ground = ground;
+        this.matchNumber = matchNumber;
+        this.description = description;
+        this.coach = coach;
+        this.season = season;
+        this.teamStats = teamStats;
+    }
+
+    // Constructor for long-term matches.
+    public Match(String id, Olympiacos olympiacos, String date, Competition competition, Integer matchNumber, String description, Season season) {
+        this.id = id;
+        this.olympiacos = olympiacos;
+        this.date = date;
+        this.competition = competition;
+        this.matchNumber = matchNumber;
+        this.description = description;
+        this.season = season;
     }
 }

@@ -6,13 +6,14 @@ import solipsismal.olympiacosfcapp.model.*;
 
 @Getter
 @Setter
-public class MatchFullDTO {
+public class MatchDetailedDTO {
     private String id;
     private String olympiacos;
     private String opponent;
     private Integer olympiacosGoals;
     private Integer opponentGoals;
     private String date;
+    private String time;
     private String day;
     private String competition;
     private String ground;
@@ -22,13 +23,14 @@ public class MatchFullDTO {
     private TeamStatsDTO teamStatsDTO;
     private String season;
 
-    public MatchFullDTO(Match match) {
+    public MatchDetailedDTO(Match match) {
         this.id = match.getId();
         this.olympiacos = match.getOlympiacos().getName();
         this.opponent = match.getOpponent().getOpponentName();
         this.olympiacosGoals = match.getOlympiacosGoals();
         this.opponentGoals = match.getOpponentGoals();
         this.date = match.getDate();
+        this.time = match.getTime();
         this.day = match.getDay().toString();
         this.competition = match.getCompetition().getCompetitionName();
         this.ground = match.getGround().toString();

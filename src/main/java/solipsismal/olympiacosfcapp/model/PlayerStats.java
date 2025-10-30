@@ -68,11 +68,11 @@ public class PlayerStats {
         addWinDrawLossStats(result);
     }
 
-    public void addWinDrawLossStats(Result result) {
-        switch (result.toString()) {
-            case "WIN" : ++this.wins; break;
-            case "DRAW" : ++this.draws; break;
-            case "LOSS" : ++this.losses; break;
+    private void addWinDrawLossStats(Result result) {
+        switch (result) {
+            case WIN -> ++this.wins;
+            case DRAW -> ++this.draws;
+            case LOSS -> ++this.losses;
         }
     }
 }
