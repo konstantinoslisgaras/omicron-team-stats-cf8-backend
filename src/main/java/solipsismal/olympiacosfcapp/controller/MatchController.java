@@ -36,9 +36,4 @@ public class MatchController {
                 .toList();
     }
 
-    @GetMapping("/{id}")
-    public MatchDetailedDTO getMatchById(@PathVariable String id) throws MatchNotFoundException {
-        Match match = matchRepository.findById(id).orElseThrow(MatchNotFoundException::new);
-        return new MatchDetailedDTO(match);
-    }
 }

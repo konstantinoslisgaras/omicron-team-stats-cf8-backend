@@ -2,11 +2,7 @@ package solipsismal.olympiacosfcapp.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
-import solipsismal.olympiacosfcapp.model.Opponent;
 import solipsismal.olympiacosfcapp.model.TeamStats;
 
-import java.util.List;
-import java.util.Optional;
-
-public interface TeamStatsRepository extends JpaRepository<TeamStats, String>, JpaSpecificationExecutor<TeamStats> {
+public interface ITeamStatsRepository extends JpaRepository<TeamStats, String>, JpaSpecificationExecutor<TeamStats> {
 }

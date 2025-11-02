@@ -2,8 +2,6 @@ package solipsismal.olympiacosfcapp.dto;
 
 import lombok.Getter;
 import lombok.Setter;
-import solipsismal.olympiacosfcapp.core.enums.Position;
-import solipsismal.olympiacosfcapp.core.enums.PreferredFoot;
 import solipsismal.olympiacosfcapp.model.Player;
 
 @Getter

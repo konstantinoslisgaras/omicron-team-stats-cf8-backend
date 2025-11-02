@@ -20,6 +20,9 @@ public class Olympiacos {
     @Column(length = 20, unique = true, nullable = false)
     private String name;
 
+    @Column(length = 1_000, nullable = false)
+    private String trophies;
+
     @Column(length = 10_000, nullable = false)
     private String history;
 }

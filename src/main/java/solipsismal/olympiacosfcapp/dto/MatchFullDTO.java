@@ -2,42 +2,20 @@ package solipsismal.olympiacosfcapp.dto;
 
 import lombok.Getter;
 import lombok.Setter;
-import solipsismal.olympiacosfcapp.model.*;
+import solipsismal.olympiacosfcapp.model.Match;
+
+import java.util.List;
 
 @Getter
 @Setter
-public class MatchDetailedDTO {
-    private String id;
-    private String olympiacos;
-    private String opponent;
-    private Integer olympiacosGoals;
-    private Integer opponentGoals;
-    private String date;
-    private String time;
-    private String day;
-    private String competition;
-    private String ground;
-    private Integer matchNumber;
-    private String description;
-    private CoachDTO coachDTO;
-    private TeamStatsDTO teamStatsDTO;
-    private String season;
+public class MatchFullDTO extends MatchDetailedDTO {
 
-    public MatchDetailedDTO(Match match) {
-        this.id = match.getId();
-        this.olympiacos = match.getOlympiacos().getName();
-        this.opponent = match.getOpponent().getOpponentName();
-        this.olympiacosGoals = match.getOlympiacosGoals();
-        this.opponentGoals = match.getOpponentGoals();
-        this.date = match.getDate();
-        this.time = match.getTime();
-        this.day = match.getDay().toString();
-        this.competition = match.getCompetition().getCompetitionName();
-        this.ground = match.getGround().toString();
-        this.matchNumber = match.getMatchNumber();
-        this.description = match.getDescription();
-        this.coachDTO = new CoachDTO(match.getCoach());
-        this.teamStatsDTO = new TeamStatsDTO(match.getTeamStats());
-        this.season = match.getSeason().getSeasonName();
+    private String coachName;
+    private List<PlayerMatchDTO> playerMatches;
+
+    public MatchFullDTO(Match match, List<PlayerMatchDTO> playerMatches) {
+        super(match);
+        this.coachName = match.getCoach().getLastname();
+        this.playerMatches = playerMatches;
     }
 }

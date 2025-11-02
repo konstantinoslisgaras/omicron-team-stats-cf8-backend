@@ -34,11 +34,11 @@ public class PlayerStats {
     @Column(name = "goals_conceded", length = 4, nullable = false)
     private Integer goalsConceded = 0;
 
-    @Column(name = "matches_played", length = 4, nullable = false)
-    private Integer matchesPlayed = 0;
-
     @Column(name ="minutes_played", length = 3, nullable = false)
     private Integer minutesPlayed = 0;
+
+    @Column(name = "matches_played", length = 4, nullable = false)
+    private Integer matchesPlayed = 0;
 
     @Column(length = 4, nullable = false)
     private Integer wins = 0;

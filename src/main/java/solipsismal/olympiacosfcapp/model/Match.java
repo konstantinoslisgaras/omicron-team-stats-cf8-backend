@@ -7,7 +7,12 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import solipsismal.olympiacosfcapp.core.enums.Day;
 import solipsismal.olympiacosfcapp.core.enums.Ground;
+import solipsismal.olympiacosfcapp.core.enums.Result;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -37,11 +42,22 @@ public class Match {
     @Column(name = "opponent_goals", length = 2)
     private Integer opponentGoals;
 
+    @Column(name = "result", length = 5, nullable = true)
+    private String result;
+
     @Column(length = 10, nullable = false)
-    private String date;
+    private LocalDate date;
 
     @Column(length = 5)
-    private String time;
+    private LocalTime time;
+
+    @Transient
+    public LocalDateTime getDateTime() {
+        if (date != null && time !=null) {
+            return LocalDateTime.of(date, time);
+        }
+        return null;
+    }
 
     @Enumerated(EnumType.STRING)
     @Column(length = 10)
@@ -79,13 +95,18 @@ public class Match {
     public Match(String id, Olympiacos olympiacos, Opponent opponent, Integer olympiacosGoals, Integer opponentGoals,
                  String date, String time, Day day, Competition competition, Ground ground, Integer matchNumber, String description,
                  Coach coach, Season season, TeamStats teamStats) {
+
+        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm");
+
         this.id = id;
         this.olympiacos = olympiacos;
         this.opponent = opponent;
         this.olympiacosGoals = olympiacosGoals;
         this.opponentGoals = opponentGoals;
-        this.date = date;
-        this.time = time;
+        result();
+        this.date = LocalDate.parse(date, dateFormatter);
+        this.time = LocalTime.parse(time, timeFormatter);
         this.day = day;
         this.competition = competition;
         this.ground = ground;
@@ -100,11 +121,15 @@ public class Match {
     // Constructor for short-term matches.
     public Match(String id, Olympiacos olympiacos, Opponent opponent, String date, String time, Day day, Competition competition,
                  Ground ground, Integer matchNumber, String description, Coach coach, Season season, TeamStats teamStats) {
+
+        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm");
+
         this.id = id;
         this.olympiacos = olympiacos;
         this.opponent = opponent;
-        this.date = date;
-        this.time = time;
+        this.date = LocalDate.parse(date, dateFormatter);
+        this.time = LocalTime.parse(time, timeFormatter);
         this.day = day;
         this.competition = competition;
         this.ground = ground;
@@ -117,12 +142,34 @@ public class Match {
 
     // Constructor for long-term matches.
     public Match(String id, Olympiacos olympiacos, String date, Competition competition, Integer matchNumber, String description, Season season) {
+
+        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm");
+
         this.id = id;
         this.olympiacos = olympiacos;
-        this.date = date;
+        this.date = LocalDate.parse(date, dateFormatter);
         this.competition = competition;
         this.matchNumber = matchNumber;
         this.description = description;
         this.season = season;
+    }
+
+    public String getFormattedDate() {
+        return date != null ? date.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")) : null;
+    }
+
+    public String getFormattedTime() {
+        return time != null ? time.format(DateTimeFormatter.ofPattern("HH:mm")) : null;
+    }
+
+    private void result() {
+        if (this.olympiacosGoals > this.opponentGoals) {
+            this.result = Result.WIN.toString();
+        } else if (this.olympiacosGoals.equals(this.opponentGoals)) {
+            this.result = Result.DRAW.toString();
+        } else {
+            this.result = Result.LOSS.toString();
+        }
     }
 }

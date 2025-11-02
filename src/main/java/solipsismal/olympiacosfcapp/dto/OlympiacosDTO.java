@@ -9,11 +9,13 @@ import solipsismal.olympiacosfcapp.model.Olympiacos;
 public class OlympiacosDTO {
     private String id;
     private String name;
+    private String trophies;
     private String history;
 
     public OlympiacosDTO(Olympiacos olympiacos) {
         this.id = olympiacos.getId();
         this.name = olympiacos.getName();
+        this.trophies = olympiacos.getTrophies();
         this.history = olympiacos.getHistory();
     }
 }

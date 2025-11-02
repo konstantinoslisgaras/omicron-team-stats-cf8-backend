@@ -20,11 +20,11 @@ public class MatchDataLoader implements CommandLineRunner {
     private final CompetitionRepository competitionRepository;
     private final CoachRepository coachRepository;
     private final SeasonRepository seasonRepository;
-    private final TeamStatsRepository teamStatsRepository;
+    private final ITeamStatsRepository teamStatsRepository;
 
     public MatchDataLoader(MatchRepository matchRepository, OlympiacosRepository olympiacosRepository,
                            OpponentRepository opponentRepository, CompetitionRepository competitionRepository,
-                           CoachRepository coachRepository, SeasonRepository seasonRepository, TeamStatsRepository teamStatsRepository) {
+                           CoachRepository coachRepository, SeasonRepository seasonRepository, ITeamStatsRepository teamStatsRepository) {
         this.matchRepository = matchRepository;
         this.olympiacosRepository = olympiacosRepository;
         this.opponentRepository = opponentRepository;
@@ -93,11 +93,11 @@ public class MatchDataLoader implements CommandLineRunner {
                 4, "Champions League League Phase, MatchDay: 01", mendilibar, season2526, teamStats04170925);
         saveMatchAndUpdateTotalStats(match04170925, teamStats04170925, season2526TotalTeamStats);
 
-        // Match 5 | Panathinaikos - OLYMPIACOS F.C 1:1 | 21/09/2025
+        // Match 5 | Panathinaikos FC - OLYMPIACOS F.C 1:1 | 21/09/2025
         TeamStats teamStats05210925 = new TeamStats("TS05210925",
                 1, 1, 1, 4, 0);
         Match match05210925 = new Match("MA05210925",
-                olympiacos, opponentRepository.findByOpponentName("Panathinaikos").orElseThrow(OpponentNotFoundException::new),
+                olympiacos, opponentRepository.findByOpponentName("Panathinaikos FC").orElseThrow(OpponentNotFoundException::new),
                 1, 1,
                 "21/09/2025","21:00", SUNDAY, superLeagueGreece, AWAY,
                 5, "Super League MatchDay: 04, Round 1", mendilibar, season2526, teamStats05210925);
@@ -113,11 +113,11 @@ public class MatchDataLoader implements CommandLineRunner {
                 6, "Greek Football Cup League Phase, MatchDay: 01", mendilibar, season2526,teamStats06240925);
         saveMatchAndUpdateTotalStats(match06240925, teamStats06240925, season2526TotalTeamStats);
 
-        // Match 7 | OLYMPIACOS F.C. - Levadiakos 3:2 | 27/09/2025
+        // Match 7 | OLYMPIACOS F.C. - Levadiakos FC 3:2 | 27/09/2025
         TeamStats teamStats07270925 = new TeamStats("TS07270925",
                 3, 2, 2, 2, 0);
         Match match07270925 = new Match("MA07270925",
-                olympiacos, opponentRepository.findByOpponentName("Levadiakos").orElseThrow(OpponentNotFoundException::new),
+                olympiacos, opponentRepository.findByOpponentName("Levadiakos FC").orElseThrow(OpponentNotFoundException::new),
                 3, 2,
                 "27/09/2025", "18:00", SATURDAY, superLeagueGreece, HOME,
                 7, "Super League MatchDay: 05, Round 1", mendilibar, season2526,teamStats07270925);
@@ -178,30 +178,56 @@ public class MatchDataLoader implements CommandLineRunner {
                 5, 3, 0, 2, 0);
         Match match13291025 = new Match("MA13291025",
                 olympiacos, opponentRepository.findByOpponentName("NFC Volos").orElseThrow(OpponentNotFoundException::new),
+                5, 0,
                 "29/10/2025", "17:30", WEDNESDAY, greekFootballCup, HOME,
                 13, "Greek Football Cup League Phase, MatchDay: 02", mendilibar, season2526, teamStats13291025);
         saveMatchAndUpdateTotalStats(match13291025, teamStats13291025, season2526TotalTeamStats);
 
-        // Match 14 | OLYMPIACOS F.C. - ARIS FC -:- | 01/11/2025
-        TeamStats teamStats14011125 = new TeamStats("TS14011125");
+        // Match 14 | OLYMPIACOS F.C. - ARIS FC 2:1 | 01/11/2025
+        TeamStats teamStats14011125 = new TeamStats("TS14011125",
+                2, 1, 1, 2, 1);
         Match match14011125 = new Match("MA14011125",
                 olympiacos, opponentRepository.findByOpponentName("ARIS FC").orElseThrow(OpponentNotFoundException::new),
+                2, 1,
                 "01/11/2025", "20:00", SATURDAY, superLeagueGreece, HOME,
         14, "Super League MatchDay: 09, Round 1", mendilibar, season2526, teamStats14011125);
-        matchRepository.save(match14011125);
+        saveMatchAndUpdateTotalStats(match14011125, teamStats14011125, season2526TotalTeamStats);
 
         // Match 15 | OLYMPIACOS F.C. - PSV Eindhoven -:- | 04/11/2025
         TeamStats teamStats15041125 = new TeamStats("TS15041125");
         Match match15041125 = new Match("MA15041125",
                 olympiacos, opponentRepository.findByOpponentName("PSV Eindhoven").orElseThrow(OpponentNotFoundException::new),
                 "04/11/2025", "22:00", TUESDAY, championsLeague, HOME,
-                14, "Super League MatchDay: 09, Round 1", mendilibar, season2526, teamStats15041125);
+                15, "Champions League League Phase, MatchDay: 04", mendilibar, season2526, teamStats15041125);
         matchRepository.save(match15041125);
+
+        // Match 16 | Kifisia FC - OLYMPIACOS F.C. -:- | 09/11/2025
+        TeamStats teamStats16091125 = new TeamStats("TS16091125");
+        Match match16091125 = new Match("MA16091125",
+                olympiacos, opponentRepository.findByOpponentName("Kifisia FC").orElseThrow(OpponentNotFoundException::new),
+                "09/11/2025", "15:00", SUNDAY, superLeagueGreece, AWAY,
+                16, "Super League MatchDay: 10, Round 1", mendilibar, season2526, teamStats16091125);
+        matchRepository.save(match16091125);
+
+        // Competition Position Setter
+        competitionRepository.save(superLeagueGreece.setCompetitionPosition(2));
+        competitionRepository.save(championsLeague.setCompetitionPosition(33));
+        competitionRepository.save(greekFootballCup.setCompetitionPosition(5));
     }
 
     private void saveMatchAndUpdateTotalStats(Match match, TeamStats teamStats, TeamStats teamTotals) {
         matchRepository.save(match);
         teamTotals.addStats(teamStats);
         teamStatsRepository.save(teamTotals);
+        addPoints(match);
+    }
+
+    private void addPoints(Match match) {
+        if (match.getOlympiacosGoals() > match.getOpponentGoals()) {
+            match.getCompetition().add3();
+        } else if (match.getOlympiacosGoals().equals(match.getOpponentGoals())){
+            match.getCompetition().add1();
+        }
+        competitionRepository.save(match.getCompetition());
     }
 }
