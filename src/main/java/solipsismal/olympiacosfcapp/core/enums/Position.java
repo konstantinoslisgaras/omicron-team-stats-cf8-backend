@@ -1,6 +1,7 @@
 package solipsismal.olympiacosfcapp.core.enums;
 
 import lombok.Getter;
+import solipsismal.olympiacosfcapp.model.Player;
 
 @Getter
 public enum Position {
@@ -34,6 +35,18 @@ public enum Position {
 
     public String getAbbreviation() {
         return this == DO_NOT_USE ? "Error" : abbreviation;
+    }
+
+    public String getGenericPosition() {
+        if (this.isGoalkeeper()) {
+            return "Goalkeeper";
+        } else if (this.isDefender()) {
+            return "Defender";
+        } else if (this.isMidfielder()) {
+            return "Midfielder";
+        } else if (this.isAttacker()) {
+            return "Attacker";
+        } else return null;
     }
 
     public boolean isGoalkeeper() {

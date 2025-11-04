@@ -4,37 +4,51 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import solipsismal.olympiacosfcapp.core.exceptions.PlayerNotFoundException;
+import solipsismal.olympiacosfcapp.dto.CoachDTO;
+import solipsismal.olympiacosfcapp.dto.FullTeamDTO;
 import solipsismal.olympiacosfcapp.dto.PlayerDTO;
+import solipsismal.olympiacosfcapp.model.Coach;
 import solipsismal.olympiacosfcapp.model.Player;
+import solipsismal.olympiacosfcapp.repository.CoachRepository;
 import solipsismal.olympiacosfcapp.repository.PlayerRepository;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/players")
 @RequiredArgsConstructor
-public class PlayerController {
+public class FullTeamController {
 
     private final PlayerRepository playerRepository;
+    private final CoachRepository coachRepository;
 
-    @GetMapping("/{playerId}")
+    @GetMapping("/fullteam")
     @Operation(
-            summary = "Get player by id.",
-            description = "Retrieves a player's information by their id."
+            summary = "Get the full roster."
     )
     @ApiResponse(
             responseCode = "200",
-            description = "Player found",
+            description = "Team roster found",
             content = @Content(mediaType = "application/json",
                     schema = @Schema(implementation = PlayerDTO.class))
     )
-    @ApiResponse(responseCode = "404", description = "Player not Found")
-    public PlayerDTO getPlayerById(@PathVariable String playerId) throws PlayerNotFoundException {
-        Player player = playerRepository.findById(playerId).orElseThrow(PlayerNotFoundException::new);
-        return new PlayerDTO(player);
+    @ApiResponse(responseCode = "404", description = "Team roster page not Found")
+    public FullTeamDTO getSquad() {
+        List<PlayerDTO> players = playerRepository.findAllByOrderByShirtNumberAsc()
+                .stream()
+                .map(PlayerDTO::new)
+                .toList();
+
+        Coach coach = coachRepository.findByPlaysForOlympiacosTrue().orElseThrow(() -> new EntityNotFoundException("Coach not found"));
+        CoachDTO coachDTO = new CoachDTO(coach);
+
+        return new FullTeamDTO(players, coachDTO);
     }
 }

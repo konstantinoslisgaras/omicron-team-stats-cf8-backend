@@ -12,7 +12,6 @@ public class CoachDTO {
     private String firstname;
     private Integer birthYear;
     private String nationality;
-    private DetailedBioDTO detailedBio;
 
     public CoachDTO(Coach coach) {
         this.id = coach.getId();
@@ -20,6 +19,5 @@ public class CoachDTO {
         this.firstname = coach.getFirstname();
         this.birthYear = coach.getBirthYear();
         this.nationality = coach.getNationality();
-        this.detailedBio = new DetailedBioDTO(coach.getDetailedBio());
     }
 }

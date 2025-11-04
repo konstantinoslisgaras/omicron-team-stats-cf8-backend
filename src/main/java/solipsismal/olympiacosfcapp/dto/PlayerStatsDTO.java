@@ -6,7 +6,9 @@ import lombok.Setter;
 @Getter
 @Setter
 public class PlayerStatsDTO {
-    private PlayerDTO player;
+    private String playerId;
+    private String name;
+    private String position;
     private int goals;
     private int assists;
     private int yellowCards;
@@ -18,9 +20,12 @@ public class PlayerStatsDTO {
     private int draws;
     private int losses;
 
-    public PlayerStatsDTO(PlayerDTO player, int goals, int assists, int yellowCards, int redCards, int goalsConceded,
-                          int minutesPlayed, int matchesPlayed, int wins, int draws, int losses) {
-        this.player = player;
+    public PlayerStatsDTO(String playerId, String lastname, String firstname, String position,
+                          int goals, int assists, int yellowCards, int redCards, int goalsConceded, int minutesPlayed, int matchesPlayed,
+                          int wins, int draws, int losses) {
+        this.playerId = playerId;
+        this.name = getConcatenatedName(lastname, firstname);
+        this.position = position.replace("_", " ");
         this.goals = goals;
         this.assists = assists;
         this.yellowCards = yellowCards;
@@ -31,5 +36,10 @@ public class PlayerStatsDTO {
         this.wins = wins;
         this.draws = draws;
         this.losses = losses;
+    }
+
+    private String getConcatenatedName(String lastname, String firstname) {
+        if (firstname == null || firstname.isEmpty()) return lastname;
+        return lastname + " " + firstname.charAt(0) + ".";
     }
 }

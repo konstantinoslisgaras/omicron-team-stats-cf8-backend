@@ -21,7 +21,10 @@ public class PlayerStatsMapper {
         playerDTO.setShirtNumber(player.getShirtNumber());
 
         return new PlayerStatsDTO(
-                playerDTO,
+                player.getId(),
+                player.getLastname(),
+                player.getFirstname(),
+                player.getPosition().name(),
                 playerStats.getGoals(),
                 playerStats.getAssists(),
                 playerStats.getYellowCards(),

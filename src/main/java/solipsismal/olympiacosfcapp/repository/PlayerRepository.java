@@ -9,5 +9,5 @@ import java.util.Optional;
 
 public interface PlayerRepository extends JpaRepository<Player, String>, JpaSpecificationExecutor<Player> {
     Optional<Player> findByLastname(String lastname);
-    List<Player> findAllByOrderByPositionAscShirtNumberAsc();
+    List<Player> findAllByOrderByShirtNumberAsc();
 }
