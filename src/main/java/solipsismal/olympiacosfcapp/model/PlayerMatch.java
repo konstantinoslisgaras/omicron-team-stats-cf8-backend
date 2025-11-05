@@ -59,5 +59,4 @@ public class PlayerMatch {
         this.redCards = redCards;
         this.minutesPlayed = minutesPlayed;
     }
-
 }

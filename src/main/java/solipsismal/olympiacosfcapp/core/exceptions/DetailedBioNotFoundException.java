@@ -11,4 +11,8 @@ public class DetailedBioNotFoundException extends AppGenericException {
     public DetailedBioNotFoundException(String id) {
         super(DEFAULT_CODE, "Detailed Biography: " + id + " was not found");
     }
+
+    public DetailedBioNotFoundException(String id, String bioId) {
+        super(DEFAULT_CODE, "Detailed Biography: " + id + " was not found for Entity: " + bioId);
+    }
 }

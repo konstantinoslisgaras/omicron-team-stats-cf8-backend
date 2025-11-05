@@ -22,7 +22,7 @@ public class PlayerStatsController {
 
     private final PlayerStatsRepository playerStatsRepository;
 
-    @GetMapping("/{playerStatsId}")
+    @GetMapping("/players/{playerStatsId}")
     @Operation(
             summary = "Get player stats by id.",
             description = "Retrieves a player's stats by their id."

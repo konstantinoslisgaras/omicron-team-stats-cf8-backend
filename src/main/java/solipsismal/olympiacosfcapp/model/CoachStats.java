@@ -1,16 +1,11 @@
 package solipsismal.olympiacosfcapp.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
@@ -18,7 +13,7 @@ import lombok.Setter;
 public class CoachStats {
 
     @Id
-    @Column(length = 10, unique = true, nullable = false)
+    @Column(length = 12, unique = true, nullable = false)
     private String id;
 
     @Column(length = 4, nullable = false)
@@ -45,12 +40,22 @@ public class CoachStats {
         this.goalsConceded = goalsConceded;
     }
 
-    public void addCoachMatchStats(CoachStats coachStats) {
-        this.wins += (coachStats.goals > coachStats.goalsConceded) ? 1 : 0;
-        this.draws += (coachStats.goals.equals(coachStats.goalsConceded)) ? 1 : 0;
-        this.losses += (coachStats.goals < coachStats.goalsConceded) ? 1 : 0;
-        this.goals += coachStats.goals;
-        this.goalsConceded += coachStats.goalsConceded;
+    public CoachStats(String id, Integer wins, Integer draws, Integer losses, Integer goals, Integer goalsConceded, Integer matchesManaged) {
+        this.id = id;
+        this.wins = wins;
+        this.draws = draws;
+        this.losses = losses;
+        this.goals = goals;
+        this.goalsConceded = goalsConceded;
+        this.matchesManaged = matchesManaged;
+    }
+
+    public void addCoachMatchStats(int goals, int goalsConceded) {
+        this.wins += (goals > goalsConceded) ? 1 : 0;
+        this.draws += (goals == goalsConceded) ? 1 : 0;
+        this.losses += (goals < goalsConceded) ? 1 : 0;
+        this.goals += goals;
+        this.goalsConceded += goalsConceded;
         ++matchesManaged;
     }
 }

@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 import solipsismal.olympiacosfcapp.core.enums.Result;
 import solipsismal.olympiacosfcapp.core.exceptions.PlayerNotFoundException;
+import solipsismal.olympiacosfcapp.dto.PlayerMatchDTO;
 import solipsismal.olympiacosfcapp.model.Match;
 import solipsismal.olympiacosfcapp.model.Player;
 import solipsismal.olympiacosfcapp.model.PlayerMatch;
@@ -47,6 +48,7 @@ public class PlayerMatchDataLoader implements CommandLineRunner {
                 "Hezze", "Liatsikouras", "Garcia", "Mouzakitis", "Nascimento", "Scipioni", "Yazici", "Cabella", "Chiquinho",
                 "Martins", "Strefezza", "Podence", "Pnevmonidis", "El Kaabi", "Taremi", "Yaremchuk"
         );
+        playerStatsRepository.save(new PlayerStats("PSPL32095644", players.get("Botis")));
 
         // Players Matches
         // Match 1 | OLYMPIACOS F.C. - Asteras 2:0 | 23/08/2025
@@ -545,7 +547,7 @@ public class PlayerMatchDataLoader implements CommandLineRunner {
         );
         savePlayerMatchesAndUpdateTotalStats(playerMatches13291025, WIN);
 
-        // Match 14 | OLYMPIACOS F.C. - ARIS FC 2:1 | 01/11/2025 +3 +6
+        // Match 14 | OLYMPIACOS F.C. - ARIS FC 2:1 | 01/11/2025
         Match match14011125 = matchRepository.findById("MA14011125").orElseThrow();
         List<PlayerMatch> playerMatches14011125 = List.of(
                 new PlayerMatch("PM30052412", players.get("Tzolakis"), match14011125,
@@ -583,6 +585,43 @@ public class PlayerMatchDataLoader implements CommandLineRunner {
         );
         setGKGoalsConceded(playerMatches14011125, players.get("Tzolakis"), 1);
         savePlayerMatchesAndUpdateTotalStats(playerMatches14011125, WIN);
+
+        // Match 15 | OLYMPIACOS F.C. - PSV Eindhoven 1:1 | 04/11/2025
+        Match match15041125 = matchRepository.findById("MA15041125").orElseThrow();
+        List<PlayerMatch> playerMatches15041125 = List.of(
+                new PlayerMatch("PM30054212", players.get("Tzolakis"), match15041125,
+                        0, 0, 0, 0, 96),
+                new PlayerMatch("PM15712909", players.get("Rodinei"), match15041125,
+                        0, 0, 0, 0, 96),
+                new PlayerMatch("PM40324096", players.get("Retsos"), match15041125,
+                        0, 0, 0, 0, 96),
+                new PlayerMatch("PM32578512", players.get("Pirola"), match15041125,
+                        0, 0, 0, 0, 96),
+                new PlayerMatch("PM12601202", players.get("Ortega"), match15041125,
+                        0, 0, 0, 0, 96),
+                new PlayerMatch("PM31448607", players.get("Garcia"), match15041125,
+                        0, 0, 0, 0, 65),
+                new PlayerMatch("PM90028513", players.get("Mouzakitis"), match15041125,
+                        0, 0, 0, 0, 96),
+                new PlayerMatch("PM85023541", players.get("Martins"), match15041125,
+                        1, 0, 0, 0, 96),
+                new PlayerMatch("PM11578920", players.get("Chiquinho"), match15041125,
+                        0, 1, 0, 0, 76),
+                new PlayerMatch("PM34303299", players.get("Podence"), match15041125,
+                        0, 0, 0, 0, 86),
+                new PlayerMatch("PM10973402", players.get("El Kaabi"), match15041125,
+                        0, 0, 0, 0, 85),
+                new PlayerMatch("PM925241402", players.get("Nascimento"), match15041125,
+                        0, 0, 0, 0, 31),
+                new PlayerMatch("PM09004233", players.get("Taremi"), match15041125,
+                        0, 0, 0, 0, 20),
+                new PlayerMatch("PM12042509", players.get("Scipioni"), match15041125,
+                        0, 0, 1, 0, 11),
+                new PlayerMatch("PM89530310", players.get("Costinha"), match15041125,
+                        0, 0, 0, 0, 10)
+        );
+        setGKGoalsConceded(playerMatches15041125, players.get("Tzolakis"), 1);
+        savePlayerMatchesAndUpdateTotalStats(playerMatches15041125, DRAW);
     }
 
     private Map<String, Player> getPlayersByLastnames(String... lastnames) throws PlayerNotFoundException{

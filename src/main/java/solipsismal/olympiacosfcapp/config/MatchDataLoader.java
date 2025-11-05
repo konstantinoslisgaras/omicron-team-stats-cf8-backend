@@ -193,13 +193,15 @@ public class MatchDataLoader implements CommandLineRunner {
         14, "Super League MatchDay: 09, Round 1", mendilibar, season2526, teamStats14011125);
         saveMatchAndUpdateTotalStats(match14011125, teamStats14011125, season2526TotalTeamStats);
 
-        // Match 15 | OLYMPIACOS F.C. - PSV Eindhoven -:- | 04/11/2025
-        TeamStats teamStats15041125 = new TeamStats("TS15041125");
+        // Match 15 | OLYMPIACOS F.C. - PSV Eindhoven 1:1 | 04/11/2025
+        TeamStats teamStats15041125 = new TeamStats("TS15041125",
+                1, 1, 1, 1, 0);
         Match match15041125 = new Match("MA15041125",
                 olympiacos, opponentRepository.findByOpponentName("PSV Eindhoven").orElseThrow(OpponentNotFoundException::new),
+                1, 1,
                 "04/11/2025", "22:00", TUESDAY, championsLeague, HOME,
                 15, "Champions League League Phase, MatchDay: 04", mendilibar, season2526, teamStats15041125);
-        matchRepository.save(match15041125);
+        saveMatchAndUpdateTotalStats(match15041125, teamStats15041125, season2526TotalTeamStats);
 
         // Match 16 | Kifisia FC - OLYMPIACOS F.C. -:- | 09/11/2025
         TeamStats teamStats16091125 = new TeamStats("TS16091125");
