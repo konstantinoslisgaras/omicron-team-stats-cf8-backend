@@ -42,12 +42,19 @@ public class HomePageController {
 
         // Player stat leaders
         homePageData.put("topScorer", Objects.requireNonNull(playerStatsService.getTopScorer().orElse(null)));
+        homePageData.put("top5Scorers", Objects.requireNonNull(playerStatsService.getTop5Scorers()));
         homePageData.put("assistLeader", Objects.requireNonNull(playerStatsService.getAssistsLeader().orElse(null)));
+        homePageData.put("top5Assists", Objects.requireNonNull(playerStatsService.getTop5AssistsLeaders()));
         homePageData.put("mostYellowCards", Objects.requireNonNull(playerStatsService.getPlayerWithMostYellowCards().orElse(null)));
+        homePageData.put("top5MostYellowCards", Objects.requireNonNull(playerStatsService.getTop5PlayersWithMostYellowCards()));
         homePageData.put("mostRedCards", Objects.requireNonNull(playerStatsService.getPlayerWithMostRedCards().orElse(null)));
+        homePageData.put("top5MostRedCards", Objects.requireNonNull(playerStatsService.findTop5ByRedCardsGreaterThanOrderByRedCardsDesc()));
         homePageData.put("minutesPlayedLeader", Objects.requireNonNull(playerStatsService.getMinutesPlayedLeader().orElse(null)));
+        homePageData.put("top5MinutesPlayedLeaders", Objects.requireNonNull(playerStatsService.getTop5MinutesPlayedLeaders()));
         homePageData.put("matchesPlayedLeader", Objects.requireNonNull(playerStatsService.getMatchesPlayedLeader().orElse(null)));
+        homePageData.put("top5MatchesPlayedLeaders", Objects.requireNonNull(playerStatsService.getTop5MatchesPlayedLeaders()));
         homePageData.put("mostWins", Objects.requireNonNull(playerStatsService.getPlayerWithMostWins().orElse(null)));
+        homePageData.put("top5MostWins", Objects.requireNonNull(playerStatsService.getTop5PlayersWithMostWins()));
 
         // Competition stats
         List<CompetitionDTO> competitionStatus = competitionService.findActive();

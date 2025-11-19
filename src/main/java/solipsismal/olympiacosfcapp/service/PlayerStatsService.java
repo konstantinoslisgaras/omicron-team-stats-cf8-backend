@@ -39,7 +39,7 @@ public class PlayerStatsService implements IPlayerStatsService {
     }
 
     @Override
-    public List<PlayerStatsDTO> getTopAssistsLeaders() {
+    public List<PlayerStatsDTO> getTop5AssistsLeaders() {
         return playerStatsRepository.findTop5ByOrderByAssistsDesc()
                 .stream()
                 .map(PlayerStatsMapper::toDTO)
@@ -53,7 +53,7 @@ public class PlayerStatsService implements IPlayerStatsService {
     }
 
     @Override
-    public List<PlayerStatsDTO> getPlayersWithMostYellowCards() {
+    public List<PlayerStatsDTO> getTop5PlayersWithMostYellowCards() {
         return playerStatsRepository.findTop5ByOrderByYellowCardsDesc()
                 .stream()
                 .map(PlayerStatsMapper::toDTO)
@@ -67,8 +67,8 @@ public class PlayerStatsService implements IPlayerStatsService {
     }
 
     @Override
-    public List<PlayerStatsDTO> getPlayersWithMostRedCards() {
-        return playerStatsRepository.findTop5ByOrderByRedCardsDesc()
+    public List<PlayerStatsDTO> findTop5ByRedCardsGreaterThanOrderByRedCardsDesc() {
+        return playerStatsRepository.findTop5ByRedCardsGreaterThanOrderByRedCardsDesc(0)
                 .stream()
                 .map(PlayerStatsMapper::toDTO)
                 .collect(Collectors.toList());
@@ -81,7 +81,7 @@ public class PlayerStatsService implements IPlayerStatsService {
     }
 
     @Override
-    public List<PlayerStatsDTO> getTopMinutesPlayedLeaders() {
+    public List<PlayerStatsDTO> getTop5MinutesPlayedLeaders() {
         return playerStatsRepository.findTop5ByOrderByMinutesPlayedDesc()
                 .stream()
                 .map(PlayerStatsMapper::toDTO)
@@ -95,7 +95,7 @@ public class PlayerStatsService implements IPlayerStatsService {
     }
 
     @Override
-    public List<PlayerStatsDTO> getTopMatchesPlayedLeaders() {
+    public List<PlayerStatsDTO> getTop5MatchesPlayedLeaders() {
         return playerStatsRepository.findTop5ByOrderByMatchesPlayedDesc()
                 .stream()
                 .map(PlayerStatsMapper::toDTO)
@@ -106,5 +106,13 @@ public class PlayerStatsService implements IPlayerStatsService {
     public Optional<PlayerStatsDTO> getPlayerWithMostWins() {
         return playerStatsRepository.findFirstByOrderByWinsDesc()
                 .map(PlayerStatsMapper::toDTO);
+    }
+
+    @Override
+    public List<PlayerStatsDTO> getTop5PlayersWithMostWins() {
+        return playerStatsRepository.findTop5ByOrderByWinsDesc()
+                .stream()
+                .map(PlayerStatsMapper::toDTO)
+                .collect(Collectors.toList());
     }
 }

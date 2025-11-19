@@ -9,6 +9,7 @@ import solipsismal.olympiacosfcapp.model.Competition;
 public class CompetitionDTO {
     private String id;
     private String competitionName;
+    private Integer olympiacosTrophies;
     private Integer competitionPosition;
     private Integer competitionPoints;
     private String competitionInfo;
@@ -17,6 +18,7 @@ public class CompetitionDTO {
     public CompetitionDTO(Competition competition) {
         this.id = competition.getId();
         this.competitionName = competition.getCompetitionName();
+        this.olympiacosTrophies = competition.getOlympiacosTrophies();
         this.competitionPosition = competition.getCompetitionPosition();
         this.competitionPoints = competition.getCompetitionPoints();
         this.competitionInfo = competition.getCompetitionInfo();

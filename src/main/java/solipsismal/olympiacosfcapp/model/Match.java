@@ -71,7 +71,7 @@ public class Match {
     @Column(length = 10)
     private Ground ground;
 
-    @Column(name = "match_number", length = 2, nullable = false)
+    @Column(name = "match_number", nullable = false)
     private Integer matchNumber;
 
     @Column(length = 100, nullable = false)

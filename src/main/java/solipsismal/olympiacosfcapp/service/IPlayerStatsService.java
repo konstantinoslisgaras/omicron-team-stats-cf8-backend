@@ -9,14 +9,15 @@ public interface IPlayerStatsService {
     Optional<PlayerStatsDTO> getTopScorer();
     List<PlayerStatsDTO> getTop5Scorers();
     Optional<PlayerStatsDTO> getAssistsLeader();
-    List<PlayerStatsDTO> getTopAssistsLeaders();
+    List<PlayerStatsDTO> getTop5AssistsLeaders();
     Optional<PlayerStatsDTO> getPlayerWithMostYellowCards();
-    List<PlayerStatsDTO> getPlayersWithMostYellowCards();
+    List<PlayerStatsDTO> getTop5PlayersWithMostYellowCards();
     Optional<PlayerStatsDTO> getPlayerWithMostRedCards();
-    List<PlayerStatsDTO> getPlayersWithMostRedCards();
+    List<PlayerStatsDTO> findTop5ByRedCardsGreaterThanOrderByRedCardsDesc();
     Optional<PlayerStatsDTO> getMinutesPlayedLeader();
-    List<PlayerStatsDTO> getTopMinutesPlayedLeaders();
+    List<PlayerStatsDTO> getTop5MinutesPlayedLeaders();
     Optional<PlayerStatsDTO> getMatchesPlayedLeader();
-    List<PlayerStatsDTO> getTopMatchesPlayedLeaders();
+    List<PlayerStatsDTO> getTop5MatchesPlayedLeaders();
     Optional<PlayerStatsDTO> getPlayerWithMostWins();
+    List<PlayerStatsDTO> getTop5PlayersWithMostWins();
 }

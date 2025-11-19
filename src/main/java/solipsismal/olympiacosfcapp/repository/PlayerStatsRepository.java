@@ -25,7 +25,7 @@ public interface PlayerStatsRepository extends JpaRepository<PlayerStats, String
 
     // Red cards
     Optional<PlayerStats> findFirstByOrderByRedCardsDesc();
-    List<PlayerStats> findTop5ByOrderByRedCardsDesc();
+    List<PlayerStats> findTop5ByRedCardsGreaterThanOrderByRedCardsDesc(int minRedCards);
 
     // Minutes
     Optional<PlayerStats> findFirstByOrderByMinutesPlayedDesc();
@@ -37,4 +37,5 @@ public interface PlayerStatsRepository extends JpaRepository<PlayerStats, String
 
     // Wins
     Optional<PlayerStats> findFirstByOrderByWinsDesc();
+    List<PlayerStats> findTop5ByOrderByWinsDesc();
 }

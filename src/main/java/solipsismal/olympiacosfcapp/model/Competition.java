@@ -24,6 +24,9 @@ public class Competition {
     @Column(name = "competition_name", length = 50, unique = true, nullable = false)
     private String competitionName;
 
+    @Column(name = "olympiacos_trophies")
+    private Integer olympiacosTrophies;
+
     @Column(name = "competition_position", length = 2)
     private Integer competitionPosition = 1;
 
@@ -33,14 +36,23 @@ public class Competition {
     @Column(name = "competition_info", length = 1000)
     private String competitionInfo;
 
-    @Column(name = "is_eliminated")
+    @Column(name = "is_participating")
     private boolean isParticipating = false;
 
-    public Competition(String id, String competitionName, String competitionInfo) {
+    public Competition(String id, String competitionName, Integer olympiacosTrophies, String competitionInfo) {
         this.id = id;
         this.competitionName = competitionName;
+        this.olympiacosTrophies = olympiacosTrophies;
         this.competitionInfo = competitionInfo;
-        isParticipating = true;
+        this.isParticipating = true;
+    }
+
+    public Competition(String id, String competitionName, Integer olympiacosTrophies, String competitionInfo, boolean isParticipating) {
+        this.id = id;
+        this.competitionName = competitionName;
+        this.olympiacosTrophies = olympiacosTrophies;
+        this.competitionInfo = competitionInfo;
+        this.isParticipating = isParticipating;
     }
 
     public void add3() {
@@ -49,6 +61,10 @@ public class Competition {
 
     public void add1() {
         this.competitionPoints += 1;
+    }
+
+    public void addTrophy() {
+        this.olympiacosTrophies++;
     }
 
     public Competition setCompetitionPosition(int position) {

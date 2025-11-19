@@ -11,6 +11,7 @@ import java.util.Optional;
 
 public interface MatchRepository extends JpaRepository<Match, String>, JpaSpecificationExecutor<Match> {
     List<Match> findAllByOrderByMatchNumber();
+    List<Match> findAllByOrderByMatchNumberDesc();
 
     // Previous match finder
     @Query(value = "SELECT * FROM matches m WHERE TIMESTAMP(m.date, m.time) < :now ORDER BY m.date DESC, m.time DESC LIMIT 1", nativeQuery = true)

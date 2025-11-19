@@ -2,7 +2,6 @@ package solipsismal.olympiacosfcapp.mapper;
 
 import solipsismal.olympiacosfcapp.dto.CoachStatsDTO;
 import solipsismal.olympiacosfcapp.model.Coach;
-import solipsismal.olympiacosfcapp.model.CoachStats;
 
 public class CoachStatsMapper {
 

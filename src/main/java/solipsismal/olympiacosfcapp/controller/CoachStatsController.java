@@ -15,7 +15,6 @@ import solipsismal.olympiacosfcapp.mapper.CoachStatsMapper;
 import solipsismal.olympiacosfcapp.model.Coach;
 import solipsismal.olympiacosfcapp.model.CoachStats;
 import solipsismal.olympiacosfcapp.repository.CoachRepository;
-import solipsismal.olympiacosfcapp.repository.CoachStatsRepository;
 
 @RestController
 @RequestMapping("/api/statistics")
@@ -37,7 +36,7 @@ public class CoachStatsController {
     )
     @ApiResponse(responseCode = "404", description = "Coach stats not Found")
     public CoachStatsDTO getCoachStatsById(@PathVariable String coachStatsId) throws CoachStatsNotFoundException {
-        Coach coach = coachRepository.findById(coachStatsId).orElseThrow(CoachStatsNotFoundException::new);
+        Coach coach = coachRepository.findByCoachStatsId(coachStatsId).orElseThrow(CoachStatsNotFoundException::new);
         return CoachStatsMapper.toDTO(coach);
     }
 }

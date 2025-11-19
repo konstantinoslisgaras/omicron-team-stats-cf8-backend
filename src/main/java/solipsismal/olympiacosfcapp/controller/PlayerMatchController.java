@@ -9,10 +9,13 @@ import solipsismal.olympiacosfcapp.core.exceptions.MatchNotFoundException;
 import solipsismal.olympiacosfcapp.core.exceptions.PlayerMatchNotFoundException;
 import solipsismal.olympiacosfcapp.dto.MatchFullDTO;
 import solipsismal.olympiacosfcapp.dto.PlayerMatchDTO;
+import solipsismal.olympiacosfcapp.dto.TeamStatsDTO;
+import solipsismal.olympiacosfcapp.model.Coach;
 import solipsismal.olympiacosfcapp.model.Match;
 import solipsismal.olympiacosfcapp.model.PlayerMatch;
 import solipsismal.olympiacosfcapp.repository.MatchRepository;
 import solipsismal.olympiacosfcapp.repository.PlayerMatchRepository;
+import solipsismal.olympiacosfcapp.repository.PlayerRepository;
 
 import java.util.List;
 
@@ -23,6 +26,7 @@ public class PlayerMatchController {
 
     private final MatchRepository matchRepository;
     private final PlayerMatchRepository playerMatchRepository;
+    private final PlayerRepository playerRepository;
 
     @GetMapping("/{matchId}")
     public MatchFullDTO getMatchFull(@PathVariable String matchId) throws MatchNotFoundException, PlayerMatchNotFoundException {
@@ -35,6 +39,8 @@ public class PlayerMatchController {
                 .map(PlayerMatchDTO::new)
                 .toList();
 
-        return new MatchFullDTO(match, playerMatchDTOS);
+        TeamStatsDTO teamStatsDTO = new TeamStatsDTO(match.getTeamStats());
+
+        return new MatchFullDTO(match, playerMatchDTOS, teamStatsDTO);
     }
 }

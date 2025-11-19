@@ -33,5 +33,6 @@ public class MatchBasicDTO {
         this.time = match.getTime() != null ? match.getTime().format(timeFormatter) : null;
         this.ground = match.getGround().toString();
         this.result = match.getResult();
+        this.matchNumber = match.getMatchNumber();
     }
 }

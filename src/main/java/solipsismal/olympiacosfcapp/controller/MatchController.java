@@ -2,13 +2,10 @@ package solipsismal.olympiacosfcapp.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import solipsismal.olympiacosfcapp.core.exceptions.MatchNotFoundException;
 import solipsismal.olympiacosfcapp.dto.MatchDetailedDTO;
 import solipsismal.olympiacosfcapp.dto.MatchBasicDTO;
-import solipsismal.olympiacosfcapp.model.Match;
 import solipsismal.olympiacosfcapp.repository.MatchRepository;
 
 import java.util.List;
@@ -22,7 +19,7 @@ public class MatchController {
 
     @GetMapping("/schedule")
     public List<MatchBasicDTO> getMatchesBasic() {
-        return matchRepository.findAllByOrderByMatchNumber()
+        return matchRepository.findAllByOrderByMatchNumberDesc()
                 .stream()
                 .map(MatchBasicDTO::new)
                 .toList();
@@ -35,5 +32,4 @@ public class MatchController {
                 .map(MatchDetailedDTO::new)
                 .toList();
     }
-
 }

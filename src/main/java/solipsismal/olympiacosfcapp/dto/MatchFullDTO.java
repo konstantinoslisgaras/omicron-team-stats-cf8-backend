@@ -12,10 +12,12 @@ public class MatchFullDTO extends MatchDetailedDTO {
 
     private String coachName;
     private List<PlayerMatchDTO> playerMatches;
+    private TeamStatsDTO teamStatsDTO;
 
-    public MatchFullDTO(Match match, List<PlayerMatchDTO> playerMatches) {
+    public MatchFullDTO(Match match, List<PlayerMatchDTO> playerMatches, TeamStatsDTO teamStatsDTO) {
         super(match);
-        this.coachName = match.getCoach().getLastname();
+        this.coachName = match.getCoach().getDetailedBio().getFullname();
         this.playerMatches = playerMatches;
+        this.teamStatsDTO = teamStatsDTO;
     }
 }

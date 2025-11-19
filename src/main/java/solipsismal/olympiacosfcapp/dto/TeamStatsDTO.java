@@ -17,6 +17,7 @@ public class TeamStatsDTO {
     private Integer draws;
     private Integer losses;
     private Integer totalMatches;
+    private String season;
 
     public TeamStatsDTO(TeamStats teamStatsDTO) {
         this.id = teamStatsDTO.getId();
@@ -29,5 +30,12 @@ public class TeamStatsDTO {
         this.draws = teamStatsDTO.getDraws();
         this.losses = teamStatsDTO.getLosses();
         this.totalMatches = teamStatsDTO.getTotalMatches();
+        this.season = seasonNameGenerator(teamStatsDTO.getId());
+    }
+
+    private String seasonNameGenerator(String id) {
+        String start = id.substring(4, 6);
+        String end = id.substring(8);
+        return start + "-" + end;
     }
 }

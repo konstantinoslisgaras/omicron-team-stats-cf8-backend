@@ -42,8 +42,8 @@ public class MatchDataLoader implements CommandLineRunner {
         Coach mendilibar = coachRepository.findByLastname("Mendilibar").orElseThrow();
 
         // Competitions
-        Competition superLeagueGreece = competitionRepository.findByCompetitionName("Super League Greece").orElseThrow();
-        Competition championsLeague = competitionRepository.findByCompetitionName("Champions League").orElseThrow();
+        Competition superLeagueGreece = competitionRepository.findByCompetitionName("Greek Super League").orElseThrow();
+        Competition championsLeague = competitionRepository.findByCompetitionName("UEFA Champions League").orElseThrow();
         Competition greekFootballCup = competitionRepository.findByCompetitionName("Greek Football Cup").orElseThrow();
 
         // Team and Season Stats
@@ -60,7 +60,7 @@ public class MatchDataLoader implements CommandLineRunner {
                 olympiacos, opponentRepository.findByOpponentName("Asteras Tripolis").orElseThrow(OpponentNotFoundException::new),
                 2, 0,
                 "23/08/2025", "20:00", SATURDAY, superLeagueGreece, HOME,
-                1, "Super League MatchDay: 01, Round 1", mendilibar, season2526, teamStats01230825);
+                1, "Greek Super League Round 1, MatchDay: 01", mendilibar, season2526, teamStats01230825);
         saveMatchAndUpdateTotalStats(match01230825, teamStats01230825, season2526TotalTeamStats);
 
         // Match 2 | NFC Volos - OLYMPIACOS F.C. 0:2 | 30/08/2025
@@ -70,7 +70,7 @@ public class MatchDataLoader implements CommandLineRunner {
                 olympiacos, opponentRepository.findByOpponentName("NFC Volos").orElseThrow(OpponentNotFoundException::new),
                 2, 0,
                 "30/08/2025", "19:00", SATURDAY, superLeagueGreece, AWAY,
-                2, "Super League MatchDay: 02, Round 1", mendilibar, season2526, teamStats02300825);
+                2, "Greek Super League Round 1, MatchDay: 02", mendilibar, season2526, teamStats02300825);
         saveMatchAndUpdateTotalStats(match02300825, teamStats02300825, season2526TotalTeamStats);
 
         // Match 3 | OLYMPIACOS F.C. - Panserraikos FC 5:0 | 13/09/2025
@@ -80,7 +80,7 @@ public class MatchDataLoader implements CommandLineRunner {
                 olympiacos, opponentRepository.findByOpponentName("Panserraikos FC").orElseThrow(OpponentNotFoundException::new),
                 5, 0,
                 "13/09/2025", "18:00", SATURDAY, superLeagueGreece, HOME,
-                3, "Super League MatchDay: 03, Round 1", mendilibar, season2526, teamStats03130925);
+                3, "Greek Super League Round 1, MatchDay: 03", mendilibar, season2526, teamStats03130925);
         saveMatchAndUpdateTotalStats(match03130925, teamStats03130925, season2526TotalTeamStats);
 
         // Match 4 | OLYMPIACOS F.C. - Pafos FC 0:0 | 17/09/2025
@@ -90,7 +90,7 @@ public class MatchDataLoader implements CommandLineRunner {
                 olympiacos, opponentRepository.findByOpponentName("Pafos FC").orElseThrow(OpponentNotFoundException::new),
                 0, 0,
                 "17/09/2025", "19:45", WEDNESDAY, championsLeague, HOME,
-                4, "Champions League League Phase, MatchDay: 01", mendilibar, season2526, teamStats04170925);
+                4, "UEFA Champions League League Phase, MatchDay: 01", mendilibar, season2526, teamStats04170925);
         saveMatchAndUpdateTotalStats(match04170925, teamStats04170925, season2526TotalTeamStats);
 
         // Match 5 | Panathinaikos FC - OLYMPIACOS F.C 1:1 | 21/09/2025
@@ -100,7 +100,7 @@ public class MatchDataLoader implements CommandLineRunner {
                 olympiacos, opponentRepository.findByOpponentName("Panathinaikos FC").orElseThrow(OpponentNotFoundException::new),
                 1, 1,
                 "21/09/2025","21:00", SUNDAY, superLeagueGreece, AWAY,
-                5, "Super League MatchDay: 04, Round 1", mendilibar, season2526, teamStats05210925);
+                5, "Greek Super League Round 1, MatchDay: 04", mendilibar, season2526, teamStats05210925);
         saveMatchAndUpdateTotalStats(match05210925, teamStats05210925, season2526TotalTeamStats);
 
         // Match 6 | Asteras Tripolis - OLYMPIACOS F.C. 1:2 | 24/09/2025
@@ -120,7 +120,7 @@ public class MatchDataLoader implements CommandLineRunner {
                 olympiacos, opponentRepository.findByOpponentName("Levadiakos FC").orElseThrow(OpponentNotFoundException::new),
                 3, 2,
                 "27/09/2025", "18:00", SATURDAY, superLeagueGreece, HOME,
-                7, "Super League MatchDay: 05, Round 1", mendilibar, season2526,teamStats07270925);
+                7, "Greek Super League Round 1, MatchDay: 05", mendilibar, season2526,teamStats07270925);
         saveMatchAndUpdateTotalStats(match07270925, teamStats07270925, season2526TotalTeamStats);
 
         // Match 8 | Arsenal FC - OLYMPIACOS F.C. 2:0 | 01/10/2025
@@ -130,7 +130,7 @@ public class MatchDataLoader implements CommandLineRunner {
                 olympiacos, opponentRepository.findByOpponentName("Arsenal FC").orElseThrow(OpponentNotFoundException::new),
                 0, 2,
                 "01/10/2025", "22:00", WEDNESDAY, championsLeague, AWAY,
-                8, "Champions League League Phase, MatchDay: 02", mendilibar, season2526, teamStats08011025);
+                8, "UEFA Champions League League Phase, MatchDay: 02", mendilibar, season2526, teamStats08011025);
         saveMatchAndUpdateTotalStats(match08011025, teamStats08011025, season2526TotalTeamStats);
 
         // Match 9 | PAOK FC - OLYMPIACOS F.C. 2:1 | 05/10/2025
@@ -140,7 +140,7 @@ public class MatchDataLoader implements CommandLineRunner {
                 olympiacos, opponentRepository.findByOpponentName("PAOK FC").orElseThrow(OpponentNotFoundException::new),
                 1, 2,
                 "05/10/2025", "20:30", SUNDAY, superLeagueGreece, AWAY,
-                9, "Super League MatchDay: 06, Round 1", mendilibar, season2526, teamStats09051025);
+                9, "Greek Super League Round 1, MatchDay: 06", mendilibar, season2526, teamStats09051025);
         saveMatchAndUpdateTotalStats(match09051025, teamStats09051025, season2526TotalTeamStats);
 
         // Match 10 | AE Larissa - OLYMPIACOS F.C. 0:2 | 18/10/2025
@@ -150,7 +150,7 @@ public class MatchDataLoader implements CommandLineRunner {
                 olympiacos, opponentRepository.findByOpponentName("AE Larissa").orElseThrow(OpponentNotFoundException::new),
                 2, 0,
                 "18/10/2025", "17:00", SATURDAY, superLeagueGreece, AWAY,
-                10, "Super League MatchDay: 07, Round 1", mendilibar, season2526, teamStats10181025);
+                10, "Greek Super League Round 1, MatchDay: 07", mendilibar, season2526, teamStats10181025);
         saveMatchAndUpdateTotalStats(match10181025, teamStats10181025, season2526TotalTeamStats);
 
         // Match 11 | FC Barcelona - OLYMPIACOS F.C. 6:1 | 21/10/2025
@@ -160,7 +160,7 @@ public class MatchDataLoader implements CommandLineRunner {
                 olympiacos, opponentRepository.findByOpponentName("FC Barcelona").orElseThrow(OpponentNotFoundException::new),
                 1, 6,
                 "21/10/2025", "19:45", TUESDAY, championsLeague, AWAY,
-                11, "Champions League League Phase, MatchDay: 03", mendilibar, season2526, teamStats11211025);
+                11, "UEFA Champions League League Phase, MatchDay: 03", mendilibar, season2526, teamStats11211025);
         saveMatchAndUpdateTotalStats(match11211025, teamStats11211025, season2526TotalTeamStats);
 
         // Match 12 | OLYMPIACOS F.C. - AEK FC 2:0 | 26/10/2025
@@ -170,7 +170,7 @@ public class MatchDataLoader implements CommandLineRunner {
                 olympiacos, opponentRepository.findByOpponentName("AEK FC").orElseThrow(OpponentNotFoundException::new),
                 2, 0,
                 "26/10/2025", "21:00", SUNDAY, superLeagueGreece, HOME,
-                12, "Super League MatchDay: 08, Round 1", mendilibar, season2526, teamStats12261025);
+                12, "Greek Super League Round 1, MatchDay: 08", mendilibar, season2526, teamStats12261025);
         saveMatchAndUpdateTotalStats(match12261025, teamStats12261025, season2526TotalTeamStats);
 
         // Match 13 | OLYMPIACOS F.C. - NFC Volos 5:0 | 29/10/2025
@@ -190,7 +190,7 @@ public class MatchDataLoader implements CommandLineRunner {
                 olympiacos, opponentRepository.findByOpponentName("ARIS FC").orElseThrow(OpponentNotFoundException::new),
                 2, 1,
                 "01/11/2025", "20:00", SATURDAY, superLeagueGreece, HOME,
-        14, "Super League MatchDay: 09, Round 1", mendilibar, season2526, teamStats14011125);
+        14, "Greek Super League Round 1, MatchDay: 09", mendilibar, season2526, teamStats14011125);
         saveMatchAndUpdateTotalStats(match14011125, teamStats14011125, season2526TotalTeamStats);
 
         // Match 15 | OLYMPIACOS F.C. - PSV Eindhoven 1:1 | 04/11/2025
@@ -200,20 +200,46 @@ public class MatchDataLoader implements CommandLineRunner {
                 olympiacos, opponentRepository.findByOpponentName("PSV Eindhoven").orElseThrow(OpponentNotFoundException::new),
                 1, 1,
                 "04/11/2025", "22:00", TUESDAY, championsLeague, HOME,
-                15, "Champions League League Phase, MatchDay: 04", mendilibar, season2526, teamStats15041125);
+                15, "UEFA Champions League League Phase, MatchDay: 04", mendilibar, season2526, teamStats15041125);
         saveMatchAndUpdateTotalStats(match15041125, teamStats15041125, season2526TotalTeamStats);
 
-        // Match 16 | Kifisia FC - OLYMPIACOS F.C. -:- | 09/11/2025
-        TeamStats teamStats16091125 = new TeamStats("TS16091125");
+        // Match 16 | Kifisia FC - OLYMPIACOS F.C. 1:3 | 09/11/2025
+        TeamStats teamStats16091125 = new TeamStats("TS16091125",
+                3, 1, 1, 1, 0);
         Match match16091125 = new Match("MA16091125",
                 olympiacos, opponentRepository.findByOpponentName("Kifisia FC").orElseThrow(OpponentNotFoundException::new),
+                3, 1,
                 "09/11/2025", "15:00", SUNDAY, superLeagueGreece, AWAY,
-                16, "Super League MatchDay: 10, Round 1", mendilibar, season2526, teamStats16091125);
-        matchRepository.save(match16091125);
+                16, "Greek Super League Round 1, MatchDay: 10", mendilibar, season2526, teamStats16091125);
+        saveMatchAndUpdateTotalStats(match16091125, teamStats16091125, season2526TotalTeamStats);
+
+        // Match 17 | OLYMPIACOS F.C. - Atromitos FC -:- | 22/11/2025
+        TeamStats teamStats17221125 = new TeamStats("TS17221125");
+        Match match17221125 = new Match("MA17221125",
+                olympiacos, opponentRepository.findByOpponentName("Atromitos FC").orElseThrow(OpponentNotFoundException::new),
+                "22/11/2025", "20:00", SATURDAY, superLeagueGreece, HOME,
+                17, "Greek Super League Round 1, MatchDay: 11", mendilibar, season2526, teamStats17221125);
+        matchRepository.save(match17221125);
+
+        // Match 18 | OLYMPIACOS F.C. - Real Madrid CF -:- | 26/11/2025
+        TeamStats teamStats18261125 = new TeamStats("TS18261125");
+        Match match18261125 = new Match("MA18261125",
+                olympiacos, opponentRepository.findByOpponentName("Real Madrid CF").orElseThrow(OpponentNotFoundException::new),
+                "26/11/2025", "22:00", WEDNESDAY, championsLeague, HOME,
+                18, "UEFA Champions League League Phase, MatchDay: 05", mendilibar, season2526, teamStats18261125);
+        matchRepository.save(match18261125);
+
+        // Match 19 | Panaitolikos FC  - OLYMPIACOS F.C. -:- | 30/11/2025
+        TeamStats teamStats19301125 = new TeamStats("TS19301125");
+        Match match19301125 = new Match("MA19301125",
+                olympiacos, opponentRepository.findByOpponentName("Panaitolikos FC").orElseThrow(OpponentNotFoundException::new),
+                "30/11/2025", "17:00", SUNDAY, superLeagueGreece, AWAY,
+                19, "Greek Super League Round 1, MatchDay: 12", mendilibar, season2526, teamStats19301125);
+        matchRepository.save(match19301125);
 
         // Competition Position Setter
-        competitionRepository.save(superLeagueGreece.setCompetitionPosition(2));
-        competitionRepository.save(championsLeague.setCompetitionPosition(33));
+        competitionRepository.save(superLeagueGreece.setCompetitionPosition(1));
+        competitionRepository.save(championsLeague.setCompetitionPosition(31));
         competitionRepository.save(greekFootballCup.setCompetitionPosition(5));
     }
 
