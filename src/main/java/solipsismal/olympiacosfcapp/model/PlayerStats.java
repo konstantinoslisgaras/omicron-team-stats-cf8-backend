@@ -34,6 +34,9 @@ public class PlayerStats {
     @Column(name = "goals_conceded", length = 4, nullable = false)
     private Integer goalsConceded = 0;
 
+    @Column(name = "clean_sheets", length = 4, nullable = false)
+    private Integer cleanSheets = 0;
+
     @Column(name ="minutes_played", length = 3, nullable = false)
     private Integer minutesPlayed = 0;
 
@@ -63,6 +66,7 @@ public class PlayerStats {
         this.yellowCards += match.getYellowCards();
         this.redCards += match.getRedCards();
         this.goalsConceded += match.getGoalsConceded();
+        this.cleanSheets += match.getCleanSheets();
         ++this.matchesPlayed;
         this.minutesPlayed += match.getMinutesPlayed();
         addWinDrawLossStats(result);

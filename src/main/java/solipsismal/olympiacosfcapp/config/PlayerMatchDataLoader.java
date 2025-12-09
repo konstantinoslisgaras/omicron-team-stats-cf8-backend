@@ -85,6 +85,7 @@ public class PlayerMatchDataLoader implements CommandLineRunner {
                 new PlayerMatch("PM16094231", players.get("Onyemaechi"), match01230825,
                         0, 0, 0, 0, 16)
         );
+        setGKCleanSheet(playerMatches01230825, players.get("Tzolakis"));
         savePlayerMatchesAndUpdateTotalStats(playerMatches01230825, WIN);
 
         // Match 2 | NFC Volos - OLYMPIACOS F.C. 0:2 | 30/08/2025
@@ -123,6 +124,7 @@ public class PlayerMatchDataLoader implements CommandLineRunner {
                 new PlayerMatch("PM16779045", players.get("Cabella"), match02300825,
                         0, 0, 0, 0, 6)
         );
+        setGKCleanSheet(playerMatches02300825, players.get("Tzolakis"));
         savePlayerMatchesAndUpdateTotalStats(playerMatches02300825, WIN);
 
         // Match 3 | OLYMPIACOS F.C. - Panserraikos FC 5:0 | 13/09/2025
@@ -161,6 +163,7 @@ public class PlayerMatchDataLoader implements CommandLineRunner {
                 new PlayerMatch("PM16369045", players.get("Scipioni"), match03130925,
                         0, 0, 0, 0, 18)
         );
+        setGKCleanSheet(playerMatches03130925, players.get("Tzolakis"));
         savePlayerMatchesAndUpdateTotalStats(playerMatches03130925, WIN);
 
         // Match 4 | OLYMPIACOS F.C. - Pafos FC 0:0 | 17/09/2025
@@ -199,6 +202,7 @@ public class PlayerMatchDataLoader implements CommandLineRunner {
                 new PlayerMatch("PM16269045", players.get("Biancone"), match04170925,
                         0, 0, 0, 0, 20)
         );
+        setGKCleanSheet(playerMatches04170925, players.get("Paschalakis"));
         savePlayerMatchesAndUpdateTotalStats(playerMatches04170925, DRAW);
 
         // Match 5 | Panathinaikos FC - OLYMPIACOS F.C. 1:1 | 21/09/2025
@@ -428,6 +432,7 @@ public class PlayerMatchDataLoader implements CommandLineRunner {
                 new PlayerMatch("PM16745362", players.get("Nascimento"), match10181025,
                         0, 0, 0, 0, 23)
         );
+        setGKCleanSheet(playerMatches10181025, players.get("Tzolakis"));
         savePlayerMatchesAndUpdateTotalStats(playerMatches10181025, WIN);
 
         // Match 11 | FC Barcelona - OLYMPIACOS F.C. 6:1 | 21/10/2025
@@ -505,6 +510,7 @@ public class PlayerMatchDataLoader implements CommandLineRunner {
                 new PlayerMatch("PM16702942", players.get("Yaremchuk"), match12261025,
                         0, 0, 0, 0, 10)
         );
+        setGKCleanSheet(playerMatches12261025, players.get("Tzolakis"));
         savePlayerMatchesAndUpdateTotalStats(playerMatches12261025, WIN);
 
         // Match 13 | OLYMPIACOS F.C. - NFC Volos 5:0 | 29/10/2025
@@ -543,6 +549,7 @@ public class PlayerMatchDataLoader implements CommandLineRunner {
                 new PlayerMatch("PM16060045", players.get("Cabella"), match13291025,
                         0, 0, 0, 0, 21)
         );
+        setGKCleanSheet(playerMatches13291025, players.get("Paschalakis"));
         savePlayerMatchesAndUpdateTotalStats(playerMatches13291025, WIN);
 
         // Match 14 | OLYMPIACOS F.C. - ARIS FC 2:1 | 01/11/2025
@@ -696,6 +703,7 @@ public class PlayerMatchDataLoader implements CommandLineRunner {
                 new PlayerMatch("PM16600042", players.get("Strefezza"), match17221125,
                         0, 0, 0, 0, 9)
         );
+        setGKCleanSheet(playerMatches17221125, players.get("Tzolakis"));
         savePlayerMatchesAndUpdateTotalStats(playerMatches17221125, WIN);
 
         // Match 18 | OLYMPIACOS F.C. - Real Madrid CF 3:4 | 26/11/2025
@@ -737,7 +745,7 @@ public class PlayerMatchDataLoader implements CommandLineRunner {
         setGKGoalsConceded(playerMatches18261125, players.get("Tzolakis"), 4);
         savePlayerMatchesAndUpdateTotalStats(playerMatches18261125, LOSS);
 
-        // Match 19 | Panaitolikos FC  - OLYMPIACOS F.C. 0:1 | 30/11/2025 2+ 4
+        // Match 19 | Panaitolikos FC  - OLYMPIACOS F.C. 0:1 | 30/11/2025
         Match match19301125 = matchRepository.findById("MA19301125").orElseThrow();
         List<PlayerMatch> playerMatches19301125 = List.of(
                 new PlayerMatch("PM01092345", players.get("Tzolakis"), match19301125,
@@ -773,6 +781,7 @@ public class PlayerMatchDataLoader implements CommandLineRunner {
                 new PlayerMatch("PM16079645", players.get("Garcia"), match19301125,
                         0, 0, 0, 0, 14)
         );
+        setGKCleanSheet(playerMatches19301125, players.get("Tzolakis"));
         savePlayerMatchesAndUpdateTotalStats(playerMatches19301125, WIN);
 
         // Match 20 | APO Ellas Syrou  - OLYMPIACOS F.C. 2:5 | 03/12/2025 1+4
@@ -850,6 +859,7 @@ public class PlayerMatchDataLoader implements CommandLineRunner {
                 new PlayerMatch("PM16160994", players.get("Garcia"), match21061225,
                         0, 0, 0, 0, 18)
         );
+        setGKCleanSheet(playerMatches21061225, players.get("Tzolakis"));
         savePlayerMatchesAndUpdateTotalStats(playerMatches21061225, WIN);
     }
 
@@ -866,6 +876,13 @@ public class PlayerMatchDataLoader implements CommandLineRunner {
                 .filter(pm -> pm.getPlayer().equals(player))
                 .findFirst()
                 .ifPresent(pm -> pm.setGoalsConceded(goalsConceded));
+    }
+
+    private void setGKCleanSheet(List<PlayerMatch> playerMatch, Player player) {
+        playerMatch.stream()
+                .filter(pm -> pm.getPlayer().equals(player))
+                .findFirst()
+                .ifPresent(pm -> pm.setCleanSheets(1));
     }
 
     private void savePlayerMatchesAndUpdateTotalStats(List<PlayerMatch> playerMatches, Result result) {

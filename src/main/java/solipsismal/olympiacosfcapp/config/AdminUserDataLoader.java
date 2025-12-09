@@ -34,7 +34,8 @@ public class AdminUserDataLoader implements CommandLineRunner {
             admin.setEmail("konstantinoslisgaras@gmail.com");
             admin.setDateOfBirth(LocalDate.parse("1991-11-14"));
             admin.setGenderType(GenderType.PREFER_NOT_TO_DISCLOSE);
-            admin.setFavoritePlayer("Giovanni Silva de Oliveira");
+            admin.setFavoriteLegend("Giovanni Silva de Oliveira");
+            admin.setIsOlympiacosFan(true);
             admin.setRole(Role.SUPER_ADMIN);
             userRepository.save(admin);
         }
@@ -47,7 +48,8 @@ public class AdminUserDataLoader implements CommandLineRunner {
             user1.setEmail("konstantinoslisgaras@googlemail.com");
             user1.setDateOfBirth(LocalDate.parse("1991-11-14"));
             user1.setGenderType(GenderType.MALE);
-            user1.setFavoritePlayer("Rivaldo");
+            user1.setFavoriteLegend("Rivaldo");
+            user1.setIsOlympiacosFan(true);
             user1.setRole(Role.USER);
             userRepository.save(user1);
         }

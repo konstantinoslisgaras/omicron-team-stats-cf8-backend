@@ -44,8 +44,8 @@ public class UserService implements IUserService {
             user.setDateOfBirth(dto.getDateOfBirth());
         }
 
-        if (dto.getFavoritePlayer() != null && !dto.getFavoritePlayer().isBlank()) {
-            user.setFavoritePlayer(dto.getFavoritePlayer().trim());
+        if (dto.getFavoriteLegend() != null && !dto.getFavoriteLegend().isBlank()) {
+            user.setFavoriteLegend(dto.getFavoriteLegend().trim());
         }
 
         if (dto.getPassword() != null && !dto.getPassword().isBlank()) {

@@ -41,6 +41,9 @@ public class PlayerMatch {
     @Column(length = 2, nullable = false)
     private Integer goalsConceded = 0;
 
+    @Column(length = 2, nullable = false)
+    private Integer cleanSheets = 0;
+
     @Column(length = 3, nullable = false)
     private Integer minutesPlayed;
 

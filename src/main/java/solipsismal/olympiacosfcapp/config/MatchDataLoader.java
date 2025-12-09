@@ -261,7 +261,7 @@ public class MatchDataLoader implements CommandLineRunner {
                 3, 0,
                 "06/12/2025", "17:00", SATURDAY, superLeagueGreece, HOME,
                 21, "Greek Super League Round 1, MatchDay: 13", mendilibar, season2526, teamStats21061225);
-        matchRepository.save(match21061225);
+        saveMatchAndUpdateTotalStats(match21061225, teamStats21061225, season2526TotalTeamStats);
 
         // Match 22 | FC Kairat Almaty - OLYMPIACOS F.C. -:- | 09/12/2025
         TeamStats teamStats22091225 = new TeamStats("TS22091225");

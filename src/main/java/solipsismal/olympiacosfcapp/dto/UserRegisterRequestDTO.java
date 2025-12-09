@@ -41,5 +41,8 @@ public record UserRegisterRequestDTO(
         GenderType genderType,
 
         @Schema(example = "Giovanni Silva De Oliveira")
-        String favoritePlayer
+        String favoriteLegend,
+
+        @Schema(example = "true")
+        Boolean isOlympiacosFan
 ) {}

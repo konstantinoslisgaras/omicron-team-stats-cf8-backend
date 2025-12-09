@@ -14,26 +14,26 @@ import solipsismal.olympiacosfcapp.service.UserService;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/users")
+@RequestMapping("/api/")
 public class UserController {
 
     private final UserService userService;
 
-    @GetMapping("/me")
+    @GetMapping("/profile")
     public ResponseEntity<UserDTO> getProfile() throws UserNotFoundException {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String username = auth.getName();
         return ResponseEntity.ok(userService.getUserProfile(username));
     }
 
-    @PutMapping("/me")
+    @PutMapping("/profile")
     public ResponseEntity<UserDTO> updateProfile(@Valid @RequestBody UserUpdateDTO dto) throws UserNotFoundException {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String username = auth.getName();
         return ResponseEntity.ok(userService.updateUserProfile(username, dto));
     }
 
-    @GetMapping("/profile/{username}")
+    @GetMapping("/user/{username}")
     @PreAuthorize("hasRole('SUPER_ADMIN')")
     public ResponseEntity<UserDTO> getUserByUsername(@PathVariable String username) throws UserNotFoundException {
         return ResponseEntity.ok(userService.getUserProfile(username));

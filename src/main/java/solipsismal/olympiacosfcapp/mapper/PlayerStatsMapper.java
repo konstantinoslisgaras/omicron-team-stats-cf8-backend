@@ -20,6 +20,7 @@ public class PlayerStatsMapper {
                 playerStats.getYellowCards(),
                 playerStats.getRedCards(),
                 playerStats.getGoalsConceded(),
+                playerStats.getCleanSheets(),
                 playerStats.getMinutesPlayed(),
                 playerStats.getMatchesPlayed(),
                 playerStats.getWins(),

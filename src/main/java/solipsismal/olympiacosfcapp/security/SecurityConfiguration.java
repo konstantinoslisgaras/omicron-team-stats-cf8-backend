@@ -48,7 +48,7 @@ public class SecurityConfiguration {
                                 "/v3/api-docs.yaml",
                                 "/swagger-resources/**",
                                 "/configuration/**").permitAll()
-                        .requestMatchers("/api/users/me").authenticated()
+                        .requestMatchers("/api/profile").authenticated()
                         .requestMatchers("/api/users/**").hasRole("SUPER_ADMIN")
                         .requestMatchers("/api/super-admin/**").hasRole("SUPER_ADMIN")
                         .anyRequest().authenticated()

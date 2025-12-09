@@ -14,6 +14,7 @@ public class PlayerStatsDTO {
     private int yellowCards;
     private int redCards;
     private int goalsConceded;
+    private int cleanSheets;
     private int minutesPlayed;
     private int matchesPlayed;
     private int wins;
@@ -21,7 +22,7 @@ public class PlayerStatsDTO {
     private int losses;
 
     public PlayerStatsDTO(String playerId, String lastname, String firstname, String position,
-                          int goals, int assists, int yellowCards, int redCards, int goalsConceded, int minutesPlayed, int matchesPlayed,
+                          int goals, int assists, int yellowCards, int redCards, int goalsConceded, int cleanSheets, int minutesPlayed, int matchesPlayed,
                           int wins, int draws, int losses) {
         this.playerId = playerId;
         this.name = getConcatenatedName(lastname, firstname);
@@ -31,6 +32,7 @@ public class PlayerStatsDTO {
         this.yellowCards = yellowCards;
         this.redCards = redCards;
         this.goalsConceded = goalsConceded;
+        this.cleanSheets = cleanSheets;
         this.minutesPlayed = minutesPlayed;
         this.matchesPlayed = matchesPlayed;
         this.wins = wins;

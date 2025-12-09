@@ -42,8 +42,9 @@ public class AuthenticationService {
                 .lastname(userRegisterRequestDTO.lastname())
                 .email(userRegisterRequestDTO.email())
                 .dateOfBirth(userRegisterRequestDTO.dateOfBirth())
-                .favoritePlayer(userRegisterRequestDTO.favoritePlayer())
+                .favoriteLegend(userRegisterRequestDTO.favoriteLegend())
                 .genderType(userRegisterRequestDTO.genderType())
+                .isOlympiacosFan(userRegisterRequestDTO.isOlympiacosFan() != null ? userRegisterRequestDTO.isOlympiacosFan() : true)
                 .role(Role.USER)
                 .build();
 
@@ -62,7 +63,7 @@ public class AuthenticationService {
                 new UsernamePasswordAuthenticationToken(dto.username(), dto.password()));
 
         User user = (User) authentication.getPrincipal();
-        String token = jwtService.generateToken(authentication.getName(), user.getRole().name());
+        String token = jwtService.generateToken(user.getUsername(), user.getRole().name());
         return new AuthenticationResponseDTO(user.getFirstname(), user.getLastname(), token);
     }
 }

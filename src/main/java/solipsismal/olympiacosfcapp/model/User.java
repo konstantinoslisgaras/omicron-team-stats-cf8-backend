@@ -43,17 +43,24 @@ public class User extends AbstractEntity implements UserDetails {
     private LocalDate dateOfBirth;
 
     @Enumerated(EnumType.STRING)
+    @Builder.Default
     private GenderType genderType = GenderType.PREFER_NOT_TO_DISCLOSE;
 
-    @Column(name = "favorite_player", length = 100)
-    private String favoritePlayer;
+    @Column(name = "favorite_legend", length = 100)
+    private String favoriteLegend;
+
+    @Column(name = "is_olympiacos_fan", nullable = false)
+    @Builder.Default
+    private Boolean isOlympiacosFan = true;
 
     @Enumerated(EnumType.STRING)
+    @Builder.Default
     private Role role = Role.USER;
 
     @Column(name = "is_active")
     @ColumnDefault("true")
-    private Boolean isActive;
+    @Builder.Default
+    private Boolean isActive = true;
 
     public String getFullName() {
         return (lastname == null) ? firstname : (firstname + " " + lastname.charAt(0) + ".");

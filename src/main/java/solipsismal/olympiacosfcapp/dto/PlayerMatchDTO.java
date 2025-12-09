@@ -17,6 +17,7 @@ public class PlayerMatchDTO {
     private Integer yellowCards;
     private Integer redCards;
     private Integer goalsConceded;
+    private Integer cleanSheets;
     private Integer minutesPlayed;
     private Integer shirtNumber;
     private String position;
@@ -29,6 +30,7 @@ public class PlayerMatchDTO {
         this.yellowCards = playerMatch.getYellowCards();
         this.redCards = playerMatch.getRedCards();
         this.goalsConceded = playerMatch.getGoalsConceded();
+        this.cleanSheets = playerMatch.getCleanSheets();
         this.minutesPlayed = playerMatch.getMinutesPlayed();
         this.shirtNumber = playerMatch.getPlayer().getShirtNumber();
         this.position = playerMatch.getPlayer().getPosition().getAbbreviation();

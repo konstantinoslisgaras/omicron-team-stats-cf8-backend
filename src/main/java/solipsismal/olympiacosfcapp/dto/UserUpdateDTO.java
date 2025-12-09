@@ -29,6 +29,6 @@ public class UserUpdateDTO {
     @Past(message = "Date of birth must be in the past")
     private LocalDate dateOfBirth;
 
-    @Length(max = 30, message = "Favorite player name must have a maximum of 100 characters.")
-    private String favoritePlayer;
+    @Length(max = 30, message = "Favorite legend name must have a maximum of 100 characters.")
+    private String favoriteLegend;
 }
