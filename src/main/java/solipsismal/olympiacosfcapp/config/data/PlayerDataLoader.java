@@ -1,4 +1,4 @@
-package solipsismal.olympiacosfcapp.config;
+package solipsismal.olympiacosfcapp.config.data;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.core.annotation.Order;
@@ -6,8 +6,6 @@ import org.springframework.stereotype.Component;
 import solipsismal.olympiacosfcapp.model.DetailedBio;
 import solipsismal.olympiacosfcapp.model.Player;
 import solipsismal.olympiacosfcapp.repository.PlayerRepository;
-
-import java.util.Optional;
 
 import static solipsismal.olympiacosfcapp.core.enums.Position.*;
 import static solipsismal.olympiacosfcapp.core.enums.PreferredFoot.*;

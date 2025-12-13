@@ -1,4 +1,4 @@
-package solipsismal.olympiacosfcapp.config;
+package solipsismal.olympiacosfcapp.config.data;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.core.annotation.Order;

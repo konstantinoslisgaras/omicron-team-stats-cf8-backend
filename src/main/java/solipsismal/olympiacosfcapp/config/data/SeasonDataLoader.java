@@ -1,13 +1,9 @@
-package solipsismal.olympiacosfcapp.config;
+package solipsismal.olympiacosfcapp.config.data;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
-import solipsismal.olympiacosfcapp.model.Coach;
-import solipsismal.olympiacosfcapp.model.CoachStats;
-import solipsismal.olympiacosfcapp.model.DetailedBio;
 import solipsismal.olympiacosfcapp.model.Season;
-import solipsismal.olympiacosfcapp.repository.CoachRepository;
 import solipsismal.olympiacosfcapp.repository.SeasonRepository;
 
 @Component

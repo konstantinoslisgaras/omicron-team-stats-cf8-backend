@@ -1,12 +1,10 @@
-package solipsismal.olympiacosfcapp.config;
+package solipsismal.olympiacosfcapp.config.data;
 
-import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 import solipsismal.olympiacosfcapp.model.Olympiacos;
 import solipsismal.olympiacosfcapp.repository.OlympiacosRepository;
-import solipsismal.olympiacosfcapp.repository.OpponentRepository;
 
 @Order(1)
 @Component

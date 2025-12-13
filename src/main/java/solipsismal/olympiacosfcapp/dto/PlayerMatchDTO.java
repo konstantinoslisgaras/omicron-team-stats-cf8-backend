@@ -2,10 +2,7 @@ package solipsismal.olympiacosfcapp.dto;
 
 import lombok.Getter;
 import lombok.Setter;
-import solipsismal.olympiacosfcapp.config.PlayerMatchDataLoader;
 import solipsismal.olympiacosfcapp.model.PlayerMatch;
-
-import java.util.List;
 
 @Getter
 @Setter
