@@ -53,35 +53,41 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
     private void processJwtToken(String jwt) {
         try {
-            String username = jwtService.extractSubject(jwt);
-            String role = jwtService.extractRole(jwt); // Make sure your JwtService can extract the role claim
-
-            if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
-
-                // Create authorities directly from JWT role
-                List<SimpleGrantedAuthority> authorities = List.of(new SimpleGrantedAuthority("ROLE_" + role));
-
-                // Load user details for other info if needed
-                UserDetails userDetails = userDetailsService.loadUserByUsername(username);
-
-                if (jwtService.isTokenValid(jwt, userDetails)) {
-                    UsernamePasswordAuthenticationToken authToken =
-                            new UsernamePasswordAuthenticationToken(userDetails, null, authorities);
-                    SecurityContextHolder.getContext().setAuthentication(authToken);
-                    log.debug("Authenticated user: {} with role: {}", username, role);
-                } else {
-                    log.warn("Invalid token for user: {}", username);
-                }
+            // 1. Validate token structure & signature ONLY
+            if (!jwtService.isTokenStructurallyValid(jwt)) {
+                return;
             }
-        } catch (ExpiredJwtException e) {
-            log.warn("JWT token expired: {}", e.getMessage());
-        } catch (JwtException | IllegalArgumentException e) {
-            log.warn("Invalid JWT token: {}", e.getMessage());
-        } catch (Exception e) {
-            log.error("JWT processing error", e);
-        }
 
-        if (SecurityContextHolder.getContext().getAuthentication() == null) {
+            // 2. Extract claims (safe now)
+            String username = jwtService.extractSubject(jwt);
+            String role = jwtService.extractRole(jwt);
+
+            if (username == null ||
+                    SecurityContextHolder.getContext().getAuthentication() != null) {
+                return;
+            }
+
+            // 3. NOW hit the database
+            UserDetails userDetails =
+                    userDetailsService.loadUserByUsername(username);
+
+            // 4. Validate against user details
+            if (!jwtService.isTokenValid(jwt, userDetails)) {
+                return;
+            }
+
+            // 5. Authenticate
+            List<SimpleGrantedAuthority> authorities =
+                    List.of(new SimpleGrantedAuthority("ROLE_" + role));
+
+            UsernamePasswordAuthenticationToken authToken =
+                    new UsernamePasswordAuthenticationToken(
+                            userDetails, null, authorities);
+
+            SecurityContextHolder.getContext().setAuthentication(authToken);
+
+        } catch (Exception e) {
+            log.warn("JWT rejected: {}", e.getMessage());
             SecurityContextHolder.clearContext();
         }
     }

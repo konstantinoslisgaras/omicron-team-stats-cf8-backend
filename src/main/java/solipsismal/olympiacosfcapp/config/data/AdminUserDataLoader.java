@@ -34,7 +34,7 @@ public class AdminUserDataLoader implements CommandLineRunner {
             Player supportedPlayer = playerRepository.findById("PL53859301").orElseThrow(PlayerNotFoundException::new);
             User admin = new User();
             admin.setUsername("admin");
-            admin.setPassword(passwordEncoder.encode("1234567QWEqwe!@#"));
+            admin.setPassword(passwordEncoder.encode("123qweQWE!@#"));
             admin.setFirstname("Admin");
             admin.setLastname("Super");
             admin.setEmail("konstantinoslisgaras@gmail.com");
@@ -54,7 +54,7 @@ public class AdminUserDataLoader implements CommandLineRunner {
             Player supportedPlayer1 = playerRepository.findById("PL52329655").orElseThrow(PlayerNotFoundException::new);
             User user1 = new User();
             user1.setUsername("solipsismal");
-            user1.setPassword(passwordEncoder.encode("123QWEqwe!@#"));
+            user1.setPassword(passwordEncoder.encode("123qweQWE!@#"));
             user1.setFirstname("Konstantinos");
             user1.setLastname("Lisgaras");
             user1.setEmail("konstantinoslisgaras@googlemail.com");
