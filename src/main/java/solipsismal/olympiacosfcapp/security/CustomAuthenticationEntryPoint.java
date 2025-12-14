@@ -17,13 +17,6 @@ public class CustomAuthenticationEntryPoint implements AuthenticationEntryPoint 
     public void commence(HttpServletRequest request, HttpServletResponse response,
                          AuthenticationException authException) throws IOException {
 
-        String path = request.getServletPath();
-
-        if (path.startsWith("/api/auth/")) {
-            response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-            return;
-        }
-
         log.warn("User not authenticated, with message={}", authException.getMessage());
 
         response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);

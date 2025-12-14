@@ -35,7 +35,6 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         return path.startsWith("/api/auth/") || path.contains("/swagger-ui") || path.contains("/api-docs");
     }
 
-
     @Override
     protected void doFilterInternal(HttpServletRequest request,
                                     @NonNull HttpServletResponse response,
@@ -53,42 +52,24 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
     private void processJwtToken(String jwt) {
         try {
-            // 1. Validate token structure & signature ONLY
-            if (!jwtService.isTokenStructurallyValid(jwt)) {
-                return;
-            }
-
-            // 2. Extract claims (safe now)
             String username = jwtService.extractSubject(jwt);
             String role = jwtService.extractRole(jwt);
 
-            if (username == null ||
-                    SecurityContextHolder.getContext().getAuthentication() != null) {
-                return;
+            if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
+
+                List<SimpleGrantedAuthority> authorities = List.of(new SimpleGrantedAuthority("ROLE_" + role));
+
+                UserDetails userDetails = userDetailsService.loadUserByUsername(username);
+
+                if (jwtService.isTokenValid(jwt, userDetails)) {
+                    UsernamePasswordAuthenticationToken authToken =
+                            new UsernamePasswordAuthenticationToken(userDetails, null, authorities);
+                    SecurityContextHolder.getContext().setAuthentication(authToken);
+                }
             }
-
-            // 3. NOW hit the database
-            UserDetails userDetails =
-                    userDetailsService.loadUserByUsername(username);
-
-            // 4. Validate against user details
-            if (!jwtService.isTokenValid(jwt, userDetails)) {
-                return;
-            }
-
-            // 5. Authenticate
-            List<SimpleGrantedAuthority> authorities =
-                    List.of(new SimpleGrantedAuthority("ROLE_" + role));
-
-            UsernamePasswordAuthenticationToken authToken =
-                    new UsernamePasswordAuthenticationToken(
-                            userDetails, null, authorities);
-
-            SecurityContextHolder.getContext().setAuthentication(authToken);
-
         } catch (Exception e) {
-            log.warn("JWT rejected: {}", e.getMessage());
             SecurityContextHolder.clearContext();
+            log.warn("JWT processing error: {}", e.getMessage());
         }
     }
 }
