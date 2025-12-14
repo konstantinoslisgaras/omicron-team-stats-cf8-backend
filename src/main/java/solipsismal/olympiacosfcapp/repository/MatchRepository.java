@@ -13,11 +13,23 @@ public interface MatchRepository extends JpaRepository<Match, String>, JpaSpecif
     List<Match> findAllByOrderByMatchNumber();
     List<Match> findAllByOrderByMatchNumberDesc();
 
-    // Previous match finder
-    @Query(value = "SELECT * FROM matches m WHERE TIMESTAMP(m.date, m.time) < :now ORDER BY m.date DESC, m.time DESC LIMIT 1", nativeQuery = true)
+//    // Previous match finder MySQL
+//    @Query("SELECT m FROM Match m WHERE " +
+//            "FUNCTION('timestamp', m.date, m.time) < :now " +
+//            "ORDER BY m.date DESC, m.time DESC")
+//    Optional<Match> findPreviousMatch(@Param("now") LocalDateTime dateTime);
+//
+//    // Next match finder MySQL
+//    @Query("SELECT m FROM Match m WHERE " +
+//            "FUNCTION('timestamp', m.date, m.time) > :now " +
+//            "ORDER BY m.date ASC, m.time ASC")
+//    Optional<Match> findNextMatch(@Param("now") LocalDateTime dateTime);
+
+    // Previous match finder PostgreSQL
+    @Query(value = "SELECT * FROM matches m WHERE m.date + m.time < :now ORDER BY m.date DESC, m.time DESC LIMIT 1", nativeQuery = true)
     Optional<Match> findPreviousMatch(@Param("now") LocalDateTime dateTime);
 
-    // Next match finder
-    @Query(value = "SELECT * FROM matches m WHERE TIMESTAMP(m.date, m.time) > :now ORDER BY m.date ASC, m.time ASC LIMIT 1", nativeQuery = true)
-    Optional<Match> findNextMatch(@Param("now") LocalDateTime dateTime);  // Next match finder
+    // Next match finder PostgreSQL
+    @Query(value = "SELECT * FROM matches m WHERE m.date + m.time > :now ORDER BY m.date ASC, m.time ASC LIMIT 1", nativeQuery = true)
+    Optional<Match> findNextMatch(@Param("now") LocalDateTime dateTime);
 }
