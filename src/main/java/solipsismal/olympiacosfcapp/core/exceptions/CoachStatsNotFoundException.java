@@ -1,6 +1,7 @@
 package solipsismal.olympiacosfcapp.core.exceptions;
 
 public class CoachStatsNotFoundException extends AppGenericException {
+
     private static final String DEFAULT_CODE = "CoachStatsNotFound";
     private static final String DEFAULT_MESSAGE = "The requested coach stats were not found";
 

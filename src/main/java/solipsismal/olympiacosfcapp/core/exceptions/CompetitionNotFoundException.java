@@ -1,6 +1,7 @@
 package solipsismal.olympiacosfcapp.core.exceptions;
 
 public class CompetitionNotFoundException extends AppGenericException {
+
     private static final String DEFAULT_CODE = "CompetitionNotFound";
     private static final String DEFAULT_MESSAGE = "The requested competition was not found";
 

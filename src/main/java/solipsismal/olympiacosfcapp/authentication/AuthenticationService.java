@@ -1,6 +1,5 @@
 package solipsismal.olympiacosfcapp.authentication;
 
-import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -68,10 +67,9 @@ public class AuthenticationService {
     }
 
     public AuthenticationResponseDTO authenticate(AuthenticationRequestDTO dto) {
-        System.out.println("Before authentication");
+
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(dto.username(), dto.password()));
-        System.out.println("After authentication");
 
         User user = (User) authentication.getPrincipal();
         String token = jwtService.generateToken(user.getUsername(), user.getRole().name());

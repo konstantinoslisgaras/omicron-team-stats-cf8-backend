@@ -24,7 +24,7 @@ public class OpenApiConfig {
         return new OpenAPI()
                 .addSecurityItem(new SecurityRequirement().addList("Bearer Authentication"))
                 .info(new Info()
-                        .title("Olympiacos FC Unofficial App")
+                        .title("Omicron Team Stats App")
                         .version("1.0.0")
                         .description("Unofficial App for Olympiacos Players, Games and Statistics.")
                         .contact(new Contact()

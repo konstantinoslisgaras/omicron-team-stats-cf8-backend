@@ -1,6 +1,7 @@
 package solipsismal.olympiacosfcapp.core.exceptions;
 
 public class MatchNotFoundException extends AppGenericException {
+
     private static final String DEFAULT_CODE = "MatchNotFound";
     private static final String DEFAULT_MESSAGE = "The requested match was not found";
 

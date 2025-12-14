@@ -1,6 +1,7 @@
 package solipsismal.olympiacosfcapp.core.exceptions;
 
 public class OpponentNotFoundException extends AppGenericException {
+
     private static final String DEFAULT_CODE = "OpponentNotFound";
     private static final String DEFAULT_MESSAGE = "The requested opponent was not found";
 

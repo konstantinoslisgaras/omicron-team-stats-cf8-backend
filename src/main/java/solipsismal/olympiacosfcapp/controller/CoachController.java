@@ -10,13 +10,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import solipsismal.olympiacosfcapp.core.exceptions.CoachNotFoundException;
-import solipsismal.olympiacosfcapp.core.exceptions.PlayerNotFoundException;
 import solipsismal.olympiacosfcapp.dto.CoachDTO;
-import solipsismal.olympiacosfcapp.dto.PlayerDTO;
 import solipsismal.olympiacosfcapp.model.Coach;
-import solipsismal.olympiacosfcapp.model.Player;
 import solipsismal.olympiacosfcapp.repository.CoachRepository;
-import solipsismal.olympiacosfcapp.repository.PlayerRepository;
 
 @RestController
 @RequestMapping("/api/coach")
@@ -36,7 +32,7 @@ public class CoachController {
             content = @Content(mediaType = "application/json",
                     schema = @Schema(implementation = CoachDTO.class))
     )
-    @ApiResponse(responseCode = "404", description = "Player not Found")
+    @ApiResponse(responseCode = "404", description = "Coach not Found")
     public CoachDTO getCoachById(@PathVariable String coachId) throws CoachNotFoundException {
         Coach coach = coachRepository.findById(coachId).orElseThrow(CoachNotFoundException::new);
         return new CoachDTO(coach);

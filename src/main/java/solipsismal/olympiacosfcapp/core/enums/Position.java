@@ -1,7 +1,6 @@
 package solipsismal.olympiacosfcapp.core.enums;
 
 import lombok.Getter;
-import solipsismal.olympiacosfcapp.model.Player;
 
 @Getter
 public enum Position {
