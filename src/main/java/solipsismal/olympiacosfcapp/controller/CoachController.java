@@ -29,10 +29,20 @@ public class CoachController {
     @ApiResponse(
             responseCode = "200",
             description = "Coach found",
-            content = @Content(mediaType = "application/json",
+            content = @Content(
+                    mediaType = "application/json",
                     schema = @Schema(implementation = CoachDTO.class))
     )
-    @ApiResponse(responseCode = "404", description = "Coach not Found")
+    @ApiResponse(
+            responseCode = "404",
+            description = "Coach not Found",
+            content = @Content
+    )
+    @ApiResponse(
+            responseCode = "500",
+            description = "Internal server error",
+            content = @Content
+    )
     public CoachDTO getCoachById(@PathVariable String coachId) throws CoachNotFoundException {
         Coach coach = coachRepository.findById(coachId).orElseThrow(CoachNotFoundException::new);
         return new CoachDTO(coach);

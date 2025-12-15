@@ -1,5 +1,9 @@
 package solipsismal.olympiacosfcapp.controller;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -29,6 +33,27 @@ public class PlayerMatchController {
     private final PlayerRepository playerRepository;
 
     @GetMapping("/{matchId}")
+    @Operation(
+            summary = "Get full match details",
+            description = "Retrieves complete match details including result, player performances and team statistics"
+    )
+    @ApiResponse(
+            responseCode = "200",
+            description = "Match details retrieved successfully",
+            content = @Content(
+                    mediaType = "application/json",
+                    schema = @Schema(implementation = MatchFullDTO.class))
+    )
+    @ApiResponse(
+            responseCode = "400",
+            description = "Invalid match ID",
+            content = @Content
+    )
+    @ApiResponse(
+            responseCode = "404",
+            description = "Match data not found",
+            content = @Content
+    )
     public MatchFullDTO getMatchFull(@PathVariable String matchId) throws MatchNotFoundException, PlayerMatchNotFoundException {
         Match match = matchRepository.findById(matchId).orElseThrow(MatchNotFoundException::new);
 

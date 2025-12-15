@@ -30,15 +30,23 @@ public class DetailedBioController {
     @GetMapping("/players/{playerId}/{detailedBioId}")
     @Operation(
             summary = "Get a player bio by id.",
-            description = "Retrieves a biography by id."
+            description = "Retrieves a player's detailed biography by player and bio id."
     )
     @ApiResponse(
             responseCode = "200",
-            description = "Biography found",
+            description = "Biography found successfully",
             content = @Content(mediaType = "application/json",
                     schema = @Schema(implementation = DetailedBioDTO.class))
     )
-    @ApiResponse(responseCode = "404", description = "Player biography not Found")
+    @ApiResponse(
+            responseCode = "400",
+            description = "Invalid ID format",
+            content = @Content
+    )
+    @ApiResponse(
+            responseCode = "404",
+            description = "Player biography not Found"
+    )
     public DetailedBioDTO getPlayerDetailedBioById(@PathVariable String playerId, @PathVariable String detailedBioId) throws DetailedBioNotFoundException {
         Player player = playerRepository.findById(playerId).orElseThrow(DetailedBioNotFoundException::new);
 

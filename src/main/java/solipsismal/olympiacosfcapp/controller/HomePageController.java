@@ -1,5 +1,8 @@
 package solipsismal.olympiacosfcapp.controller;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,6 +27,20 @@ public class HomePageController {
     private final CompetitionService competitionService;
 
     @GetMapping("/homepage")
+    @Operation(
+            summary = "Get homepage data",
+            description = "Retrieves all data needed for the application homepage including matches, competitions and stat leaders."
+    )
+    @ApiResponse(
+            responseCode = "200",
+            description = "Homepage data retrieved successfully",
+            content = @Content
+    )
+    @ApiResponse(
+            responseCode = "500",
+            description = "Internal server error",
+            content = @Content
+    )
     public Map<String, Object> getHomepageData() {
         Map<String, Object> homePageData = new HashMap<>();
 

@@ -32,7 +32,19 @@ public class TeamStatsController {
             content = @Content(mediaType = "application/json",
                     schema = @Schema(implementation = TeamStatsDTO.class))
     )
-    @ApiResponse(responseCode = "400", description = "Team stats not found")
+    @ApiResponse(
+            responseCode = "400",
+            description = "Invalid team stats ID"
+    )
+    @ApiResponse(
+            responseCode = "404",
+            description = "Team stats not Found"
+    )
+    @ApiResponse(
+            responseCode = "500",
+            description = "Internal server error",
+            content = @Content
+    )
     public TeamStatsDTO getTeamStatsById(@PathVariable String teamStatsId) throws TeamStatsNotFoundException {
         TeamStats teamStats = teamStatsRepository.findById(teamStatsId).orElseThrow(TeamStatsNotFoundException::new);
         return new TeamStatsDTO(teamStats);

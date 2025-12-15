@@ -1,5 +1,9 @@
 package solipsismal.olympiacosfcapp.controller;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -29,6 +33,27 @@ public class SuperAdminController {
 
     @GetMapping("/competitions")
     @PreAuthorize("hasRole('SUPER_ADMIN')")
+    @Operation(
+            summary = "Get all competitions (Super Admin)",
+            description = "Retrieves all competitions - Super Admin only"
+    )
+    @ApiResponse(
+            responseCode = "200",
+            description = "Competitions retrieved successfully",
+            content = @Content(
+                    mediaType = "application/json",
+                    schema = @Schema(implementation = CompetitionDTO.class))
+    )
+    @ApiResponse(
+            responseCode = "403",
+            description = "Forbidden - Admin access required",
+            content = @Content
+    )
+    @ApiResponse(
+            responseCode = "500",
+            description = "Internal server error",
+            content = @Content
+    )
     public ResponseEntity<List<CompetitionDTO>> getAllCompetitions() {
         List<CompetitionDTO> competitions = competitionService.findActive();
         return ResponseEntity.ok(competitions);
@@ -36,6 +61,37 @@ public class SuperAdminController {
 
     @PutMapping("/competitions/position")
     @PreAuthorize("hasRole('SUPER_ADMIN')")
+    @Operation(
+            summary = "Update competition position (Super Admin)",
+            description = "Updates a competition's position - Super Admin only"
+    )
+    @ApiResponse(
+            responseCode = "200",
+            description = "Competition position updated successfully",
+            content = @Content(
+                    mediaType = "application/json",
+                    schema = @Schema(implementation = CompetitionDTO.class))
+    )
+    @ApiResponse(
+            responseCode = "400",
+            description = "Invalid update data",
+            content = @Content
+    )
+    @ApiResponse(
+            responseCode = "403",
+            description = "Forbidden - Admin access required",
+            content = @Content
+    )
+    @ApiResponse(
+            responseCode = "404",
+            description = "Competition not found",
+            content = @Content
+    )
+    @ApiResponse(
+            responseCode = "500",
+            description = "Internal server error",
+            content = @Content
+    )
     public ResponseEntity<CompetitionDTO> updateCompetitionPosition(@Valid @RequestBody CompetitionPositionUpdateDTO updateDTO)
             throws CompetitionNotFoundException {
         CompetitionDTO updatedCompetition = competitionService.updateCompetitionPosition(updateDTO);
@@ -44,6 +100,32 @@ public class SuperAdminController {
 
     @GetMapping("/users/{username}")
     @PreAuthorize("hasRole('SUPER_ADMIN')")
+    @Operation(
+            summary = "Get user by username (Super Admin)",
+            description = "Retrieves user profile by username - Super Admin only"
+    )
+    @ApiResponse(
+            responseCode = "200",
+            description = "User found successfully",
+            content = @Content(
+                    mediaType = "application/json",
+                    schema = @Schema(implementation = UserDTO.class))
+    )
+    @ApiResponse(
+            responseCode = "403",
+            description = "Forbidden - Admin access required",
+            content = @Content
+    )
+    @ApiResponse(
+            responseCode = "404",
+            description = "User not found",
+            content = @Content
+    )
+    @ApiResponse(
+            responseCode = "500",
+            description = "Internal server error",
+            content = @Content
+    )
     public ResponseEntity<UserDTO> getUserByUsername(@PathVariable String username) {
         try {
             UserDTO user = userService.getUserProfile(username);
@@ -55,12 +137,57 @@ public class SuperAdminController {
 
     @GetMapping("/users/count")
     @PreAuthorize("hasRole('SUPER_ADMIN')")
+    @Operation(
+            summary = "Get total user count (Super Admin)",
+            description = "Retrieves total number of users - Super Admin only"
+    )
+    @ApiResponse(
+            responseCode = "200",
+            description = "User count retrieved successfully",
+            content = @Content
+    )
+    @ApiResponse(
+            responseCode = "403",
+            description = "Forbidden - Admin access required",
+            content = @Content
+    )
+    @ApiResponse(
+            responseCode = "500",
+            description = "Internal server error",
+            content = @Content
+    )
     public Integer getTotalUsers() {
         return Math.toIntExact(userRepository.count());
     }
 
     @GetMapping("/users/paginated")
     @PreAuthorize("hasRole('SUPER_ADMIN')")
+    @Operation(
+            summary = "Get paginated users (Super Admin)",
+            description = "Retrieves paginated list of users - Super Admin only"
+    )
+    @ApiResponse(
+            responseCode = "200",
+            description = "Paginated users retrieved successfully",
+            content = @Content(
+                    mediaType = "application/json",
+                    schema = @Schema(implementation = Paginated.class))
+    )
+    @ApiResponse(
+            responseCode = "400",
+            description = "Invalid pagination parameters",
+            content = @Content
+    )
+    @ApiResponse(
+            responseCode = "403",
+            description = "Forbidden - Admin access required",
+            content = @Content
+    )
+    @ApiResponse(
+            responseCode = "500",
+            description = "Internal server error",
+            content = @Content
+    )
     public ResponseEntity<Paginated<UserDTO>> getPaginatedUsers(
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "10") int size

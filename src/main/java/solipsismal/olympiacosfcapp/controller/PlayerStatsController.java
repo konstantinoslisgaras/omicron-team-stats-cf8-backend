@@ -33,7 +33,14 @@ public class PlayerStatsController {
             content = @Content(mediaType = "application/json",
                     schema = @Schema(implementation = PlayerStatsDTO.class))
     )
-    @ApiResponse(responseCode = "404", description = "Player stats not Found")
+    @ApiResponse(
+            responseCode = "400",
+            description = "Invalid player stats ID"
+    )
+    @ApiResponse(
+            responseCode = "404",
+            description = "Player stats not Found"
+    )
     public PlayerStatsDTO getPlayerStatsById(@PathVariable String playerStatsId) throws PlayerStatsNotFoundException {
         PlayerStats playerStats = playerStatsRepository.findById(playerStatsId).orElseThrow(PlayerStatsNotFoundException::new);
         return PlayerStatsMapper.toDTO(playerStats);

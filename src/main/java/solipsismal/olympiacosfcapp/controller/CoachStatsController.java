@@ -33,7 +33,19 @@ public class CoachStatsController {
             content = @Content(mediaType = "application/json",
                     schema = @Schema(implementation = CoachStatsDTO.class))
     )
-    @ApiResponse(responseCode = "404", description = "Coach stats not Found")
+    @ApiResponse(
+            responseCode = "400",
+            description = "Invalid coach stats ID"
+    )
+    @ApiResponse(
+            responseCode = "404",
+            description = "Coach stats not Found"
+    )
+    @ApiResponse(
+            responseCode = "500",
+            description = "Internal server error",
+            content = @Content
+    )
     public CoachStatsDTO getCoachStatsById(@PathVariable String coachStatsId) throws CoachStatsNotFoundException {
         Coach coach = coachRepository.findByCoachStatsId(coachStatsId).orElseThrow(CoachStatsNotFoundException::new);
         return CoachStatsMapper.toDTO(coach);

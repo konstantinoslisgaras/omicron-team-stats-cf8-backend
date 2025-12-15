@@ -1,7 +1,6 @@
 package solipsismal.olympiacosfcapp.service;
 
 import org.springframework.stereotype.Service;
-import solipsismal.olympiacosfcapp.dto.PlayerDTO;
 import solipsismal.olympiacosfcapp.dto.PlayerFansDTO;
 import solipsismal.olympiacosfcapp.dto.PlayerListDTO;
 import solipsismal.olympiacosfcapp.repository.PlayerRepository;

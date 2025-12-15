@@ -12,12 +12,11 @@ import java.util.Optional;
 public interface MatchRepository extends JpaRepository<Match, String>, JpaSpecificationExecutor<Match> {
     List<Match> findAllByOrderByMatchNumber();
     List<Match> findAllByOrderByMatchNumberDesc();
-//
-//    // Previous match finder MySQL
+
+      // Previous match finder MySQL
 //    @Query(value = "SELECT * FROM matches m WHERE TIMESTAMP(m.date, m.time) < :now ORDER BY m.date DESC, m.time DESC LIMIT 1", nativeQuery = true)
 //    Optional<Match> findPreviousMatch(@Param("now") LocalDateTime dateTime);
-//
-//    // Next match finder MySQL
+      // Next match finder MySQL
 //    @Query(value = "SELECT * FROM matches m WHERE TIMESTAMP(m.date, m.time) > :now ORDER BY m.date DESC, m.time DESC LIMIT 1", nativeQuery = true)
 //    Optional<Match> findNextMatch(@Param("now") LocalDateTime dateTime);
 

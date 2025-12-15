@@ -102,5 +102,4 @@ public class SecurityConfiguration {
 
     @Bean
     public AuthenticationEntryPoint myCustomAuthenticationEntryPoint() { return new CustomAuthenticationEntryPoint(); }
-
 }

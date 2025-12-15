@@ -1,5 +1,9 @@
 package solipsismal.olympiacosfcapp.controller;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,6 +25,27 @@ public class CompetitionController {
     private final CompetitionRepository competitionRepository;
 
     @GetMapping
+    @Operation(
+            summary = "Get all competitions",
+            description = "Retrieves information about all competitions Olympiacos participates in."
+    )
+    @ApiResponse(
+            responseCode = "200",
+            description = "Competitions retrieved successfully",
+            content = @Content(
+                    mediaType = "application/json",
+                    schema = @Schema(implementation = CompetitionDTO.class))
+    )
+    @ApiResponse(
+            responseCode = "404",
+            description = "No competitions found",
+            content = @Content
+    )
+    @ApiResponse(
+            responseCode = "500",
+            description = "Internal server error",
+            content = @Content
+    )
     public List<CompetitionDTO> getCompetitionsInfo() throws CompetitionNotFoundException {
         return competitionRepository.findAll()
                 .stream()

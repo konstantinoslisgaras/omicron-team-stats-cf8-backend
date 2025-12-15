@@ -6,7 +6,6 @@ import solipsismal.olympiacosfcapp.model.Match;
 import solipsismal.olympiacosfcapp.repository.MatchRepository;
 import java.time.LocalDateTime;
 import java.util.*;
-import java.util.stream.Collectors;
 
 @Service
 public class MatchService implements IMatchService{

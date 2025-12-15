@@ -21,6 +21,4 @@ public class OlympiacosFcApplication {
 		System.out.println("Forza Olympiacos! Forza Thrylos!");
 		System.out.println("=".repeat(100));
 	}
-
-	// TO DO: edit profile in superadmin also- flyway
 }

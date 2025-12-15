@@ -15,8 +15,6 @@ import solipsismal.olympiacosfcapp.dto.PlayerListDTO;
 import solipsismal.olympiacosfcapp.model.Player;
 import solipsismal.olympiacosfcapp.repository.PlayerRepository;
 import solipsismal.olympiacosfcapp.service.PlayerService;
-import solipsismal.olympiacosfcapp.service.UserService;
-
 
 import java.util.List;
 
@@ -36,16 +34,37 @@ public class PlayerController {
     @ApiResponse(
             responseCode = "200",
             description = "Player found",
-            content = @Content(mediaType = "application/json",
+            content = @Content(
+                    mediaType = "application/json",
                     schema = @Schema(implementation = PlayerDTO.class))
     )
-    @ApiResponse(responseCode = "404", description = "Player not Found")
+    @ApiResponse(
+            responseCode = "404",
+            description = "Player not Found",
+            content = @Content
+    )
     public PlayerDTO getPlayerById(@PathVariable String playerId) throws PlayerNotFoundException {
         Player player = playerRepository.findById(playerId).orElseThrow(PlayerNotFoundException::new);
         return new PlayerDTO(player);
     }
 
     @GetMapping("/auth/register")
+    @Operation(
+            summary = "Get the player list.",
+            description = "Retrieves a concise list of players available for user selection as a supported player."
+    )
+    @ApiResponse(
+            responseCode = "200",
+            description = "Player list retrieved successfully",
+            content = @Content(
+                    mediaType = "application/json",
+                    schema = @Schema(implementation = PlayerListDTO.class))
+            )
+    @ApiResponse(
+            responseCode = "404",
+            description = "Player list not Found",
+            content = @Content
+    )
     public List<PlayerListDTO> getPlayerList() {
         return playerService.getPlayerList();
     }
