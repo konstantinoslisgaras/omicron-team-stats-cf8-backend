@@ -97,4 +97,4 @@ Distributed under the MIT License.
 
 ---
 
-### 📧 konstantinoslisgaras@gmail.com
+📧 konstantinoslisgaras@gmail.com
