@@ -40,7 +40,7 @@ cd frontend && npm install && npm run dev
 
 ---
 
-## ✨ Features
+# ✨ Features
 | Icon | Feature             | Description                           |
 |------|---------------------|---------------------------------------|
 | 📊 | **Statistics**      | Full player and match statistics      |
@@ -48,6 +48,24 @@ cd frontend && npm install && npm run dev
 | 🏆 | **Leaderboards**    | Fan and player rankings               |
 | 🔐 | **Authentication**  | Secure user login and registration    |
 | 📱 | **Responsive**      | Works on all devices                  |
+
+---
+
+# 🛡️ Authentication
+
+## User Dashboard (Logged-in Users)
+Personalized experience for registered supporters.
+
+👨‍💼 Create profile
+📇 View profile
+🖊️ Edit profile
+❤️ Favorite player
+
+## 🔐 Super Admin Dashboard
+
+📋 View paginated profiles list
+👁️ View any user profile
+🖊️ Edit Competition Position
 
 ---
 
@@ -69,3 +87,7 @@ cd frontend && npm install && npm run dev
 
 # 📄 License
 Distributed under the MIT License.
+
+---
+
+### 📧 konstantinoslisgaras@gmail.com
