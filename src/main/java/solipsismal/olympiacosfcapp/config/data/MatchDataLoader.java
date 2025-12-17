@@ -125,7 +125,7 @@ public class MatchDataLoader implements CommandLineRunner {
 
         // Match 8 | Arsenal FC - OLYMPIACOS F.C. 2:0 | 01/10/2025
         TeamStats teamStats08011025 = new TeamStats("TS08011025",
-                0, 0, 2, 2, 0);
+                0, 0, 2, 1, 0);
         Match match08011025 = new Match("MA08011025",
                 olympiacos, opponentRepository.findByOpponentName("Arsenal FC").orElseThrow(OpponentNotFoundException::new),
                 0, 2,
@@ -284,12 +284,14 @@ public class MatchDataLoader implements CommandLineRunner {
         saveMatchAndUpdateTotalStats(match23141225, teamStats23141225, season2526TotalTeamStats);
 
         // Match 24 | OLYMPIACOS F.C. - Iraklis FC -:- | 17/12/2025
-        TeamStats teamStats24171225 = new TeamStats("TS24171225");
+        TeamStats teamStats24171225 = new TeamStats("TS24171225",
+                6, 4, 0, 0, 0);
         Match match24171225 = new Match("MA24171225",
                 olympiacos, opponentRepository.findByOpponentName("Iraklis FC").orElseThrow(OpponentNotFoundException::new),
+                6, 0,
                 "17/12/2025", "18:00", WEDNESDAY, greekFootballCup, HOME,
                 24, "Greek Football Cup League Phase, MatchDay: 04", mendilibar, season2526, teamStats24171225);
-        matchRepository.save(match24171225);
+        saveMatchAndUpdateTotalStats(match24171225, teamStats24171225, season2526TotalTeamStats);
 
         // Match 25 | OLYMPIACOS F.C. - Kifisia FC -:- | 20/12/2025
         TeamStats teamStats25201225 = new TeamStats("TS25201225");

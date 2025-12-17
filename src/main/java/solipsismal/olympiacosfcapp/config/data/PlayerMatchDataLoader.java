@@ -354,7 +354,7 @@ public class PlayerMatchDataLoader implements CommandLineRunner {
                 new PlayerMatch("PM14641009", players.get("Biancone"), match08011025,
                         0, 0, 0, 0, 19),
                 new PlayerMatch("PM15124991", players.get("Strefezza"), match08011025,
-                        0, 0, 0, 0, 19),
+                        0, 0, 1, 0, 19),
                 new PlayerMatch("PM16264375", players.get("Mouzakitis"), match08011025,
                         0, 0, 0, 0, 19)
         );
@@ -935,6 +935,45 @@ public class PlayerMatchDataLoader implements CommandLineRunner {
         );
         setGKCleanSheet(playerMatches23141225, players.get("Tzolakis"));
         savePlayerMatchesAndUpdateTotalStats(playerMatches23141225, DRAW);
+
+        // Match 24 | OLYMPIACOS F.C. - Iraklis FC 6:0 | 17/12/2025
+        Match match24171225 = matchRepository.findById("MA24171225").orElseThrow();
+        List<PlayerMatch> playerMatches24171225 = List.of(
+                new PlayerMatch("PM01942713", players.get("Botis"), match24171225,
+                        0, 0, 0, 0, 91),
+                new PlayerMatch("PM02658724", players.get("Rodinei"), match24171225,
+                        1, 0, 0, 0, 68),
+                new PlayerMatch("PM03990312", players.get("Kalogeropoulos"), match24171225,
+                        1, 0, 0, 0, 91),
+                new PlayerMatch("PM04450000", players.get("Mancha"), match24171225,
+                        0, 0, 0, 0, 91),
+                new PlayerMatch("PM05907684", players.get("Ortega"), match24171225,
+                        0, 0, 0, 0, 68),
+                new PlayerMatch("PM06693210", players.get("Scipioni"), match24171225,
+                        0, 0, 0, 0, 91),
+                new PlayerMatch("PM07976754", players.get("Nascimento"), match24171225,
+                        0, 0, 0, 0, 91),
+                new PlayerMatch("PM08904851", players.get("Yazici"), match24171225,
+                        1, 1, 0, 0, 91),
+                new PlayerMatch("PM09111031", players.get("Chiquinho"), match24171225,
+                        1, 0, 0, 0, 68),
+                new PlayerMatch("PM10777434", players.get("Podence"), match24171225,
+                        0, 3, 0, 0, 68),
+                new PlayerMatch("PM11985432", players.get("Yaremchuk"), match24171225,
+                        1, 0, 0, 0, 68),
+                new PlayerMatch("PM12109981", players.get("Retsos"), match24171225,
+                        1, 0, 0, 0, 23),
+                new PlayerMatch("PM13544447", players.get("Vezo"), match24171225,
+                        0, 0, 0, 0, 23),
+                new PlayerMatch("PM14032812", players.get("Hezze"), match24171225,
+                        0, 0, 0, 0, 23),
+                new PlayerMatch("PM15885993", players.get("Strefezza"), match24171225,
+                        0, 0, 0, 0, 23),
+                new PlayerMatch("PM16311612", players.get("Taremi"), match24171225,
+                        0, 0, 0, 0, 23)
+        );
+        setGKCleanSheet(playerMatches24171225, players.get("Botis"));
+        savePlayerMatchesAndUpdateTotalStats(playerMatches24171225, WIN);
     }
 
     private Map<String, Player> getPlayersByLastnames(String... lastnames) throws PlayerNotFoundException{
