@@ -45,6 +45,7 @@ public class MatchDataLoader implements CommandLineRunner {
         Competition superLeagueGreece = competitionRepository.findByCompetitionName("Greek Super League").orElseThrow();
         Competition championsLeague = competitionRepository.findByCompetitionName("UEFA Champions League").orElseThrow();
         Competition greekFootballCup = competitionRepository.findByCompetitionName("Greek Football Cup").orElseThrow();
+        Competition greekSuperCup = competitionRepository.findByCompetitionName("Greek Super Cup").orElseThrow();
 
         // Team and Season Stats
         TeamStats season2526TotalTeamStats = new TeamStats("TS20252026");
@@ -293,16 +294,26 @@ public class MatchDataLoader implements CommandLineRunner {
                 24, "Greek Football Cup League Phase, MatchDay: 04", mendilibar, season2526, teamStats24171225);
         saveMatchAndUpdateTotalStats(match24171225, teamStats24171225, season2526TotalTeamStats);
 
-        // Match 25 | OLYMPIACOS F.C. - Kifisia FC -:- | 20/12/2025
-        TeamStats teamStats25201225 = new TeamStats("TS25201225");
+        // Match 25 | OLYMPIACOS F.C. - Kifisia FC 1:1 | 20/12/2025
+        TeamStats teamStats25201225 = new TeamStats("TS25201225",
+                1, 0, 1, 0, 0);
         Match match25201225 = new Match("MA25201225",
                 olympiacos, opponentRepository.findByOpponentName("Kifisia FC").orElseThrow(OpponentNotFoundException::new),
+                1, 1,
                 "20/12/2025", "20:30", SATURDAY, superLeagueGreece, HOME,
                 25, "Greek Super League Round 2, MatchDay: 15", mendilibar, season2526, teamStats25201225);
-        matchRepository.save(match25201225);
+        saveMatchAndUpdateTotalStats(match25201225, teamStats25201225, season2526TotalTeamStats);
+
+        // Match 26 | OLYMPIACOS F.C. - OFI Crete FC -:- | 03/01/2025
+        TeamStats teamStats26030126 = new TeamStats("TS26030126");
+        Match match26030126 = new Match("MA26030126",
+                olympiacos, opponentRepository.findByOpponentName("OFI Crete FC").orElseThrow(OpponentNotFoundException::new),
+                "03/01/2026", "17:00", SATURDAY, greekSuperCup, NEUTRAL,
+                26, "Greek Super Cup Final", mendilibar, season2526, teamStats26030126);
+        matchRepository.save(match26030126);
 
         // Competition Position Setter
-        competitionRepository.save(superLeagueGreece.setCompetitionPosition(1));
+        competitionRepository.save(superLeagueGreece.setCompetitionPosition(2));
         competitionRepository.save(championsLeague.setCompetitionPosition(29));
         competitionRepository.save(greekFootballCup.setCompetitionPosition(1));
     }
