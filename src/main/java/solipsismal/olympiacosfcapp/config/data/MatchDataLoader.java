@@ -325,7 +325,7 @@ public class MatchDataLoader implements CommandLineRunner {
         Match match28170126 = new Match("MA28170126",
                 olympiacos, opponentRepository.findByOpponentName("Asteras Tripolis").orElseThrow(OpponentNotFoundException::new),
                 "17/01/2026", "18:30", SATURDAY, superLeagueGreece, HOME,
-                27, "Greek Super League Round 2, MatchDay: 17", mendilibar, season2526, teamStats28170126);
+                28, "Greek Super League Round 2, MatchDay: 17", mendilibar, season2526, teamStats28170126);
         matchRepository.save(match28170126);
 
         // Competition Position Setter
