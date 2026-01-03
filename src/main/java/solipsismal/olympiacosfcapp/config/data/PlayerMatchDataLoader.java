@@ -1011,6 +1011,11 @@ public class PlayerMatchDataLoader implements CommandLineRunner {
         );
         setGKGoalsConceded(playerMatches25201225, players.get("Tzolakis"), 1);
         savePlayerMatchesAndUpdateTotalStats(playerMatches25201225, DRAW);
+
+        // Match 26 | OLYMPIACOS F.C. - OFI Crete FC -:- | 03/01/2025
+
+        // Match 27 | Atromitos FC - OLYMPIACOS F.C. -:- | 10/01/2025
+
     }
 
     private Map<String, Player> getPlayersByLastnames(String... lastnames) throws PlayerNotFoundException{

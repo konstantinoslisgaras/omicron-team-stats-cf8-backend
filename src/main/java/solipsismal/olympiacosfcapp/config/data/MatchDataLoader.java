@@ -54,7 +54,7 @@ public class MatchDataLoader implements CommandLineRunner {
         seasonRepository.save(season2526);
 
         // Matches
-        // Match 1 | OLYMPIACOS F.C. - Asteras 2:0 | 23/08/2025
+        // Match 1 | OLYMPIACOS F.C. - Asteras Tripolis 2:0 | 23/08/2025
         TeamStats teamStats01230825 = new TeamStats("TS01230825",
                 2, 2, 0, 0, 0);
         Match match01230825 = new Match("MA01230825",
@@ -311,6 +311,22 @@ public class MatchDataLoader implements CommandLineRunner {
                 "03/01/2026", "17:00", SATURDAY, greekSuperCup, NEUTRAL,
                 26, "Greek Super Cup Final", mendilibar, season2526, teamStats26030126);
         matchRepository.save(match26030126);
+
+        // Match 27 | Atromitos FC - OLYMPIACOS F.C. -:- | 10/01/2025
+        TeamStats teamStats27100126 = new TeamStats("TS27100126");
+        Match match27100126 = new Match("MA27100126",
+                olympiacos, opponentRepository.findByOpponentName("Atromitos FC").orElseThrow(OpponentNotFoundException::new),
+                "10/01/2026", "19:30", SATURDAY, superLeagueGreece, AWAY,
+                27, "Greek Super League Round 2, MatchDay: 16", mendilibar, season2526, teamStats27100126);
+        matchRepository.save(match27100126);
+
+        // Match 28 | OLYMPIACOS F.C. - Asteras Tripolis -:- | 17/01/2025
+        TeamStats teamStats28170126 = new TeamStats("TS28170126");
+        Match match28170126 = new Match("MA28170126",
+                olympiacos, opponentRepository.findByOpponentName("Asteras Tripolis").orElseThrow(OpponentNotFoundException::new),
+                "17/01/2026", "18:30", SATURDAY, superLeagueGreece, HOME,
+                27, "Greek Super League Round 2, MatchDay: 17", mendilibar, season2526, teamStats28170126);
+        matchRepository.save(match28170126);
 
         // Competition Position Setter
         competitionRepository.save(superLeagueGreece.setCompetitionPosition(2));
