@@ -310,7 +310,7 @@ public class MatchDataLoader implements CommandLineRunner {
         Match match26030126 = new Match("MA26030126",
                 olympiacos, opponentRepository.findByOpponentName("OFI Crete FC").orElseThrow(OpponentNotFoundException::new),
                 3, 0,
-                "03/01/2026", "17:00", SATURDAY, greekSuperCup, NEUTRAL,
+                "03/01/2026", "17:00", SATURDAY, greekSuperCup, HOME,
                 26, "Greek Super Cup Final", mendilibar, season2526, teamStats26030126);
         saveMatchAndUpdateTotalStats(match26030126, teamStats26030126, season2526TotalTeamStats);
 
