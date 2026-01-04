@@ -1012,10 +1012,50 @@ public class PlayerMatchDataLoader implements CommandLineRunner {
         setGKGoalsConceded(playerMatches25201225, players.get("Tzolakis"), 1);
         savePlayerMatchesAndUpdateTotalStats(playerMatches25201225, DRAW);
 
-        // Match 26 | OLYMPIACOS F.C. - OFI Crete FC -:- | 03/01/2025
+        // Match 26 | OLYMPIACOS F.C. - OFI Crete FC 3:0 | 03/01/2026
+        Match match26030126 = matchRepository.findById("MA26030126").orElseThrow();
+        List<PlayerMatch> playerMatches26030126 = List.of(
+                new PlayerMatch("PM01998909", players.get("Tzolakis"), match26030126,
+                        0, 0, 0, 0, 131),
+                new PlayerMatch("PM02421289", players.get("Rodinei"), match26030126,
+                        0, 0, 0, 0, 91),
+                new PlayerMatch("PM03011178", players.get("Retsos"), match26030126,
+                        0, 0, 0, 0, 131),
+                new PlayerMatch("PM04908762", players.get("Biancone"), match26030126,
+                        0, 0, 0, 0, 88),
+                new PlayerMatch("PM05456781", players.get("Ortega"), match26030126,
+                        0, 0, 0, 0, 131),
+                new PlayerMatch("PM06964771", players.get("Hezze"), match26030126,
+                        0, 0, 1, 0, 131),
+                new PlayerMatch("PM07188823", players.get("Mouzakitis"), match26030126,
+                        0, 1, 0, 0, 131),
+                new PlayerMatch("PM08097415", players.get("Martins"), match26030126,
+                        0, 0, 1, 0, 110),
+                new PlayerMatch("PM09050434", players.get("Chiquinho"), match26030126,
+                        0, 0, 0, 0, 90),
+                new PlayerMatch("PM10100101", players.get("Podence"), match26030126,
+                        0, 0, 0, 0, 102),
+                new PlayerMatch("PM11115687", players.get("Taremi"), match26030126,
+                        1, 0, 0, 0, 106),
+                new PlayerMatch("PM12421000", players.get("Kalogeropoulos"), match26030126,
+                        1, 0, 0, 0, 43),
+                new PlayerMatch("PM13976799", players.get("Yaremchuk"), match26030126,
+                        0, 0, 0, 0, 41),
+                new PlayerMatch("PM14314141", players.get("Costinha"), match26030126,
+                        0, 1, 0, 0, 40),
+                new PlayerMatch("PM15896739", players.get("Strefezza"), match26030126,
+                        0, 0, 0, 0, 29),
+                new PlayerMatch("PM16546661", players.get("Nascimento"), match26030126,
+                        0, 0, 0, 0, 25),
+                new PlayerMatch("PM17087312", players.get("Yazici"), match26030126,
+                        1, 0, 0, 0, 21)
+        );
+        setGKCleanSheet(playerMatches25201225, players.get("Tzolakis"));
+        savePlayerMatchesAndUpdateTotalStats(playerMatches26030126, WIN);
 
         // Match 27 | Atromitos FC - OLYMPIACOS F.C. -:- | 10/01/2025
 
+        // Match 28 | OLYMPIACOS F.C. - Asteras Tripolis -:- | 17/01/2025
     }
 
     private Map<String, Player> getPlayersByLastnames(String... lastnames) throws PlayerNotFoundException{
