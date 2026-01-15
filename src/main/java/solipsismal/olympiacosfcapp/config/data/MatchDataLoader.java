@@ -325,14 +325,14 @@ public class MatchDataLoader implements CommandLineRunner {
         saveMatchAndUpdateTotalStats(match27100126, teamStats27100126, season2526TotalTeamStats);
 
         // Match 28 | OLYMPIACOS F.C. - PAOK FC 0:2 | 14/01/2026
-        TeamStats teamStats28170126 = new TeamStats("TS28170126",
+        TeamStats teamStats28140126 = new TeamStats("TS28140126",
                 0, 0, 2, 3, 0);
-        Match match28170126 = new Match("MA28170126",
+        Match match28170126 = new Match("MA28140126",
                 olympiacos, opponentRepository.findByOpponentName("PAOK FC").orElseThrow(OpponentNotFoundException::new),
                 0, 2,
                 "14/01/2026", "18:30", WEDNESDAY, greekFootballCup, HOME,
-                28, "Greek Football Cup, Quarter Finals", mendilibar, season2526, teamStats28170126);
-        matchRepository.save(match28170126);
+                28, "Greek Football Cup, Quarter Finals", mendilibar, season2526, teamStats28140126);
+        saveMatchAndUpdateTotalStats(match28170126, teamStats28140126, season2526TotalTeamStats);
 
         // Match 29 | OLYMPIACOS F.C. - Bayer 04 Leverkusen -:- | 20/01/2026
         TeamStats teamStats29200126 = new TeamStats("TS29200126");
