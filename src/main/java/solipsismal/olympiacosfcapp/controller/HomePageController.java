@@ -2,12 +2,14 @@ package solipsismal.olympiacosfcapp.controller;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import solipsismal.olympiacosfcapp.dto.CompetitionDTO;
+import solipsismal.olympiacosfcapp.dto.ErrorResponseDTO;
 import solipsismal.olympiacosfcapp.dto.MatchBasicDTO;
 import solipsismal.olympiacosfcapp.service.CompetitionService;
 import solipsismal.olympiacosfcapp.service.MatchService;
@@ -39,7 +41,10 @@ public class HomePageController {
     @ApiResponse(
             responseCode = "500",
             description = "Internal server error",
-            content = @Content
+            content = @Content(
+                    mediaType = "application/json",
+                    schema = @Schema(implementation = ErrorResponseDTO.class)
+            )
     )
     public Map<String, Object> getHomepageData() {
         Map<String, Object> homePageData = new HashMap<>();

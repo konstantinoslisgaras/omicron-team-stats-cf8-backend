@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import solipsismal.olympiacosfcapp.core.exceptions.PlayerStatsNotFoundException;
+import solipsismal.olympiacosfcapp.dto.ErrorResponseDTO;
 import solipsismal.olympiacosfcapp.dto.PlayerStatsDTO;
 import solipsismal.olympiacosfcapp.mapper.PlayerStatsMapper;
 import solipsismal.olympiacosfcapp.model.PlayerStats;
@@ -35,11 +36,19 @@ public class PlayerStatsController {
     )
     @ApiResponse(
             responseCode = "400",
-            description = "Invalid player stats ID"
+            description = "Invalid player stats ID",
+            content = @Content(
+                    mediaType = "application/json",
+                    schema = @Schema(implementation = ErrorResponseDTO.class)
+            )
     )
     @ApiResponse(
             responseCode = "404",
-            description = "Player stats not Found"
+            description = "Player stats not Found",
+            content = @Content(
+                    mediaType = "application/json",
+                    schema = @Schema(implementation = ErrorResponseDTO.class)
+            )
     )
     public PlayerStatsDTO getPlayerStatsById(@PathVariable String playerStatsId) throws PlayerStatsNotFoundException {
         PlayerStats playerStats = playerStatsRepository.findById(playerStatsId).orElseThrow(PlayerStatsNotFoundException::new);

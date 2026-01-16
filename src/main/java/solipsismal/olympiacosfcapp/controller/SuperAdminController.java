@@ -13,6 +13,7 @@ import solipsismal.olympiacosfcapp.core.exceptions.CompetitionNotFoundException;
 import solipsismal.olympiacosfcapp.core.exceptions.UserNotFoundException;
 import solipsismal.olympiacosfcapp.dto.CompetitionDTO;
 import solipsismal.olympiacosfcapp.dto.CompetitionPositionUpdateDTO;
+import solipsismal.olympiacosfcapp.dto.ErrorResponseDTO;
 import solipsismal.olympiacosfcapp.dto.UserDTO;
 import solipsismal.olympiacosfcapp.filters.Paginated;
 import solipsismal.olympiacosfcapp.model.User;
@@ -176,17 +177,26 @@ public class SuperAdminController {
     @ApiResponse(
             responseCode = "400",
             description = "Invalid pagination parameters",
-            content = @Content
+            content = @Content(
+                    mediaType = "application/json",
+                    schema = @Schema(implementation = ErrorResponseDTO.class)
+            )
     )
     @ApiResponse(
             responseCode = "403",
             description = "Forbidden - Admin access required",
-            content = @Content
+            content = @Content(
+                    mediaType = "application/json",
+                    schema = @Schema(implementation = ErrorResponseDTO.class)
+            )
     )
     @ApiResponse(
             responseCode = "500",
             description = "Internal server error",
-            content = @Content
+            content = @Content(
+                    mediaType = "application/json",
+                    schema = @Schema(implementation = ErrorResponseDTO.class)
+            )
     )
     public ResponseEntity<Paginated<UserDTO>> getPaginatedUsers(
             @RequestParam(defaultValue = "0") int page,

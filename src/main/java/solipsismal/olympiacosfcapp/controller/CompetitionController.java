@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import solipsismal.olympiacosfcapp.core.exceptions.CompetitionNotFoundException;
 import solipsismal.olympiacosfcapp.dto.CompetitionDTO;
+import solipsismal.olympiacosfcapp.dto.ErrorResponseDTO;
 import solipsismal.olympiacosfcapp.dto.OlympiacosDTO;
 import solipsismal.olympiacosfcapp.model.Competition;
 import solipsismal.olympiacosfcapp.repository.CompetitionRepository;
@@ -39,12 +40,18 @@ public class CompetitionController {
     @ApiResponse(
             responseCode = "404",
             description = "No competitions found",
-            content = @Content
+            content = @Content(
+                    mediaType = "application/json",
+                    schema = @Schema(implementation = ErrorResponseDTO.class)
+            )
     )
     @ApiResponse(
             responseCode = "500",
             description = "Internal server error",
-            content = @Content
+            content = @Content(
+                    mediaType = "application/json",
+                    schema = @Schema(implementation = ErrorResponseDTO.class)
+            )
     )
     public List<CompetitionDTO> getCompetitionsInfo() throws CompetitionNotFoundException {
         return competitionRepository.findAll()

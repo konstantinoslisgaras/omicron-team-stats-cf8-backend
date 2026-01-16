@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import solipsismal.olympiacosfcapp.core.exceptions.OlympiacosInfoNotFoundException;
+import solipsismal.olympiacosfcapp.dto.ErrorResponseDTO;
 import solipsismal.olympiacosfcapp.dto.OlympiacosDTO;
 import solipsismal.olympiacosfcapp.repository.OlympiacosRepository;
 
@@ -34,12 +35,18 @@ public class OlympiacosController {
     @ApiResponse(
             responseCode = "404",
             description = "Club information not found",
-            content = @Content
+            content = @Content(
+                    mediaType = "application/json",
+                    schema = @Schema(implementation = ErrorResponseDTO.class)
+            )
     )
     @ApiResponse(
             responseCode = "500",
             description = "Internal server error",
-            content = @Content
+            content = @Content(
+                    mediaType = "application/json",
+                    schema = @Schema(implementation = ErrorResponseDTO.class)
+            )
     )
     public OlympiacosDTO getOlympiacosInfo() throws OlympiacosInfoNotFoundException {
         return olympiacosRepository.findAll()

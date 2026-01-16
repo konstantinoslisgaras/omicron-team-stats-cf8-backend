@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import solipsismal.olympiacosfcapp.core.exceptions.MatchNotFoundException;
 import solipsismal.olympiacosfcapp.core.exceptions.PlayerMatchNotFoundException;
+import solipsismal.olympiacosfcapp.dto.ErrorResponseDTO;
 import solipsismal.olympiacosfcapp.dto.MatchFullDTO;
 import solipsismal.olympiacosfcapp.dto.PlayerMatchDTO;
 import solipsismal.olympiacosfcapp.dto.TeamStatsDTO;
@@ -47,12 +48,18 @@ public class PlayerMatchController {
     @ApiResponse(
             responseCode = "400",
             description = "Invalid match ID",
-            content = @Content
+            content = @Content(
+                    mediaType = "application/json",
+                    schema = @Schema(implementation = ErrorResponseDTO.class)
+            )
     )
     @ApiResponse(
             responseCode = "404",
             description = "Match data not found",
-            content = @Content
+            content = @Content(
+                    mediaType = "application/json",
+                    schema = @Schema(implementation = ErrorResponseDTO.class)
+            )
     )
     public MatchFullDTO getMatchFull(@PathVariable String matchId) throws MatchNotFoundException, PlayerMatchNotFoundException {
         Match match = matchRepository.findById(matchId).orElseThrow(MatchNotFoundException::new);

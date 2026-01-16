@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import solipsismal.olympiacosfcapp.core.exceptions.CoachStatsNotFoundException;
 import solipsismal.olympiacosfcapp.dto.CoachStatsDTO;
+import solipsismal.olympiacosfcapp.dto.ErrorResponseDTO;
 import solipsismal.olympiacosfcapp.mapper.CoachStatsMapper;
 import solipsismal.olympiacosfcapp.model.Coach;
 import solipsismal.olympiacosfcapp.repository.CoachRepository;
@@ -35,16 +36,27 @@ public class CoachStatsController {
     )
     @ApiResponse(
             responseCode = "400",
-            description = "Invalid coach stats ID"
+            description = "Invalid coach stats ID",
+            content = @Content(
+                    mediaType = "application/json",
+                    schema = @Schema(implementation = ErrorResponseDTO.class)
+            )
     )
     @ApiResponse(
             responseCode = "404",
-            description = "Coach stats not Found"
+            description = "Coach stats not Found",
+            content = @Content(
+                    mediaType = "application/json",
+                    schema = @Schema(implementation = ErrorResponseDTO.class)
+            )
     )
     @ApiResponse(
             responseCode = "500",
             description = "Internal server error",
-            content = @Content
+            content = @Content(
+                    mediaType = "application/json",
+                    schema = @Schema(implementation = ErrorResponseDTO.class)
+            )
     )
     public CoachStatsDTO getCoachStatsById(@PathVariable String coachStatsId) throws CoachStatsNotFoundException {
         Coach coach = coachRepository.findByCoachStatsId(coachStatsId).orElseThrow(CoachStatsNotFoundException::new);

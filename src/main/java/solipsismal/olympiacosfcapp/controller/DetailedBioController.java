@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import solipsismal.olympiacosfcapp.core.exceptions.DetailedBioNotFoundException;
 import solipsismal.olympiacosfcapp.dto.DetailedBioDTO;
+import solipsismal.olympiacosfcapp.dto.ErrorResponseDTO;
 import solipsismal.olympiacosfcapp.model.Coach;
 import solipsismal.olympiacosfcapp.model.DetailedBio;
 import solipsismal.olympiacosfcapp.model.Player;
@@ -41,11 +42,18 @@ public class DetailedBioController {
     @ApiResponse(
             responseCode = "400",
             description = "Invalid ID format",
-            content = @Content
+            content = @Content(
+                    mediaType = "application/json",
+                    schema = @Schema(implementation = ErrorResponseDTO.class)
+            )
     )
     @ApiResponse(
             responseCode = "404",
-            description = "Player biography not Found"
+            description = "Player biography not Found",
+            content = @Content(
+                    mediaType = "application/json",
+                    schema = @Schema(implementation = ErrorResponseDTO.class)
+            )
     )
     public DetailedBioDTO getPlayerDetailedBioById(@PathVariable String playerId, @PathVariable String detailedBioId) throws DetailedBioNotFoundException {
         Player player = playerRepository.findById(playerId).orElseThrow(DetailedBioNotFoundException::new);
@@ -69,7 +77,14 @@ public class DetailedBioController {
             content = @Content(mediaType = "application/json",
                     schema = @Schema(implementation = DetailedBioDTO.class))
     )
-    @ApiResponse(responseCode = "404", description = "Coach biography not Found")
+    @ApiResponse(
+            responseCode = "404",
+            description = "Coach biography not Found",
+            content = @Content(
+                    mediaType = "application/json",
+                    schema = @Schema(implementation = ErrorResponseDTO.class)
+            )
+    )
     public DetailedBioDTO getCoachDetailedBioById(@PathVariable String coachId, @PathVariable String detailedBioId) throws DetailedBioNotFoundException {
         Coach coach = coachRepository.findById(coachId).orElseThrow(DetailedBioNotFoundException::new);
 

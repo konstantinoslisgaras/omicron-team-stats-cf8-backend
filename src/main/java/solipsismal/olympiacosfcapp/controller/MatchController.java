@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import solipsismal.olympiacosfcapp.dto.ErrorResponseDTO;
 import solipsismal.olympiacosfcapp.dto.MatchDetailedDTO;
 import solipsismal.olympiacosfcapp.dto.MatchBasicDTO;
 import solipsismal.olympiacosfcapp.repository.MatchRepository;
@@ -36,7 +37,10 @@ public class MatchController {
     @ApiResponse(
             responseCode = "404",
             description = "No basic matches found",
-            content = @Content
+            content = @Content(
+                    mediaType = "application/json",
+                    schema = @Schema(implementation = ErrorResponseDTO.class)
+            )
     )
     public List<MatchBasicDTO> getMatchesBasic() {
         return matchRepository.findAllByOrderByMatchNumberDesc()
@@ -60,7 +64,10 @@ public class MatchController {
     @ApiResponse(
             responseCode = "404",
             description = "No detailed matches found",
-            content = @Content
+            content = @Content(
+                    mediaType = "application/json",
+                    schema = @Schema(implementation = ErrorResponseDTO.class)
+            )
     )
     public List<MatchDetailedDTO> getMatchesDetailed() {
         return matchRepository.findAllByOrderByMatchNumber()

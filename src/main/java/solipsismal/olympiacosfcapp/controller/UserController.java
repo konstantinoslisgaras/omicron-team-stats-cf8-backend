@@ -13,6 +13,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 import solipsismal.olympiacosfcapp.core.exceptions.PlayerNotFoundException;
 import solipsismal.olympiacosfcapp.core.exceptions.UserNotFoundException;
+import solipsismal.olympiacosfcapp.dto.ErrorResponseDTO;
 import solipsismal.olympiacosfcapp.dto.UserDTO;
 import solipsismal.olympiacosfcapp.dto.UserUpdateDTO;
 import solipsismal.olympiacosfcapp.service.UserService;
@@ -111,17 +112,26 @@ public class UserController {
     @ApiResponse(
             responseCode = "403",
             description = "Forbidden - Admin access required",
-            content = @Content
+            content = @Content(
+                    mediaType = "application/json",
+                    schema = @Schema(implementation = ErrorResponseDTO.class)
+            )
     )
     @ApiResponse(
             responseCode = "404",
             description = "User not found",
-            content = @Content
+            content = @Content(
+                    mediaType = "application/json",
+                    schema = @Schema(implementation = ErrorResponseDTO.class)
+            )
     )
     @ApiResponse(
             responseCode = "500",
             description = "Internal server error",
-            content = @Content
+            content = @Content(
+                    mediaType = "application/json",
+                    schema = @Schema(implementation = ErrorResponseDTO.class)
+            )
     )
     public ResponseEntity<UserDTO> getUserByUsername(@PathVariable String username) throws UserNotFoundException {
         return ResponseEntity.ok(userService.getUserProfile(username));

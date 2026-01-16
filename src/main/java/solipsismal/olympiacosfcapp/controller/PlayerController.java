@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import solipsismal.olympiacosfcapp.core.exceptions.PlayerNotFoundException;
+import solipsismal.olympiacosfcapp.dto.ErrorResponseDTO;
 import solipsismal.olympiacosfcapp.dto.PlayerDTO;
 import solipsismal.olympiacosfcapp.dto.PlayerListDTO;
 import solipsismal.olympiacosfcapp.model.Player;
@@ -41,7 +42,10 @@ public class PlayerController {
     @ApiResponse(
             responseCode = "404",
             description = "Player not Found",
-            content = @Content
+            content = @Content(
+                    mediaType = "application/json",
+                    schema = @Schema(implementation = ErrorResponseDTO.class)
+            )
     )
     public PlayerDTO getPlayerById(@PathVariable String playerId) throws PlayerNotFoundException {
         Player player = playerRepository.findById(playerId).orElseThrow(PlayerNotFoundException::new);
@@ -63,7 +67,10 @@ public class PlayerController {
     @ApiResponse(
             responseCode = "404",
             description = "Player list not Found",
-            content = @Content
+            content = @Content(
+                    mediaType = "application/json",
+                    schema = @Schema(implementation = ErrorResponseDTO.class)
+            )
     )
     public List<PlayerListDTO> getPlayerList() {
         return playerService.getPlayerList();

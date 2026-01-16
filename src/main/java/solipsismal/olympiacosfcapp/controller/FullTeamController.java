@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import solipsismal.olympiacosfcapp.dto.CoachDTO;
+import solipsismal.olympiacosfcapp.dto.ErrorResponseDTO;
 import solipsismal.olympiacosfcapp.dto.FullTeamDTO;
 import solipsismal.olympiacosfcapp.dto.PlayerDTO;
 import solipsismal.olympiacosfcapp.model.Coach;
@@ -40,12 +41,18 @@ public class FullTeamController {
     @ApiResponse(
             responseCode = "404",
             description = "Team roster not found",
-            content = @Content
+            content = @Content(
+                    mediaType = "application/json",
+                    schema = @Schema(implementation = ErrorResponseDTO.class)
+            )
     )
     @ApiResponse(
             responseCode = "500",
             description = "Internal server error",
-            content = @Content
+            content = @Content(
+                    mediaType = "application/json",
+                    schema = @Schema(implementation = ErrorResponseDTO.class)
+            )
     )
     public FullTeamDTO getSquad() {
         List<PlayerDTO> players = playerRepository.findAllByOrderByShirtNumberAsc()
