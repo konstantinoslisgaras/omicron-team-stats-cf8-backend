@@ -334,16 +334,26 @@ public class MatchDataLoader implements CommandLineRunner {
                 28, "Greek Football Cup, Quarter Finals", mendilibar, season2526, teamStats28140126);
         saveMatchAndUpdateTotalStats(match28170126, teamStats28140126, season2526TotalTeamStats);
 
-        // Match 29 | OLYMPIACOS F.C. - Bayer 04 Leverkusen -:- | 20/01/2026
-        TeamStats teamStats29200126 = new TeamStats("TS29200126");
+        // Match 29 | OLYMPIACOS F.C. - Bayer 04 Leverkusen 2:0 | 20/01/2026
+        TeamStats teamStats29200126 = new TeamStats("TS29200126",
+                2, 2, 0, 2, 0);
         Match match29200126 = new Match("MA29200126",
                 olympiacos, opponentRepository.findByOpponentName("Bayer 04 Leverkusen").orElseThrow(OpponentNotFoundException::new),
+                2, 0,
                 "20/01/2026", "22:00", TUESDAY, championsLeague, HOME,
                 29, "UEFA Champions League League Phase, MatchDay: 07", mendilibar, season2526, teamStats29200126);
-        matchRepository.save(match29200126);
+        saveMatchAndUpdateTotalStats(match29200126, teamStats29200126, season2526TotalTeamStats);
+
+        // Match 30 | OLYMPIACOS F.C. - NFC Volos -:- | 24/01/2026
+        TeamStats teamStats30240126 = new TeamStats("TS30240126");
+        Match match30240126 = new Match("MA30240126",
+                olympiacos, opponentRepository.findByOpponentName("NFC Volos").orElseThrow(OpponentNotFoundException::new),
+                "24/01/2026", "17:00", SATURDAY, superLeagueGreece, HOME,
+                30, "Greek Super League Round 2, MatchDay: 17", mendilibar, season2526, teamStats30240126);
+        matchRepository.save(match30240126);
 
         // Competition Position Setter
-        competitionRepository.save(superLeagueGreece.setCompetitionPosition(1));
+        competitionRepository.save(superLeagueGreece.setCompetitionPosition(3));
         competitionRepository.save(championsLeague.setCompetitionPosition(29));
         competitionRepository.save(greekFootballCup.setCompetitionPosition(1));
     }

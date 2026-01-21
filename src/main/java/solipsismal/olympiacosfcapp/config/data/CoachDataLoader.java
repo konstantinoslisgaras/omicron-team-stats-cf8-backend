@@ -113,7 +113,8 @@ public class CoachDataLoader implements CommandLineRunner {
         // Match 28 | OLYMPIACOS F.C. - PAOK FC 0:2 | 14/01/2026
         updateCoachStats(0, 2, mendilibar);
 
-        // Match 29 | OLYMPIACOS F.C. - Bayer 04 Leverkusen -:- | 20/01/2026
+        // Match 29 | OLYMPIACOS F.C. - Bayer 04 Leverkusen 2:0 | 20/01/2026
+        updateCoachStats(2, 0, mendilibar);
     }
 
     private void updateCoachStats(int goals, int goalsConceded, Coach coach) {

@@ -1130,6 +1130,45 @@ public class PlayerMatchDataLoader implements CommandLineRunner {
         );
         setGKGoalsConceded(playerMatches28140126, players.get("Tzolakis"), 2);
         savePlayerMatchesAndUpdateTotalStats(playerMatches28140126, LOSS);
+
+        // Match 29 | OLYMPIACOS F.C. - Bayer 04 Leverkusen 2:0 | 20/01/2026
+        Match match29200126 = matchRepository.findById("MA29200126").orElseThrow();
+        List<PlayerMatch> playerMatches29200126 = List.of(
+                new PlayerMatch("PM01087645", players.get("Tzolakis"), match29200126,
+                        0, 0, 0, 0, 96),
+                new PlayerMatch("PM02976211", players.get("Costinha"), match29200126,
+                        1, 0, 0, 0, 96),
+                new PlayerMatch("PM03454428", players.get("Retsos"), match29200126,
+                        0, 0, 1, 0, 96),
+                new PlayerMatch("PM04113782", players.get("Pirola"), match29200126,
+                        0, 0, 0, 0, 74),
+                new PlayerMatch("PM05540000", players.get("Ortega"), match29200126,
+                        0, 0, 0, 0, 96),
+                new PlayerMatch("PM06965437", players.get("Hezze"), match29200126,
+                        0, 0, 0, 0, 96),
+                new PlayerMatch("PM07671092", players.get("Mouzakitis"), match29200126,
+                        0, 0, 0, 0, 74),
+                new PlayerMatch("PM08989102", players.get("Rodinei"), match29200126,
+                        0, 2, 0, 0, 96),
+                new PlayerMatch("PM09555534", players.get("Chiquinho"), match29200126,
+                        0, 0, 0, 0, 83),
+                new PlayerMatch("PM10019191", players.get("Martins"), match29200126,
+                        0, 0, 0, 0, 80),
+                new PlayerMatch("PM11512123", players.get("Taremi"), match29200126,
+                        1, 0, 1, 0, 74),
+                new PlayerMatch("PM12498710", players.get("Garcia"), match29200126,
+                        0, 0, 0, 0, 22),
+                new PlayerMatch("PM13600019", players.get("Biancone"), match29200126,
+                        0, 0, 0, 0, 22),
+                new PlayerMatch("PM14590984", players.get("El Kaabi"), match29200126,
+                        0, 0, 0, 0, 22),
+                new PlayerMatch("PM15844449", players.get("Onyemaechi"), match29200126,
+                        0, 0, 0, 0, 17),
+                new PlayerMatch("PM16716771", players.get("Scipioni"), match29200126,
+                        0, 0, 0, 0, 14)
+        );
+        setGKCleanSheet(playerMatches29200126, players.get("Tzolakis"));
+        savePlayerMatchesAndUpdateTotalStats(playerMatches29200126, WIN);
     }
 
     private Map<String, Player> getPlayersByLastnames(String... lastnames) throws PlayerNotFoundException{
