@@ -354,7 +354,7 @@ public class MatchDataLoader implements CommandLineRunner {
 
         // Competition Position Setter
         competitionRepository.save(superLeagueGreece.setCompetitionPosition(3));
-        competitionRepository.save(championsLeague.setCompetitionPosition(29));
+        competitionRepository.save(championsLeague.setCompetitionPosition(24));
         competitionRepository.save(greekFootballCup.setCompetitionPosition(1));
     }
 
