@@ -1169,6 +1169,47 @@ public class PlayerMatchDataLoader implements CommandLineRunner {
         );
         setGKCleanSheet(playerMatches29200126, players.get("Tzolakis"));
         savePlayerMatchesAndUpdateTotalStats(playerMatches29200126, WIN);
+
+        // Match 30 | OLYMPIACOS F.C. - NFC Volos 1:0 | 24/01/2026
+        Match match30240126 = matchRepository.findById("MA30240126").orElseThrow();
+        List<PlayerMatch> playerMatches30240126 = List.of(
+                new PlayerMatch("PM01080000", players.get("Tzolakis"), match30240126,
+                        0, 0, 0, 0, 96),
+                new PlayerMatch("PM02934831", players.get("Kalogeropoulos"), match30240126,
+                        0, 0, 0, 0, 75),
+                new PlayerMatch("PM03499998", players.get("Biancone"), match30240126,
+                        0, 0, 0, 0, 97),
+                new PlayerMatch("PM04616116", players.get("Mancha"), match30240126,
+                        0, 0, 0, 0, 97),
+                new PlayerMatch("PM05545755", players.get("Onyemaechi"), match30240126,
+                        0, 0, 0, 0, 97),
+                new PlayerMatch("PM06671234", players.get("Garcia"), match30240126,
+                        0, 0, 0, 0, 68),
+                new PlayerMatch("PM07987654", players.get("Scipioni"), match30240126,
+                        0, 0, 0, 0, 97),
+                new PlayerMatch("PM08934562", players.get("Strefezza"), match30240126,
+                        0, 0, 0, 0, 97),
+                new PlayerMatch("PM09112931", players.get("Nascimento"), match30240126,
+                        0, 0, 0, 0, 88),
+                new PlayerMatch("PM10111021", players.get("Podence"), match30240126,
+                        0, 1, 0, 0, 88),
+                new PlayerMatch("PM11999239", players.get("El Kaabi"), match30240126,
+                        1, 0, 0, 0, 67),
+                new PlayerMatch("PM12098712", players.get("Chiquinho"), match30240126,
+                        0, 0, 0, 0, 30),
+                new PlayerMatch("PM13764219", players.get("Yaremchuk"), match30240126,
+                        0, 0, 0, 0, 29),
+                new PlayerMatch("PM14908414", players.get("Rodinei"), match30240126,
+                        0, 0, 0, 0, 20),
+                new PlayerMatch("PM15846666", players.get("Hezze"), match30240126,
+                        0, 0, 0, 0, 9),
+                new PlayerMatch("PM16152637", players.get("Yazici"), match30240126,
+                        0, 0, 0, 0, 9)
+        );
+        setGKCleanSheet(playerMatches30240126, players.get("Tzolakis"));
+        savePlayerMatchesAndUpdateTotalStats(playerMatches30240126, WIN);
+
+        // Match 31 | AFC Ajax - OLYMPIACOS F.C. -:- | 28/01/2026
     }
 
     private Map<String, Player> getPlayersByLastnames(String... lastnames) throws PlayerNotFoundException{

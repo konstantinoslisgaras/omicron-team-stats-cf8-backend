@@ -344,13 +344,23 @@ public class MatchDataLoader implements CommandLineRunner {
                 29, "UEFA Champions League League Phase, MatchDay: 07", mendilibar, season2526, teamStats29200126);
         saveMatchAndUpdateTotalStats(match29200126, teamStats29200126, season2526TotalTeamStats);
 
-        // Match 30 | OLYMPIACOS F.C. - NFC Volos -:- | 24/01/2026
-        TeamStats teamStats30240126 = new TeamStats("TS30240126");
+        // Match 30 | OLYMPIACOS F.C. - NFC Volos 1:0 | 24/01/2026
+        TeamStats teamStats30240126 = new TeamStats("TS30240126",
+                1, 1, 0, 0, 0);
         Match match30240126 = new Match("MA30240126",
                 olympiacos, opponentRepository.findByOpponentName("NFC Volos").orElseThrow(OpponentNotFoundException::new),
+                1, 0,
                 "24/01/2026", "17:00", SATURDAY, superLeagueGreece, HOME,
                 30, "Greek Super League Round 2, MatchDay: 17", mendilibar, season2526, teamStats30240126);
         matchRepository.save(match30240126);
+
+        // Match 31 | AFC Ajax - OLYMPIACOS F.C. -:- | 28/01/2026
+        TeamStats teamStats31280126 = new TeamStats("TS31280126");
+        Match match31280126 = new Match("MA31280126",
+                olympiacos, opponentRepository.findByOpponentName("AFC Ajax").orElseThrow(OpponentNotFoundException::new),
+                "28/01/2026", "22:00", WEDNESDAY, championsLeague, AWAY,
+                31, "UEFA Champions League League Phase, MatchDay: 08", mendilibar, season2526, teamStats31280126);
+        matchRepository.save(match31280126);
 
         // Competition Position Setter
         competitionRepository.save(superLeagueGreece.setCompetitionPosition(3));
