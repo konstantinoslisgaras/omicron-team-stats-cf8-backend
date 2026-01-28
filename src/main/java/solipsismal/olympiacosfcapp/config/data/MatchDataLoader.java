@@ -365,7 +365,7 @@ public class MatchDataLoader implements CommandLineRunner {
         saveMatchAndUpdateTotalStats(match31280126, teamStats31280126, season2526TotalTeamStats);
 
         // Match 32 | AEK FC - OLYMPIACOS F.C. -:- | 01/02/2026
-        TeamStats teamStats32010226 = new TeamStats("TS31280126");
+        TeamStats teamStats32010226 = new TeamStats("TS32010226");
         Match match32010226 = new Match("MA32010226",
                 olympiacos, opponentRepository.findByOpponentName("AEK FC").orElseThrow(OpponentNotFoundException::new),
                 "01/02/2026", "21:00", SATURDAY, superLeagueGreece, AWAY,
