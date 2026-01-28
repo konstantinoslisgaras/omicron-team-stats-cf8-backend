@@ -352,19 +352,29 @@ public class MatchDataLoader implements CommandLineRunner {
                 1, 0,
                 "24/01/2026", "17:00", SATURDAY, superLeagueGreece, HOME,
                 30, "Greek Super League Round 2, MatchDay: 17", mendilibar, season2526, teamStats30240126);
-        matchRepository.save(match30240126);
+        saveMatchAndUpdateTotalStats(match30240126, teamStats30240126, season2526TotalTeamStats);
 
-        // Match 31 | AFC Ajax - OLYMPIACOS F.C. -:- | 28/01/2026
-        TeamStats teamStats31280126 = new TeamStats("TS31280126");
+        // Match 31 | AFC Ajax - OLYMPIACOS F.C. 1:2 | 28/01/2026
+        TeamStats teamStats31280126 = new TeamStats("TS31280126",
+                2, 2, 1, 2, 0);
         Match match31280126 = new Match("MA31280126",
                 olympiacos, opponentRepository.findByOpponentName("AFC Ajax").orElseThrow(OpponentNotFoundException::new),
+                2, 1,
                 "28/01/2026", "22:00", WEDNESDAY, championsLeague, AWAY,
                 31, "UEFA Champions League League Phase, MatchDay: 08", mendilibar, season2526, teamStats31280126);
-        matchRepository.save(match31280126);
+        saveMatchAndUpdateTotalStats(match31280126, teamStats31280126, season2526TotalTeamStats);
+
+        // Match 32 | AEK FC - OLYMPIACOS F.C. -:- | 01/02/2026
+        TeamStats teamStats32010226 = new TeamStats("TS31280126");
+        Match match32010226 = new Match("MA32010226",
+                olympiacos, opponentRepository.findByOpponentName("AEK FC").orElseThrow(OpponentNotFoundException::new),
+                "01/02/2026", "21:00", SATURDAY, superLeagueGreece, AWAY,
+                32, "Greek Super League Round 2, MatchDay: 18", mendilibar, season2526, teamStats32010226);
+        matchRepository.save(match32010226);
 
         // Competition Position Setter
-        competitionRepository.save(superLeagueGreece.setCompetitionPosition(3));
-        competitionRepository.save(championsLeague.setCompetitionPosition(24));
+        competitionRepository.save(superLeagueGreece.setCompetitionPosition(2));
+        competitionRepository.save(championsLeague.setCompetitionPosition(18));
         competitionRepository.save(greekFootballCup.setCompetitionPosition(1));
     }
 
