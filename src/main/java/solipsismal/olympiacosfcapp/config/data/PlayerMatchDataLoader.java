@@ -45,7 +45,7 @@ public class PlayerMatchDataLoader implements CommandLineRunner {
                 "Tzolakis", "Paschalakis", "Botis",
                 "Rodinei", "Costinha", "Retsos", "Mancha", "Biancone", "Kalogeropoulos", "Pirola", "Vezo", "Ortega", "Onyemaechi",
                 "Hezze", "Liatsikouras", "Garcia", "Mouzakitis", "Nascimento", "Scipioni", "Yazici", "Cabella", "Chiquinho",
-                "Martins", "Strefezza", "Podence", "Pnevmonidis", "El Kaabi", "Taremi", "Yaremchuk"
+                "Martins", "Strefezza", "Podence", "Pnevmonidis", "Luiz", "El Kaabi", "Taremi", "Yaremchuk", "Clayton"
         );
 
         // Players Matches
@@ -1247,6 +1247,84 @@ public class PlayerMatchDataLoader implements CommandLineRunner {
         );
         setGKGoalsConceded(playerMatches31280126, players.get("Tzolakis"), 1);
         savePlayerMatchesAndUpdateTotalStats(playerMatches31280126, WIN);
+
+        // Match 32 | AEK FC - OLYMPIACOS F.C. 1:1 | 01/02/2026 17
+        Match match32010226 = matchRepository.findById("MA32010226").orElseThrow();
+        List<PlayerMatch> playerMatches32010226 = List.of(
+                new PlayerMatch("PM01111091", players.get("Tzolakis"), match32010226,
+                        0, 0, 0, 0, 107),
+                new PlayerMatch("PM02111831", players.get("Costinha"), match32010226,
+                        0, 0, 1, 0, 72),
+                new PlayerMatch("PM03431118", players.get("Retsos"), match32010226,
+                        0, 0, 1, 0, 107),
+                new PlayerMatch("PM04146111", players.get("Biancone"), match32010226,
+                        0, 0, 0, 0, 107),
+                new PlayerMatch("PM05581818", players.get("Ortega"), match32010226,
+                        0, 0, 0, 0, 91),
+                new PlayerMatch("PM06511134", players.get("Scipioni"), match32010226,
+                        0, 0, 0, 0, 86),
+                new PlayerMatch("PM07117631", players.get("Hezze"), match32010226,
+                        0, 0, 1, 0, 107),
+                new PlayerMatch("PM08987111", players.get("Rodinei"), match32010226,
+                        0, 0, 0, 0, 107),
+                new PlayerMatch("PM09109831", players.get("Chiquinho"), match32010226,
+                        0, 0, 0, 0, 73),
+                new PlayerMatch("PM10101111", players.get("Podence"), match32010226,
+                        0, 0, 1, 0, 86),
+                new PlayerMatch("PM11119131", players.get("Taremi"), match32010226,
+                        1, 0, 1, 0, 107),
+                new PlayerMatch("PM12191717", players.get("Luiz"), match32010226,
+                        0, 0, 0, 0, 35),
+                new PlayerMatch("PM13141411", players.get("Martins"), match32010226,
+                        0, 0, 0, 0, 35),
+                new PlayerMatch("PM14111311", players.get("Yazici"), match32010226,
+                        0, 0, 0, 0, 21),
+                new PlayerMatch("PM15201011", players.get("Mouzakitis"), match32010226,
+                        0, 0, 0, 0, 21),
+                new PlayerMatch("PM16191190", players.get("Onyemaechi"), match32010226,
+                        0, 0, 0, 0, 16)
+        );
+        setGKGoalsConceded(playerMatches32010226, players.get("Tzolakis"), 1);
+        savePlayerMatchesAndUpdateTotalStats(playerMatches32010226, DRAW);
+
+        // Match 33 | Asteras Tripolis - OLYMPIACOS F.C. 0:3 | 04/02/2026 94
+        Match match33040226 = matchRepository.findById("MA33040226").orElseThrow();
+        List<PlayerMatch> playerMatches33040226 = List.of(
+                new PlayerMatch("PM01098111", players.get("Tzolakis"), match33040226,
+                        0, 0, 0, 0, 94),
+                new PlayerMatch("PM02411131", players.get("Costinha"), match33040226,
+                        0, 0, 0, 0, 94),
+                new PlayerMatch("PM03411310", players.get("Retsos"), match33040226,
+                        0, 0, 0, 0, 76),
+                new PlayerMatch("PM04598211", players.get("Biancone"), match33040226,
+                        0, 0, 0, 0, 94),
+                new PlayerMatch("PM05745755", players.get("Onyemaechi"), match33040226,
+                        0, 0, 0, 0, 94),
+                new PlayerMatch("PM06109871", players.get("Garcia"), match33040226,
+                        1, 0, 0, 0, 94),
+                new PlayerMatch("PM07191111", players.get("Hezze"), match33040226,
+                        0, 0, 0, 0, 65),
+                new PlayerMatch("PM08109181", players.get("Martins"), match33040226,
+                        1, 0, 0, 0, 65),
+                new PlayerMatch("PM09055114", players.get("Nascimento"), match33040226,
+                        0, 0, 0, 0, 94),
+                new PlayerMatch("PM10101911", players.get("Podence"), match33040226,
+                        0, 1, 0, 0, 76),
+                new PlayerMatch("PM11995441", players.get("Taremi"), match33040226,
+                        1, 1, 0, 0, 65),
+                new PlayerMatch("PM12109911", players.get("Mouzakitis"), match33040226,
+                        0, 0, 0, 0, 29),
+                new PlayerMatch("PM13111259", players.get("Luiz"), match33040226,
+                        0, 0, 1, 0, 29),
+                new PlayerMatch("PM14331311", players.get("Clayton"), match33040226,
+                        0, 0, 0, 0, 29),
+                new PlayerMatch("PM15099991", players.get("Yazici"), match33040226,
+                        0, 0, 0, 0, 18),
+                new PlayerMatch("PM16988590", players.get("Kalogeropoulos"), match33040226,
+                        0, 0, 0, 0, 18)
+        );
+        setGKCleanSheet(playerMatches33040226, players.get("Tzolakis"));
+        savePlayerMatchesAndUpdateTotalStats(playerMatches33040226, WIN);
     }
 
     private Map<String, Player> getPlayersByLastnames(String... lastnames) throws PlayerNotFoundException{

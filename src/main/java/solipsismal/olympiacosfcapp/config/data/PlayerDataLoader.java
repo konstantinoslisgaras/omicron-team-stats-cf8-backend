@@ -152,6 +152,11 @@ public class PlayerDataLoader implements CommandLineRunner {
                 "Kastoria", "", 1.78, "Olympiacos B", "Stavros Pnevmonidis (born 7 August 2006) is a Greek winger who progressed through Olympiacos’s youth ranks and featured for the club’s U19 and B teams. A product of the academy, Pnevmonidis played in the club’s successful youth campaigns and earned a professional debut pathway in 2025; he is praised for his pace, directness and potential as an attacking youth prospect.");
         playerRepository.save(new Player("PL38616402", "Pnevmonidis", "Stavros", 2006,
                 "Greece", 80, LEFT_WINGER, RIGHT, false, pnevmonidisBio, true));
+        // Luiz
+        DetailedBio luizBio = new DetailedBio("DB78094155", "André Luiz Inácio da Silva", "23/02/2002",
+                "Rio de Janeiro", "", 1.87, "Rio Ave", "André Luiz (born 5 March 1997) is a Brazilian attacking midfielder who plays for Olympiacos. After developing in Brazilian football and gaining experience in Portugal with Rio Ave, André Luiz joined Olympiacos, where he brought technical quality, creativity and versatility to the attacking midfield; he is capable of operating centrally or in wider roles and contributes through chance creation and intelligent movement.");
+        playerRepository.save(new Player("PL78094155", "Luiz", "Andre", 2002,
+                "Brazil", 0, LEFT_WINGER, LEFT, false, luizBio, true));
         // El Kaabi
         DetailedBio elKaabiBio = new DetailedBio("DB94345107", "Ayoub El Kaabi", "25/06/1993",
                 "Casablanca", "", 1.82, "Al Sadd", "Ayoub El Kaabi (born 25 June 1993) is a Moroccan striker who plays for Olympiacos. After making his name in Moroccan domestic football and spells abroad, El Kaabi joined Olympiacos in 2023 and became an influential forward, noted for his finishing and aerial presence; he was a key scorer during the club’s successful European campaign and remains an important attacking option.");
@@ -167,5 +172,10 @@ public class PlayerDataLoader implements CommandLineRunner {
                 "Lviv", "", 1.91, "Club Brugge", "Roman Yaremchuk (born 27 November 1995) is a Ukrainian striker who plays for Olympiacos. A product of Dynamo Kyiv’s academy, Yaremchuk built his reputation across Europe with productive spells in Belgium and Portugal before joining Olympiacos in 2024; he is valued for his aerial ability, hold-up play and physical presence leading the attack.");
         playerRepository.save(new Player("PL60495429", "Yaremchuk", "Roman", 1995,
                 "Ukraine", 11, STRIKER, RIGHT, false, yaremchukBio, true));
+        // Cleyton
+        DetailedBio claytonBio = new DetailedBio("DB55210943", "Clayton Fernandes Silva", "11/01/1999",
+                "Belo Horizonte", "", 1.84, "Rio Ave", "Clayton (born 11 January 1999) is a Brazilian striker who joined Olympiacos in 2026. Known for his physical presence and instinctive finishing, Cleyton developed his career in Brazil with Vasco da Gama and Coritiba before moving to European football; he is a dynamic forward capable of leading the line, providing Olympiacos with a strong goalscoring threat and tactical flexibility in the final third.");
+        playerRepository.save(new Player("PL55210943", "Clayton", "", 1999,
+                "Brazil", 19, STRIKER, RIGHT, false, claytonBio, true));
     }
 }

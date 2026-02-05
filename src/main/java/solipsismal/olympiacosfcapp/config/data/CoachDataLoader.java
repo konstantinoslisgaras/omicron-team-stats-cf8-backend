@@ -121,6 +121,19 @@ public class CoachDataLoader implements CommandLineRunner {
 
         // Match 31 | AFC Ajax - OLYMPIACOS F.C. 1:2 | 28/01/2026
         updateCoachStats(2, 1, mendilibar);
+
+        // Match 32 | AEK FC - OLYMPIACOS F.C. 1:1 | 01/02/2026
+        updateCoachStats(1, 1, mendilibar);
+
+        // Match 33 | Asteras Tripolis - OLYMPIACOS F.C. 0:3 | 04/02/2026
+        updateCoachStats(3, 0, mendilibar);
+
+        // Match 34 | OLYMPIACOS F.C. - Panathinaikos FC -:- | 08/02/2026
+
+        // Match 35 | Levadiakos FC - OLYMPIACOS F.C. -:- | 14/02/2026
+
+        // Match 36 | OLYMPIACOS F.C. - Bayer 04 Leverkusen -:- | 18/02/2026
+
     }
 
     private void updateCoachStats(int goals, int goalsConceded, Coach coach) {

@@ -364,18 +364,53 @@ public class MatchDataLoader implements CommandLineRunner {
                 31, "UEFA Champions League League Phase, MatchDay: 08", mendilibar, season2526, teamStats31280126);
         saveMatchAndUpdateTotalStats(match31280126, teamStats31280126, season2526TotalTeamStats);
 
-        // Match 32 | AEK FC - OLYMPIACOS F.C. -:- | 01/02/2026
-        TeamStats teamStats32010226 = new TeamStats("TS32010226");
+        // Match 32 | AEK FC - OLYMPIACOS F.C. 1:1 | 01/02/2026
+        TeamStats teamStats32010226 = new TeamStats("TS32010226",
+                1, 0, 1, 5, 0);
         Match match32010226 = new Match("MA32010226",
                 olympiacos, opponentRepository.findByOpponentName("AEK FC").orElseThrow(OpponentNotFoundException::new),
+                1, 1,
                 "01/02/2026", "21:00", SATURDAY, superLeagueGreece, AWAY,
                 32, "Greek Super League Round 2, MatchDay: 18", mendilibar, season2526, teamStats32010226);
-        matchRepository.save(match32010226);
+        saveMatchAndUpdateTotalStats(match32010226, teamStats32010226, season2526TotalTeamStats);
+
+        // Match 33 | Asteras Tripolis - OLYMPIACOS F.C. 0:3 | 04/02/2026
+        TeamStats teamStats33040226 = new TeamStats("TS33040226",
+                3, 2, 0, 2, 0);
+        Match match33040226 = new Match("MA33040226",
+                olympiacos, opponentRepository.findByOpponentName("AEK FC").orElseThrow(OpponentNotFoundException::new),
+                3, 0,
+                "04/02/2026", "18:30", WEDNESDAY, superLeagueGreece, AWAY,
+                33, "Greek Super League Round 2, MatchDay: 19", mendilibar, season2526, teamStats33040226);
+        saveMatchAndUpdateTotalStats(match33040226, teamStats33040226, season2526TotalTeamStats);
+
+        // Match 34 | OLYMPIACOS F.C. - Panathinaikos FC -:- | 08/02/2026
+        TeamStats teamStats34080226 = new TeamStats("TS34080226");
+        Match match34080226 = new Match("MA34080226",
+                olympiacos, opponentRepository.findByOpponentName("Panathinaikos FC").orElseThrow(OpponentNotFoundException::new),
+                "08/02/2026", "21:00", SUNDAY, superLeagueGreece, HOME,
+                34, "Greek Super League Round 2, MatchDay: 20", mendilibar, season2526, teamStats34080226);
+        matchRepository.save(match34080226);
+
+        // Match 35 | Levadiakos FC - OLYMPIACOS F.C. -:- | 14/02/2026
+        TeamStats teamStats35140226 = new TeamStats("TS35140226");
+        Match match35140226 = new Match("MA35140226",
+                olympiacos, opponentRepository.findByOpponentName("Levadiakos FC").orElseThrow(OpponentNotFoundException::new),
+                "14/02/2026", "19:30", SATURDAY, superLeagueGreece, AWAY,
+                35, "Greek Super League Round 2, MatchDay: 21", mendilibar, season2526, teamStats35140226);
+        matchRepository.save(match35140226);
+
+        // Match 36 | OLYMPIACOS F.C. - Bayer 04 Leverkusen -:- | 18/02/2026
+        TeamStats teamStats36180226 = new TeamStats("TS36180226");
+        Match match36180226 = new Match("MA36180226",
+                olympiacos, opponentRepository.findByOpponentName("Bayer 04 Leverkusen").orElseThrow(OpponentNotFoundException::new),
+                "18/02/2026", "22:00", WEDNESDAY, championsLeague, HOME,
+                36, "UEFA Champions League KO Play Offs, 1st Leg", mendilibar, season2526, teamStats36180226);
+        matchRepository.save(match36180226);
 
         // Competition Position Setter
-        competitionRepository.save(superLeagueGreece.setCompetitionPosition(2));
+        competitionRepository.save(superLeagueGreece.setCompetitionPosition(1));
         competitionRepository.save(championsLeague.setCompetitionPosition(18));
-        competitionRepository.save(greekFootballCup.setCompetitionPosition(1));
     }
 
     private void saveMatchAndUpdateTotalStats(Match match, TeamStats teamStats, TeamStats teamTotals) {
