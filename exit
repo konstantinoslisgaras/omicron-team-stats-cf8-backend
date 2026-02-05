@@ -1,0 +1,253 @@
+[33mcommit 664f1fc0bc6ded73e7e2e89ead241c1a7f0a917a[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m
+Author: konstantinoslisgaras <konstantinoslisgaras@gmail.com>
+Date:   Thu Feb 5 16:57:15 2026 +0200
+
+    :feat: latest matches
+
+[33mcommit 3b9dc5d8e08286a78eff638fc21c7631656eff7e[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: konstantinoslisgaras <konstantinoslisgaras@gmail.com>
+Date:   Thu Jan 29 01:01:04 2026 +0200
+
+    fix: typo
+
+[33mcommit 5d771e0a48d22d7c9ba433b5a04d9c54e3861f6f[m
+Author: konstantinoslisgaras <konstantinoslisgaras@gmail.com>
+Date:   Thu Jan 29 00:48:34 2026 +0200
+
+    feat: latest match
+
+[33mcommit e5b50d86cc961c852d901a241742485c07b290a4[m
+Author: konstantinoslisgaras <konstantinoslisgaras@gmail.com>
+Date:   Sat Jan 24 19:00:33 2026 +0200
+
+    feat: latest match
+
+[33mcommit 144240b13aed1f37075818c96cd3242c08ebe876[m
+Author: konstantinoslisgaras <konstantinoslisgaras@gmail.com>
+Date:   Wed Jan 21 23:54:08 2026 +0200
+
+    fix: position
+
+[33mcommit 9e13c6e4cc3c833d49d7429c54fbe316b8d78944[m
+Author: konstantinoslisgaras <konstantinoslisgaras@gmail.com>
+Date:   Wed Jan 21 23:09:17 2026 +0200
+
+    feat: latest match
+
+[33mcommit d0d131273b753178a8be0960cc59f20075fe31be[m
+Author: konstantinoslisgaras <konstantinoslisgaras@gmail.com>
+Date:   Fri Jan 16 17:12:52 2026 +0200
+
+    feat: global handler
+
+[33mcommit 04046ac14b61377e0a0ec8ea0bea9261a05ee9c5[m
+Author: konstantinoslisgaras <konstantinoslisgaras@gmail.com>
+Date:   Thu Jan 15 22:35:23 2026 +0200
+
+    fix: typo
+
+[33mcommit 52fa8fdace3bada5414ac9807d8171442751af0e[m
+Author: konstantinoslisgaras <konstantinoslisgaras@gmail.com>
+Date:   Thu Jan 15 21:58:11 2026 +0200
+
+    feat: add latest matches
+
+[33mcommit 598f139f72b427675a5b59193cea3abd6e5c3c19[m
+Author: konstantinoslisgaras <konstantinoslisgaras@gmail.com>
+Date:   Sun Jan 4 21:27:26 2026 +0200
+
+    fix: score
+
+[33mcommit 632efb72f6f0bc8e46b796f6ce2595788a423107[m
+Author: konstantinoslisgaras <konstantinoslisgaras@gmail.com>
+Date:   Sun Jan 4 18:20:36 2026 +0200
+
+    feat: add lastest match and trophy
+
+[33mcommit 46c8b147b7468ace16b7ec88d4579009c26bdea7[m
+Author: konstantinoslisgaras <konstantinoslisgaras@gmail.com>
+Date:   Sat Jan 3 14:47:32 2026 +0200
+
+    feat: add latest matches
+
+[33mcommit d7baee47a630df0ca863c58edc77428a3b019d34[m
+Author: konstantinoslisgaras <konstantinoslisgaras@gmail.com>
+Date:   Sat Jan 3 14:47:00 2026 +0200
+
+    feat: add latest matches
+
+[33mcommit 7604ccbfae72f3f42b8bd31b2da2d19a1a22f697[m
+Author: konstantinoslisgaras <konstantinoslisgaras@gmail.com>
+Date:   Mon Dec 22 14:52:34 2025 +0200
+
+    feat: match 20/01/25
+
+[33mcommit aa6cc603856c9a08bafb08cfced544a044b5a56c[m
+Author: konstantinoslisgaras <konstantinoslisgaras@gmail.com>
+Date:   Wed Dec 17 20:09:34 2025 +0200
+
+    feat: add latest match
+
+[33mcommit 172a01582731fba759305f58e379a193971e717d[m
+Author: konstantinoslisgaras <konstantinoslisgaras@gmail.com>
+Date:   Wed Dec 17 19:57:21 2025 +0200
+
+    feat: add latest match
+
+[33mcommit 71c0737a502a308927e197cea7601a31ee10d5ef[m
+Author: Konstantinos Lisgaras <konstantinoslisgaras@gmail.com>
+Date:   Mon Dec 15 13:26:37 2025 +0200
+
+    Update email format in README
+
+[33mcommit 8de42b8d40d89ba2e3f0b5e2e3d1a768dc3af392[m
+Author: Konstantinos Lisgaras <konstantinoslisgaras@gmail.com>
+Date:   Mon Dec 15 13:25:55 2025 +0200
+
+    Add database map section to README
+    
+    Added a section for the database map with an image.
+
+[33mcommit bfc2dcdaad20a801eecb0d33bc631b166b10850b[m
+Author: konstantinoslisgaras <konstantinoslisgaras@gmail.com>
+Date:   Mon Dec 15 03:24:11 2025 +0200
+
+    fix: readme
+
+[33mcommit f03062622d00111921bd2bdcf0e3fda885633667[m
+Author: konstantinoslisgaras <konstantinoslisgaras@gmail.com>
+Date:   Mon Dec 15 03:06:05 2025 +0200
+
+    feat: readme file
+
+[33mcommit 2d64a8b52394724705731cc32881394598adbe60[m
+Merge: c1874c2 3c355fe
+Author: konstantinoslisgaras <konstantinoslisgaras@gmail.com>
+Date:   Mon Dec 15 02:13:47 2025 +0200
+
+    fix: swagger
+
+[33mcommit c1874c25716796a127e410052a84d04a0c6c5670[m
+Author: konstantinoslisgaras <konstantinoslisgaras@gmail.com>
+Date:   Mon Dec 15 02:12:53 2025 +0200
+
+    fix: swagger
+
+[33mcommit 3c355feffac0c79c644f010083588e072dcd7c90[m
+Author: Konstantinos Lisgaras <konstantinoslisgaras@gmail.com>
+Date:   Mon Dec 15 00:18:58 2025 +0200
+
+    Enhance README structure with headers
+    
+    Updated README formatting and added section headers.
+
+[33mcommit 48269c1aada225aa61ba4055a6051daf0f2e02b4[m
+Author: Konstantinos Lisgaras <konstantinoslisgaras@gmail.com>
+Date:   Mon Dec 15 00:17:55 2025 +0200
+
+    Update README.md
+
+[33mcommit bfd8be8400713caccb50d2fee0296dae4aee8def[m
+Author: Konstantinos Lisgaras <konstantinoslisgaras@gmail.com>
+Date:   Mon Dec 15 00:11:16 2025 +0200
+
+    Revise README for better project documentation
+    
+    Updated README to improve clarity and structure, including project overview, features, architecture, tech stack, and getting started instructions.
+
+[33mcommit 759dc99dde28a981a877bc6dc27d3383e6d54559[m
+Author: Konstantinos Lisgaras <konstantinoslisgaras@gmail.com>
+Date:   Mon Dec 15 00:10:31 2025 +0200
+
+    Rename project to Global Football Metrics Analyzer
+    
+    Updated project name and description in README.md to reflect the new branding and features of the Global Football Metrics Analyzer (GFMA).
+
+[33mcommit a4830b454e86cb7dfbdad008e9667d21120a68ab[m
+Author: Konstantinos Lisgaras <konstantinoslisgaras@gmail.com>
+Date:   Sun Dec 14 23:45:24 2025 +0200
+
+    Revise README with project details and instructions
+    
+    Updated README to provide detailed project information, features, prerequisites, and usage instructions.
+
+[33mcommit 4326eaa499e0434c6eeb224bbecdc50bdb49ca91[m
+Author: konstantinoslisgaras <konstantinoslisgaras@gmail.com>
+Date:   Sun Dec 14 23:44:03 2025 +0200
+
+    fix: postrgres query
+
+[33mcommit 76e8be763e2877422ba4f7ad19aee5f5be701ac0[m
+Author: konstantinoslisgaras <konstantinoslisgaras@gmail.com>
+Date:   Sun Dec 14 22:12:38 2025 +0200
+
+    feat: latest match
+
+[33mcommit e97f716b8df1a5789cbfb9b478c8db5df59271f3[m
+Author: konstantinoslisgaras <konstantinoslisgaras@gmail.com>
+Date:   Sun Dec 14 14:39:40 2025 +0200
+
+    fix: minor fixes
+
+[33mcommit 9ac429695098b4c27c42873f46f372bd2393bd98[m
+Author: Konstantinos Lisgaras <konstantinoslisgaras@gmail.com>
+Date:   Sun Dec 14 14:32:53 2025 +0200
+
+    Rename project to Omicron Team Stats
+
+[33mcommit 90d070cfe7a92ab14ce43253576645a1d3b35030[m
+Author: konstantinoslisgaras <konstantinoslisgaras@gmail.com>
+Date:   Sun Dec 14 02:27:01 2025 +0200
+
+    feat: random users generator
+
+[33mcommit 2e7820c49ce5abb767265add2253545750b85886[m
+Author: konstantinoslisgaras <konstantinoslisgaras@gmail.com>
+Date:   Sun Dec 14 02:04:16 2025 +0200
+
+    fix: filters
+
+[33mcommit 442880065ac009c1ceb7852f2ed2f905a0696741[m
+Author: konstantinoslisgaras <konstantinoslisgaras@gmail.com>
+Date:   Sun Dec 14 01:23:20 2025 +0200
+
+    fix: filters
+
+[33mcommit 166f6dc492a7a5377a1a6328c95a0ad85ebcb3ba[m
+Author: konstantinoslisgaras <konstantinoslisgaras@gmail.com>
+Date:   Sat Dec 13 23:32:05 2025 +0200
+
+    fix
+
+[33mcommit 639bec4aa021ee164629c9de570444df944b74ac[m
+Author: konstantinoslisgaras <konstantinoslisgaras@gmail.com>
+Date:   Sat Dec 13 23:21:06 2025 +0200
+
+    fix: properties
+
+[33mcommit 0400dd5c74b5ad9d177ae10ca3e39d10452ef1b6[m
+Author: konstantinoslisgaras <konstantinoslisgaras@gmail.com>
+Date:   Sat Dec 13 23:02:12 2025 +0200
+
+    fix: data loader
+
+[33mcommit dcda21bf24d35a8e4b41cd979e8edfb1f2eaa0e0[m
+Author: konstantinoslisgaras <konstantinoslisgaras@gmail.com>
+Date:   Sat Dec 13 22:43:17 2025 +0200
+
+    fix: cors
+
+[33mcommit 2cf147c4cedb252d606611786bcfcb1b97d475b3[m
+Author: konstantinoslisgaras <konstantinoslisgaras@gmail.com>
+Date:   Sat Dec 13 22:09:56 2025 +0200
+
+    fix: cors
+
+[33mcommit 6578787801cbdda61e51a591819a43454a88bfba[m
+Author: konstantinoslisgaras <konstantinoslisgaras@gmail.com>
+Date:   Sat Dec 13 19:19:42 2025 +0200
+
+    fix: render properties
+
+[33mcommit 4cba88e0bd5c1240b1e46f1cb5acc5ee8dac2778[m
+Author: konstantinoslisgaras <konstantinos

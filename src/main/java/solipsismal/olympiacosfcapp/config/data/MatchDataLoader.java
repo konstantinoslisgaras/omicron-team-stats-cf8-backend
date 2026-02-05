@@ -378,7 +378,7 @@ public class MatchDataLoader implements CommandLineRunner {
         TeamStats teamStats33040226 = new TeamStats("TS33040226",
                 3, 2, 0, 2, 0);
         Match match33040226 = new Match("MA33040226",
-                olympiacos, opponentRepository.findByOpponentName("AEK FC").orElseThrow(OpponentNotFoundException::new),
+                olympiacos, opponentRepository.findByOpponentName("Asteras Tripolis").orElseThrow(OpponentNotFoundException::new),
                 3, 0,
                 "04/02/2026", "18:30", WEDNESDAY, superLeagueGreece, AWAY,
                 33, "Greek Super League Round 2, MatchDay: 19", mendilibar, season2526, teamStats33040226);
