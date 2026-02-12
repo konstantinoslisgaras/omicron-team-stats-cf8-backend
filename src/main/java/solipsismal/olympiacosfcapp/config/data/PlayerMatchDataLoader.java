@@ -1325,6 +1325,45 @@ public class PlayerMatchDataLoader implements CommandLineRunner {
         );
         setGKCleanSheet(playerMatches33040226, players.get("Tzolakis"));
         savePlayerMatchesAndUpdateTotalStats(playerMatches33040226, WIN);
+
+        // Match 34 | OLYMPIACOS F.C. - Panathinaikos FC 0:1 | 08/02/2026
+        Match match34080226 = matchRepository.findById("MA34080226").orElseThrow();
+        List<PlayerMatch> playerMatches34080226 = List.of(
+                new PlayerMatch("PM01098700", players.get("Tzolakis"), match34080226,
+                        0, 0, 0, 0, 98),
+                new PlayerMatch("PM02466890", players.get("Costinha"), match34080226,
+                        0, 0, 0, 0, 98),
+                new PlayerMatch("PM03123138", players.get("Retsos"), match34080226,
+                        0, 0, 0, 0, 98),
+                new PlayerMatch("PM04949951", players.get("Biancone"), match34080226,
+                        0, 0, 0, 0, 28),
+                new PlayerMatch("PM05175799", players.get("Ortega"), match34080226,
+                        0, 0, 0, 0, 98),
+                new PlayerMatch("PM06566134", players.get("Scipioni"), match34080226,
+                        0, 0, 0, 0, 98),
+                new PlayerMatch("PM07997633", players.get("Hezze"), match34080226,
+                        0, 0, 0, 0, 75),
+                new PlayerMatch("PM08441331", players.get("Rodinei"), match34080226,
+                        0, 0, 0, 0, 90),
+                new PlayerMatch("PM09090019", players.get("Taremi"), match34080226,
+                        0, 0, 0, 0, 98),
+                new PlayerMatch("PM10160004", players.get("Podence"), match34080226,
+                        0, 0, 0, 0, 90),
+                new PlayerMatch("PM11945900", players.get("El Kaabi"), match34080226,
+                        0, 0, 0, 0, 75),
+                new PlayerMatch("PM12345012", players.get("Martins"), match34080226,
+                        0, 0, 1, 0, 70),
+                new PlayerMatch("PM13764449", players.get("Chiquinho"), match34080226,
+                        0, 0, 0, 0, 23),
+                new PlayerMatch("PM14098724", players.get("Clayton"), match34080226,
+                        0, 0, 0, 0, 23),
+                new PlayerMatch("PM15562576", players.get("Yazici"), match34080226,
+                        0, 0, 0, 0, 8),
+                new PlayerMatch("PM16103906", players.get("Mouzakitis"), match34080226,
+                        0, 0, 0, 0, 8)
+        );
+        setGKGoalsConceded(playerMatches34080226, players.get("Tzolakis"), 1);
+        savePlayerMatchesAndUpdateTotalStats(playerMatches34080226, LOSS);
     }
 
     private Map<String, Player> getPlayersByLastnames(String... lastnames) throws PlayerNotFoundException{

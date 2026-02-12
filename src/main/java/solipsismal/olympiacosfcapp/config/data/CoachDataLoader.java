@@ -128,7 +128,8 @@ public class CoachDataLoader implements CommandLineRunner {
         // Match 33 | Asteras Tripolis - OLYMPIACOS F.C. 0:3 | 04/02/2026
         updateCoachStats(3, 0, mendilibar);
 
-        // Match 34 | OLYMPIACOS F.C. - Panathinaikos FC -:- | 08/02/2026
+        // Match 34 | OLYMPIACOS F.C. - Panathinaikos FC 0:1 | 08/02/2026
+        updateCoachStats(0, 1, mendilibar);
 
         // Match 35 | Levadiakos FC - OLYMPIACOS F.C. -:- | 14/02/2026
 
