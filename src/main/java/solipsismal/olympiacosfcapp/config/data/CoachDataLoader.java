@@ -3,8 +3,12 @@ package solipsismal.olympiacosfcapp.config.data;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
+import solipsismal.olympiacosfcapp.core.exceptions.OpponentNotFoundException;
 import solipsismal.olympiacosfcapp.model.*;
 import solipsismal.olympiacosfcapp.repository.CoachRepository;
+
+import static solipsismal.olympiacosfcapp.core.enums.Day.TUESDAY;
+import static solipsismal.olympiacosfcapp.core.enums.Ground.AWAY;
 
 @Component
 @Order(3)
@@ -131,10 +135,18 @@ public class CoachDataLoader implements CommandLineRunner {
         // Match 34 | OLYMPIACOS F.C. - Panathinaikos FC 0:1 | 08/02/2026
         updateCoachStats(0, 1, mendilibar);
 
-        // Match 35 | Levadiakos FC - OLYMPIACOS F.C. -:- | 14/02/2026
+        // Match 35 | Levadiakos FC - OLYMPIACOS F.C. 0:0 | 14/02/2026
+        updateCoachStats(0, 0, mendilibar);
 
-        // Match 36 | OLYMPIACOS F.C. - Bayer 04 Leverkusen -:- | 18/02/2026
+        // Match 36 | OLYMPIACOS F.C. - Bayer 04 Leverkusen 0:2 | 18/02/2026
+        updateCoachStats(0, 2, mendilibar);
 
+        // Match 37 | OLYMPIACOS F.C. - Panaitolikos FC 2:0 | 21/02/2026
+        updateCoachStats(2, 0, mendilibar);
+
+        // Match 38 | Bayer 04 Leverkusen - OLYMPIACOS F.C. -:- | 24/02/2026
+
+        // Match 39 | Panserraikos FC - OLYMPIACOS F.C. -:- | 01/03/2026
     }
 
     private void updateCoachStats(int goals, int goalsConceded, Coach coach) {

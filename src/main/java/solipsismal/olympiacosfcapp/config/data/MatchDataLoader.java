@@ -394,24 +394,54 @@ public class MatchDataLoader implements CommandLineRunner {
                 34, "Greek Super League Round 2, MatchDay: 20", mendilibar, season2526, teamStats34080226);
         saveMatchAndUpdateTotalStats(match34080226, teamStats34080226, season2526TotalTeamStats);
 
-        // Match 35 | Levadiakos FC - OLYMPIACOS F.C. -:- | 14/02/2026
-        TeamStats teamStats35140226 = new TeamStats("TS35140226");
+        // Match 35 | Levadiakos FC - OLYMPIACOS F.C. 0:0 | 14/02/2026
+        TeamStats teamStats35140226 = new TeamStats("TS35140226",
+                0, 0, 0, 1, 0);
         Match match35140226 = new Match("MA35140226",
                 olympiacos, opponentRepository.findByOpponentName("Levadiakos FC").orElseThrow(OpponentNotFoundException::new),
+                0, 0,
                 "14/02/2026", "19:30", SATURDAY, superLeagueGreece, AWAY,
                 35, "Greek Super League Round 2, MatchDay: 21", mendilibar, season2526, teamStats35140226);
-        matchRepository.save(match35140226);
+        saveMatchAndUpdateTotalStats(match35140226, teamStats35140226, season2526TotalTeamStats);
 
-        // Match 36 | OLYMPIACOS F.C. - Bayer 04 Leverkusen -:- | 18/02/2026
-        TeamStats teamStats36180226 = new TeamStats("TS36180226");
+        // Match 36 | OLYMPIACOS F.C. - Bayer 04 Leverkusen 0:2 | 18/02/2026
+        TeamStats teamStats36180226 = new TeamStats("TS36180226",
+                0, 0, 2, 1, 0);
         Match match36180226 = new Match("MA36180226",
                 olympiacos, opponentRepository.findByOpponentName("Bayer 04 Leverkusen").orElseThrow(OpponentNotFoundException::new),
+                0, 2,
                 "18/02/2026", "22:00", WEDNESDAY, championsLeague, HOME,
                 36, "UEFA Champions League KO Play Offs, 1st Leg", mendilibar, season2526, teamStats36180226);
-        matchRepository.save(match36180226);
+        saveMatchAndUpdateTotalStats(match36180226, teamStats36180226, season2526TotalTeamStats);
+
+        // Match 37 | OLYMPIACOS F.C. - Panaitolikos FC 2:0 | 21/02/2026
+        TeamStats teamStats37210226 = new TeamStats("TS37210226",
+                2, 2, 0, 1, 0);
+        Match match37210226 = new Match("MA37210226",
+                olympiacos, opponentRepository.findByOpponentName("Panaitolikos FC").orElseThrow(OpponentNotFoundException::new),
+                2, 0,
+                "21/02/2026", "17:00", SATURDAY, superLeagueGreece, HOME,
+                37, "Greek Super League Round 2, MatchDay: 22", mendilibar, season2526, teamStats37210226);
+        saveMatchAndUpdateTotalStats(match37210226, teamStats37210226, season2526TotalTeamStats);
+
+        // Match 38 | Bayer 04 Leverkusen - OLYMPIACOS F.C. -:- | 24/02/2026
+        TeamStats teamStats38240226 = new TeamStats("TS38240226");
+        Match match38240226 = new Match("MA38240226",
+                olympiacos, opponentRepository.findByOpponentName("Bayer 04 Leverkusen").orElseThrow(OpponentNotFoundException::new),
+                "24/02/2026", "22:00", TUESDAY, championsLeague, AWAY,
+                38, "UEFA Champions League KO Play Offs, 2nd Leg", mendilibar, season2526, teamStats38240226);
+        matchRepository.save(match38240226);
+
+        // Match 39 | Panserraikos FC - OLYMPIACOS F.C. -:- | 01/03/2026
+        TeamStats teamStats39010326 = new TeamStats("TS39010326");
+        Match match39010326 = new Match("MA39010326",
+                olympiacos, opponentRepository.findByOpponentName("Panserraikos FC").orElseThrow(OpponentNotFoundException::new),
+                "01/03/2026", "16:00", SUNDAY, superLeagueGreece, AWAY,
+                39, "Greek Super League Round 2, MatchDay: 23", mendilibar, season2526, teamStats39010326);
+        matchRepository.save(match39010326);
 
         // Competition Position Setter
-        competitionRepository.save(superLeagueGreece.setCompetitionPosition(1));
+        competitionRepository.save(superLeagueGreece.setCompetitionPosition(2));
         competitionRepository.save(championsLeague.setCompetitionPosition(18));
     }
 
