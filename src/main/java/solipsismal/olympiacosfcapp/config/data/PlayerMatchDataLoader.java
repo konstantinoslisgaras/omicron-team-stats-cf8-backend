@@ -1475,6 +1475,12 @@ public class PlayerMatchDataLoader implements CommandLineRunner {
         );
         setGKCleanSheet(playerMatches37210226, players.get("Tzolakis"));
         savePlayerMatchesAndUpdateTotalStats(playerMatches37210226, WIN);
+
+        // Match 38 | Bayer 04 Leverkusen - OLYMPIACOS F.C. -:- | 24/02/2026
+
+        // Match 39 | Panserraikos FC - OLYMPIACOS F.C. -:- | 01/03/2026
+
+        // Match 40 | OLYMPIACOS F.C. - PAOK FC -:- | 08/03/2026
     }
 
     private Map<String, Player> getPlayersByLastnames(String... lastnames) throws PlayerNotFoundException{
